@@ -15,7 +15,7 @@ const LoadingScreen = ({ onComplete }) => {
         position: 'fixed',
         inset: 0,
         zIndex: 99999,
-        background: '#1e1814',
+        background: '#f8f8f8',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

@@ -5,10 +5,11 @@ import AboutSection from './sections/AboutSection';
 import PropertySection from './sections/PropertySection';
 import FeaturesSection from './sections/FeaturesSection';
 import LocationSection from './sections/LocationSection';
+
 import CTASection from './sections/CTASection';
+import SocialSidebar from '../components/SocialSidebar';
 
 export const Home = () => {
-  // Scroll-reveal for all .fade-up elements
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -16,7 +17,7 @@ export const Home = () => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -24,15 +25,19 @@ export const Home = () => {
 
   return (
     <>
+      <SocialSidebar />
       <HeroSection />
       <StatsBar />
       <AboutSection />
       <PropertySection />
       <FeaturesSection />
       <LocationSection />
+      {/* <TestimonialsSection /> */}
       <CTASection />
     </>
   );
 };
 
 export default Home;
+
+
