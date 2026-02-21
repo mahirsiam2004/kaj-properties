@@ -4,12 +4,12 @@ import { Home } from "../pages/Home";
 
 export const Router = createBrowserRouter([
     {
-        path:'/',
-        Component:MainLayoutes,
-        children:[
+        path: '/',
+        Component: MainLayoutes,
+        children: [
             {
-index:true,
-Component:Home
+                index: true,
+                Component: Home
             }
         ]
     }
