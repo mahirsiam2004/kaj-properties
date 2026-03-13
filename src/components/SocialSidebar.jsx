@@ -12,10 +12,7 @@ const socials = [
     { label: 'Phone', href: 'tel:+8801774873972', icon: <Phone size={15} strokeWidth={1.5} /> },
     { label: 'Email', href: 'mailto:kazdevelopersteam@gmail.com', icon: <Mail size={15} strokeWidth={1.5} /> },
     { label: 'divider' },
-    { label: 'Facebook', href: '#', icon: <Facebook size={15} strokeWidth={1.5} /> },
-    { label: 'X', href: '#', icon: <XIcon /> },
-    { label: 'LinkedIn', href: '#', icon: <Linkedin size={15} strokeWidth={1.5} /> },
-    { label: 'Instagram', href: '#', icon: <Instagram size={15} strokeWidth={1.5} /> },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61561571349588', icon: <Facebook size={15} strokeWidth={1.5} /> },
 ];
 
 const SocialSidebar = () => (

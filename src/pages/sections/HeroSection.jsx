@@ -58,7 +58,7 @@ export default function HeroSection() {
                 <div className="mt-24 pt-12 border-t border-[#a07167]/10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-5xl mx-auto">
                     {[
                         { num: '4+', label: 'Years Experience', unit: '' },
-                        { num: '100%', label: 'Customer Satisfaction', unit: '' },
+                        { num: '100%', label: 'Client Satisfaction', unit: '' },
                         { num: '27', label: 'Happy Families', unit: '' },
                         { num: '40%', label: 'Average Savings', unit: '' },
                     ].map((item, idx) => (

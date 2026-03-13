@@ -4,7 +4,7 @@ import { DollarSign, Award, MapPin, Users } from 'lucide-react';
 const milestones = [
     { year: '2023', event: 'Kaz Properties founded with vision to democratize luxury homeownership.' },
     { year: '2024', event: 'Developed innovative land-share model to make properties affordable.' },
-    { year: '2025', event: 'Successfully launched Chhayabithi - proof of concept with 27 families.' },
+    { year: '2025', event: 'Successfully launched Chayabithi - proof of concept with 27 families.' },
     { year: '2026+', event: 'Expanding portfolio with new premium projects in prime locations.' },
 ];
 

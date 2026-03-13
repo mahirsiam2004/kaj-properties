@@ -30,7 +30,7 @@ const FeaturesSection = () => (
                     Everything<br /><strong>Included</strong>
                 </h2>
                 <p className="features-subtitle">
-                    Every Chhayabithi apartment comes equipped with premium amenities
+                    Every Chayabithi apartment comes equipped with premium amenities
                     designed for modern, comfortable living.
                 </p>
             </div>

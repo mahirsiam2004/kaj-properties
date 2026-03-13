@@ -9,16 +9,9 @@ const Footer = () => (
       {/* Brand */}
       <div className="footer-brand">
         <Logo />
-        <p>Building dreams into reality, one home at a time. Affordable luxury near Jahangirnagar University.</p>
+        <p>Building dreams into reality, one home at a time. Affordable luxury in Savar, Uttara.</p>
         <div className="footer-social">
-          <a href="#" aria-label="Facebook"><Facebook size={15} strokeWidth={1.5} /></a>
-          <a href="#" aria-label="Instagram"><Instagram size={15} strokeWidth={1.5} /></a>
-          <a href="#" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
+          <a href="https://www.facebook.com/profile.php?id=61561571349588" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={15} strokeWidth={1.5} /></a>
         </div>
       </div>
 
@@ -57,12 +50,23 @@ const Footer = () => (
       </div>
     </div>
 
-    <div className="footer-bottom">
-      <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All rights reserved.</p>
-      <div className="footer-bottom-links">
+    <div className="footer-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center' }}>
+      <div className="footer-bottom-links" style={{ justifyContent: 'center' }}>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
         <a href="#">Sitemap</a>
+      </div>
+      <p style={{ margin: 0, opacity: 0.9 }}>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All rights reserved.</p>
+      <div style={{ 
+        padding: '8px 20px', 
+        background: 'rgba(202, 149, 57, 0.1)', 
+        border: '1px solid rgba(202, 149, 57, 0.2)', 
+        borderRadius: '30px',
+        marginTop: '10px'
+      }}>
+        <p style={{ margin: 0, fontSize: '13px', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>
+          Made by <a href="https://gentrixit.net/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', marginLeft: '5px' }}>Gentrix It</a>
+        </p>
       </div>
     </div>
   </footer>

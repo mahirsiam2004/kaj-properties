@@ -6,16 +6,16 @@ import comingSoon1 from '../../assets/coming/P1 (1).jpg';
 import comingSoon2 from '../../assets/coming/CHAYABITHI 7.jpg';
 
 const PropertySection = () => {
-    const chhayabithiImages = [
-        '/src/assets/Chhayabithi/CHAYABITHI 7.jpg',
-        '/src/assets/Chhayabithi/KAJ POST 5.jpg',
-        '/src/assets/Chhayabithi/vhayabithi_01.png'
+    const chayabithiImages = [
+        '/src/assets/Chayabithi/CHAYABITHI 7.jpg',
+        '/src/assets/Chayabithi/KAJ POST 5.jpg',
+        '/src/assets/Chayabithi/vhayabithi_01.png'
     ];
 
     const projects = [
         {
             id: 1,
-            name: 'Chhayabithi',
+            name: 'Chayabithi',
             status: 'Sold Out',
             statusType: 'sold',
             specs: [
@@ -66,9 +66,9 @@ const PropertySection = () => {
                 {projects.map((project, index) => (
                     <div className="property-card fade-up" key={project.id || index} style={{ transitionDelay: `${index * 0.1}s` }}>
                         <div className="property-card-img">
-                            {project.name === 'Chhayabithi' ? (
+                            {project.name === 'Chayabithi' ? (
                                 <>
-                                    <ImageSlideshow images={chhayabithiImages} alt="Chhayabithi Project" interval={4000} />
+                                    <ImageSlideshow images={chayabithiImages} alt="Chayabithi Project" interval={4000} />
                                     <span className="property-sold-badge">Sold Out</span>
                                 </>
                             ) : project.image ? (
