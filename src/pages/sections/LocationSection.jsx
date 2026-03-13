@@ -14,7 +14,7 @@ const LocationSection = () => (
             <div className="location-content fade-up">
                 <p className="section-eyebrow">Prime Location</p>
                 <h2 className="section-title">
-                    Where<br />You<br /><strong>Belong</strong>
+                    Visit Our<br />Office<br /><strong>Today</strong>
                 </h2>
                 <p>
                     Nestled alongside the Dhaka-Aricha Highway, Chhayabithi places you at the heart

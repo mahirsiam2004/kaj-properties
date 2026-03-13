@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <>
       {/* ── DESKTOP NAV ── */}
-      <nav className={`kaj-nav${scrolled ? ' scrolled' : ''}`}>
+      <nav className={`kaz-nav${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-inner">
           <NavLink to="/" style={{ textDecoration: 'none' }}>
             <Logo />

@@ -16,31 +16,30 @@ export default function HeroSection() {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#a07167] opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#a07167]"></span>
                     </span>
-                    <span className="uppercase text-[10px] md:text-xs tracking-[0.2em] text-[#a07167] font-bold">
-                        Kaj Properties & Developers
+                    <span className="uppercase text-sm md:text-base tracking-[0.1em] text-[#a07167] font-bold">
+                        Kaz Properties & Developers
                     </span>
                 </div>
 
                 {/* Main Heading */}
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-[#2c2622] leading-[1.1] mb-8 tracking-tight">
-                    Your Dream <br />
-                    <span className="italic font-light text-[#a07167]">Home Awaits</span>
+                    Your Abode of Peace
                 </h1>
 
                 {/* Description */}
                 <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-                    Premium south-facing apartments near <span className="text-[#2c2622] font-medium border-b border-[#a07167]/30">Jahangirnagar University</span>.
-                    Modern living with up to <span className="text-[#a07167] font-semibold">40% savings</span> vs market price.
+                    <span className="text-[#2c2622] font-medium border-b border-[#a07167]/30">Kaz Properties</span> makes luxury living accessible 
+                    through innovative land-share model with up to <span className="text-[#a07167] font-semibold">40% savings</span>.
                 </p>
 
                 {/* Refined Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
                     <a
-                        href="#property"
+                        href="#about"
                         className="group relative inline-flex items-center justify-center px-10 py-4 bg-[#a07167] text-white text-sm font-semibold tracking-widest uppercase overflow-hidden transition-all duration-300 hover:bg-[#8c5e54] shadow-xl hover:shadow-[#a07167]/20 rounded-sm"
                     >
                         <span className="relative z-10 flex items-center gap-2">
-                            View Project
+                            Learn More
                             <svg className="w-4 h-4 transform transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                                 <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
@@ -48,20 +47,20 @@ export default function HeroSection() {
                     </a>
 
                     <a
-                        href="#contact"
+                        href="#property"
                         className="inline-flex items-center justify-center px-10 py-4 border border-[#a07167] text-[#a07167] text-sm font-semibold tracking-widest uppercase hover:bg-[#a07167] hover:text-white transition-all duration-300 rounded-sm"
                     >
-                        Contact Us
+                        View Projects
                     </a>
                 </div>
 
-                {/* Quick Stats - Premium Layout */}
+                {/* Quick Stats - Company Focus */}
                 <div className="mt-24 pt-12 border-t border-[#a07167]/10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-5xl mx-auto">
                     {[
-                        { num: '18', label: 'Decimals Land', unit: '' },
-                        { num: '1700', label: 'Sq.Ft / Flat', unit: '' },
-                        { num: '27', label: 'Total Shares', unit: '' },
-                        { num: '100', label: 'Sold Out', unit: '%' },
+                        { num: '4+', label: 'Years Experience', unit: '' },
+                        { num: '100%', label: 'Customer Satisfaction', unit: '' },
+                        { num: '27', label: 'Happy Families', unit: '' },
+                        { num: '40%', label: 'Average Savings', unit: '' },
                     ].map((item, idx) => (
                         <div key={idx} className="flex flex-col items-center">
                             <div className="flex items-baseline">

@@ -4,7 +4,7 @@ import { Logo } from './logo/Logo';
 import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => (
-  <footer className="kaj-footer">
+  <footer className="kaz-footer">
     <div className="footer-inner">
       {/* Brand */}
       <div className="footer-brand">
@@ -48,17 +48,17 @@ const Footer = () => (
         </div>
         <div className="footer-contact-item">
           <Phone size={15} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-          <span>+880 1X-XXXXXXXX</span>
+          <span>+880 1774-873972</span>
         </div>
         <div className="footer-contact-item">
           <Mail size={15} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-          <span>info@kajproperties.com</span>
+          <span>info@kazdevelopersteam@gmail.com</span>
         </div>
       </div>
     </div>
 
     <div className="footer-bottom">
-      <p>© {new Date().getFullYear()} Kaj Properties &amp; Developers. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All rights reserved.</p>
       <div className="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>

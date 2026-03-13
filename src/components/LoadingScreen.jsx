@@ -25,8 +25,8 @@ const LoadingScreen = ({ onComplete }) => {
         pointerEvents: fadeOut ? 'none' : 'all',
       }}
     >
-      <img src="/logo.png" alt="Kaj Properties" className="loading-logo" />
-      <p className="loading-brand">Kaj</p>
+      <img src="/logo.png" alt="Kaz Properties" className="loading-logo" />
+      <p className="loading-brand">Kaz</p>
       <p className="loading-sub">Properties &amp; Developers</p>
       <div className="loading-bar-track">
         <div className="loading-bar-fill" />

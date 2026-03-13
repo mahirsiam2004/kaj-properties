@@ -15,18 +15,18 @@ const CTASection = () => (
                         Our team is ready to guide you every step of the way.
                     </p>
                     <div className="cta-contacts fade-up">
-                        <a href="tel:+8801XXXXXXXXX" className="cta-contact-item">
+                        <a href="tel:+8801774873972" className="cta-contact-item">
                             <span className="cta-contact-icon"><Phone size={18} strokeWidth={1.5} /></span>
                             <div>
                                 <p className="cta-contact-label">Call Us</p>
-                                <p className="cta-contact-val">+880 1X-XXXXXXXX</p>
+                                <p className="cta-contact-val">+880 1774-873972</p>
                             </div>
                         </a>
-                        <a href="mailto:info@kajproperties.com" className="cta-contact-item">
+                        <a href="mailto:kazdevelopersteam@gmail.com" className="cta-contact-item">
                             <span className="cta-contact-icon"><Mail size={18} strokeWidth={1.5} /></span>
                             <div>
                                 <p className="cta-contact-label">Email Us</p>
-                                <p className="cta-contact-val">info@kajproperties.com</p>
+                                <p className="cta-contact-val">kazdevelopersteam@gmail.com</p>
                             </div>
                         </a>
                         <div className="cta-contact-item">
@@ -37,7 +37,7 @@ const CTASection = () => (
                             </div>
                         </div>
                     </div>
-                    <a href="tel:+8801XXXXXXXXX" className="btn-white fade-up">Call Us Now</a>
+                    <a href="tel:+8801774873972" className="btn-white fade-up">Call Us Now</a>
                 </div>
 
                 <div className="cta-form-card fade-up">

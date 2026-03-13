@@ -2,16 +2,16 @@ import React from 'react';
 import { DollarSign, Award, MapPin, Users } from 'lucide-react';
 
 const milestones = [
-    { year: '2020', event: 'Kaj Properties founded with a vision to democratize homeownership.' },
-    { year: '2022', event: 'Launched Chhayabithi — our flagship land-share apartment project.' },
-    { year: '2023', event: 'All 27 shares sold out within months of launch.' },
-    { year: '2024+', event: 'New projects in pipeline — join our waitlist to be first in line.' },
+    { year: '2023', event: 'Kaz Properties founded with vision to democratize luxury homeownership.' },
+    { year: '2024', event: 'Developed innovative land-share model to make properties affordable.' },
+    { year: '2025', event: 'Successfully launched Chhayabithi - proof of concept with 27 families.' },
+    { year: '2026+', event: 'Expanding portfolio with new premium projects in prime locations.' },
 ];
 
 const values = [
     {
         icon: <DollarSign size={22} strokeWidth={1.5} />,
-        title: 'Affordable',
+        title: 'Affordable Luxury',
         desc: 'Land-share model cuts costs by up to 40% vs. market rate.',
     },
     {
@@ -47,13 +47,14 @@ const AboutSection = () => (
 
                 <div className="about-right">
                     <p className="fade-up">
-                        <strong>Kaj Properties &amp; Developers</strong> was founded with one mission: to
-                        make homeownership a reality for everyone. We believe that a beautiful, comfortable
-                        home in a prime location should not be a luxury reserved for the few.
+                        <strong>Kaz Properties &amp; Developers</strong> is revolutionizing the real estate landscape 
+                        by making luxury living accessible to everyone. We believe that premium homes in prime locations 
+                        should not be exclusive privileges reserved for the wealthy few.
                     </p>
                     <p className="fade-up" style={{ transitionDelay: '0.1s' }}>
-                        By pooling resources through our innovative <strong>land-share model</strong>, buyers save up to 40%
-                        compared to conventional purchases — without compromising on quality, location, or amenities.
+                        Our innovative <strong>land-share model</strong> allows multiple families to pool resources and co-own premium properties, 
+                        resulting in up to <strong>40% savings</strong> compared to traditional ownership—without compromising on quality, 
+                        location, or amenities.
                     </p>
 
                     <div className="about-timeline fade-up" style={{ transitionDelay: '0.2s' }}>
@@ -71,7 +72,7 @@ const AboutSection = () => (
                         className="btn-primary fade-up"
                         style={{ transitionDelay: '0.3s', marginTop: '32px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                     >
-                        View Our Project
+                        View Our Projects
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

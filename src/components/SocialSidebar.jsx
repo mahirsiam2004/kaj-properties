@@ -9,8 +9,8 @@ const XIcon = () => (
 );
 
 const socials = [
-    { label: 'Phone', href: 'tel:+8801XXXXXXXXX', icon: <Phone size={15} strokeWidth={1.5} /> },
-    { label: 'Email', href: 'mailto:info@kajproperties.com', icon: <Mail size={15} strokeWidth={1.5} /> },
+    { label: 'Phone', href: 'tel:+8801774873972', icon: <Phone size={15} strokeWidth={1.5} /> },
+    { label: 'Email', href: 'mailto:kazdevelopersteam@gmail.com', icon: <Mail size={15} strokeWidth={1.5} /> },
     { label: 'divider' },
     { label: 'Facebook', href: '#', icon: <Facebook size={15} strokeWidth={1.5} /> },
     { label: 'X', href: '#', icon: <XIcon /> },
