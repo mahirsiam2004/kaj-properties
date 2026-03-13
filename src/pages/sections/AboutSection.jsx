@@ -22,7 +22,7 @@ const values = [
     {
         icon: <MapPin size={22} strokeWidth={1.5} />,
         title: 'Prime Location',
-        desc: 'Adjacent to Jahangirnagar University on the Dhaka-Aricha Highway.',
+        desc: 'Bachelor Gate, Ambagan Road, Jahangirnagar, Savar, Dhaka.',
     },
     {
         icon: <Users size={22} strokeWidth={1.5} />,

@@ -1026,7 +1026,7 @@
 .property-card-img {
     position: relative;
     overflow: hidden;
-    min-height: 380px;
+    height: 550px;
 }
 
 .property-card-img img {
