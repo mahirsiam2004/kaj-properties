@@ -26,8 +26,8 @@ const LoadingScreen = ({ onComplete }) => {
       }}
     >
       <img src="/logo.png" alt="Kaz Properties" className="loading-logo" />
-      <p className="loading-brand">Kaz</p>
-      <p className="loading-sub">Properties &amp; Developers</p>
+      <p className="loading-brand">KAZ</p>
+      <p className="loading-sub">PROPERTIES &amp; DEVELOPERS</p>
       <div className="loading-bar-track">
         <div className="loading-bar-fill" />
       </div>
