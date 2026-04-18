@@ -1,75 +1,85 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 import { Logo } from './logo/Logo';
-import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => (
-  <footer className="kaz-footer">
-    <div className="footer-inner">
-      {/* Brand */}
-      <div className="footer-brand">
-        <Logo />
-        <p>Building dreams into reality, one home at a time. Affordable luxury in Savar, Uttara.</p>
-        <div className="footer-social">
-          <a href="https://www.facebook.com/profile.php?id=61561571349588" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={15} strokeWidth={1.5} /></a>
+    <footer className="relative bg-brand-light text-brand-black pt-20 overflow-hidden border-t border-gray-100">
+        {/* Subtle Watermark/Sketch representation (using CSS pattern or faint SVG) */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none" 
+             style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
         </div>
-      </div>
 
-      {/* Navigation */}
-      <div className="footer-col">
-        <h6>Navigation</h6>
-        <NavLink to="/">Properties</NavLink>
-        <NavLink to="/buying">Buying</NavLink>
-        <NavLink to="/contact">Contact Us</NavLink>
-      </div>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+            {/* Top Area: Logo & Vision */}
+            <div className="flex flex-col items-center text-center mb-16">
+                <Logo light={false} />
+                <p className="mt-6 text-sm lg:text-base font-light max-w-2xl text-brand-black/70">
+                    Our vision is to create the ideal living environment for all people, where they can thrive and flourish
+                </p>
+            </div>
 
-      {/* Company */}
-      <div className="footer-col">
-        <h6>Company</h6>
-        <a href="#">About Us</a>
-        <a href="#">Our Projects</a>
-        <a href="#">Testimonials</a>
-        <a href="#">Join Our Team</a>
-      </div>
+            {/* Middle Area: Columns */}
+            <div className="flex flex-col md:flex-row justify-center md:gap-32 gap-12 mb-16 text-center md:text-left">
+                {/* Contact Info */}
+                <div>
+                    <h6 className="text-xl font-semibold mb-6">Contact Info</h6>
+                    <div className="space-y-4 text-sm text-brand-black/70">
+                        <div>
+                            <p className="font-medium text-brand-black mb-1">Corporate Office:</p>
+                            <p>Bachelor Gate, Ambagan Road,</p>
+                            <p>Jahangirnagar University,</p>
+                            <p>Savar, Dhaka, Bangladesh</p>
+                        </div>
+                        <div className="pt-4">
+                            <p className="font-semibold">+880 1774-873972</p>
+                            <p className="font-semibold">kazdevelopersteam@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
 
-      {/* Contact */}
-      <div className="footer-col">
-        <h6>Contact</h6>
-        <div className="footer-contact-item">
-          <MapPin size={15} strokeWidth={1.5} style={{ flexShrink: 0, marginTop: '2px' }} />
-          <span>Bachelor Gate, Ambagan Road, Jahangirnagar University, Savar, Dhaka</span>
+                {/* Support */}
+                <div>
+                    <h6 className="text-xl font-semibold mb-6">Support</h6>
+                    <div className="flex flex-col space-y-3 text-sm text-gray-700">
+                        <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
+                        <a href="#" className="hover:text-accent transition-colors">Terms &amp; Condition</a>
+                        <a href="#" className="hover:text-accent transition-colors">Support Center</a>
+                        <a href="#" className="hover:text-accent transition-colors">FAQ</a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <span className="font-semibold text-lg">Social Media</span>
+                <div className="flex gap-4">
+                    <a href="https://www.facebook.com/profile.php?id=61561571349588" target="_blank" rel="noopener noreferrer" className="bg-brand-black text-white p-2 rounded-full hover:bg-accent transition-colors" aria-label="Facebook">
+                        <Facebook size={18} strokeWidth={1.5} />
+                    </a>
+                    <a href="#" className="bg-brand-black text-white p-2 rounded-full hover:bg-accent transition-colors" aria-label="LinkedIn">
+                        <Linkedin size={18} strokeWidth={1.5} />
+                    </a>
+                    <a href="#" className="bg-brand-black text-white p-2 rounded-full hover:bg-accent transition-colors" aria-label="Twitter / X">
+                        <Twitter size={18} strokeWidth={1.5} />
+                    </a>
+                    <a href="#" className="bg-brand-black text-white p-2 rounded-full hover:bg-accent transition-colors" aria-label="YouTube">
+                        <Youtube size={18} strokeWidth={1.5} />
+                    </a>
+                    <a href="#" className="bg-brand-black text-white p-2 rounded-full hover:bg-accent transition-colors" aria-label="Instagram">
+                        <Instagram size={18} strokeWidth={1.5} />
+                    </a>
+                </div>
+            </div>
         </div>
-        <div className="footer-contact-item">
-          <Phone size={15} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-          <span>+880 1774-873972</span>
-        </div>
-        <div className="footer-contact-item">
-          <Mail size={15} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-          <span>info@kazdevelopersteam@gmail.com</span>
-        </div>
-      </div>
-    </div>
 
-    <div className="footer-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', textAlign: 'center' }}>
-      <div className="footer-bottom-links" style={{ justifyContent: 'center' }}>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Sitemap</a>
-      </div>
-      <p style={{ margin: 0, opacity: 0.9 }}>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All rights reserved.</p>
-      <div style={{ 
-        padding: '8px 20px', 
-        background: 'rgba(202, 149, 57, 0.1)', 
-        border: '1px solid rgba(202, 149, 57, 0.2)', 
-        borderRadius: '30px',
-        marginTop: '10px'
-      }}>
-        <p style={{ margin: 0, fontSize: '13px', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>
-          Made by <a href="https://gentrixit.net/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', marginLeft: '5px' }}>Gentrix It</a>
-        </p>
-      </div>
-    </div>
-  </footer>
+        {/* Bottom Bar */}
+        <div className="bg-brand-black py-6 mt-8">
+            <p className="text-center text-white/80 text-sm font-light">
+                © {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
 );
 
 export default Footer;

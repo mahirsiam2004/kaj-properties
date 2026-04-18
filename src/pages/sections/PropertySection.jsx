@@ -1,141 +1,156 @@
-import React from 'react';
-import { MapPin, Home, Building } from 'lucide-react';
-import cayabith from '../../assets/c.jpeg';
-import ImageSlideshow from '../../components/ImageSlideshow';
-import comingSoon1 from '../../assets/coming/P1 (1).jpg';
-import comingSoon2 from '../../assets/coming/CHAYABITHI 7.jpg';
+import React, { useState } from 'react';
+import { MapPin, BedDouble, Bath, Maximize2, ArrowRight, ArrowLeft } from 'lucide-react';
 
-const PropertySection = () => {
-    const chayabithiImages = [
-        '/src/assets/Chayabithi/CHAYABITHI 7.jpg',
-        '/src/assets/Chayabithi/KAJ POST 5.jpg',
-        '/src/assets/Chayabithi/vhayabithi_01.png'
-    ];
+const projects = [
+    {
+        id: 1,
+        name: 'Zubion Unison | Bashundhara R/A',
+        status: 'Ongoing',
+        location: 'Plot: 5732, 5781, Road: 46 (Butterfly), Block: N, Bashundhara R/A',
+        beds: '3-4',
+        baths: '3-6',
+        sqft: '1400-2800',
+        images: [
+            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
+            'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80'
+        ],
+        mainBg: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1800&q=80'
+    }
+];
 
-    const projects = [
-        {
-            id: 1,
-            name: 'Chayabithi',
-            status: 'Sold Out',
-            statusType: 'sold',
-            specs: [
-                { val: '1700', label: 'Sq. Ft.' },
-                { val: '3+1', label: 'Beds' },
-                { val: '4', label: 'Baths' },
-                { val: '6', label: 'Balconies' },
-            ],
-            location: 'Dhaka-Aricha Highway, Savar<br />Adjacent to Jahangirnagar University<br />Dhaka, Bangladesh',
-            image: cayabith,
-            description: 'Our successful flagship project that proved the land-share model works.'
-        },
-        {
-            id: 2,
-            name: 'COMING SOON',
-            status: 'Coming Soon',
-            statusType: 'upcoming',
-            specs: [],
-            location: '',
-            image: comingSoon1,
-            description: ''
-        },
-        {
-            id: 3,
-            name: 'COMING SOON',
-            status: 'Coming Soon',
-            statusType: 'upcoming',
-            specs: [],
-            location: '',
-            image: comingSoon2,
-            description: ''
-        }
-    ];
+export default function PropertySection() {
+    const [featured] = useState(projects[0]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     return (
-        <section className="property-section" id="property">
-            <div className="section-header fade-up">
-                <div>
-                    <p className="section-eyebrow">Our Projects</p>
-                    <h2 className="section-title" style={{ fontSize: 'clamp(40px, 5vw, 52px)' }}>
-                        Premium Properties
-                        <strong style={{ fontSize: '22px', letterSpacing: '3px', display: 'block' }}>BY KAZ PROPERTIES</strong>
-                    </h2>
-                </div>
+        <section className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center" id="property">
+            {/* Background Map/Image */}
+            <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+                style={{ backgroundImage: `url(${featured.mainBg})` }}
+            >
+                {/* Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/70 to-transparent"></div>
+                <div className="absolute inset-0 bg-brand-black/40"></div>
             </div>
 
-            <div className="properties-grid">
-                {projects.map((project, index) => (
-                    <div className="property-card fade-up" key={project.id || index} style={{ transitionDelay: `${index * 0.1}s` }}>
-                        <div className="property-card-img">
-                            {project.name === 'Chayabithi' ? (
-                                <>
-                                    <ImageSlideshow images={chayabithiImages} alt="Chayabithi Project" interval={4000} />
-                                    <span className="property-sold-badge">Sold Out</span>
-                                </>
-                            ) : project.image ? (
-                                <>
-                                    <img src={project.image} alt={`${project.name} Project`} />
-                                    {project.statusType === 'sold' && (
-                                        <span className="property-sold-badge">Sold Out</span>
-                                    )}
-                                </>
-                            ) : (
-                                <div className="property-placeholder">
-                                    <div className="placeholder-icon">
-                                        {project.statusType === 'upcoming' ? <Building size={48} /> : <Home size={48} />}
-                                    </div>
-                                    <span className={`property-status-badge ${project.statusType}`}>
-                                        {project.status}
-                                    </span>
+            <div className="container mx-auto px-6 lg:px-12 relative z-10 w-full fade-up">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    
+                    {/* Left Column: Details */}
+                    <div className="w-full lg:w-1/2 text-white">
+                        <h2 className="text-4xl md:text-5xl font-light mb-4">Featured Projects</h2>
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="w-4 h-4 grid grid-cols-2 gap-0.5">
+                                <div className="bg-accent w-full h-full rounded-sm"></div>
+                                <div className="bg-accent/50 w-full h-full rounded-sm"></div>
+                                <div className="bg-accent/50 w-full h-full rounded-sm"></div>
+                                <div className="bg-accent w-full h-full rounded-sm"></div>
+                            </div>
+                            <span className="text-accent uppercase font-semibold text-sm tracking-widest">{featured.status}</span>
+                        </div>
+                        
+                        <h3 className="text-3xl md:text-4xl font-bold mb-3">{featured.name}</h3>
+                        <p className="text-white/80 font-light mb-8">{featured.location}</p>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+                            <div className="flex flex-col border-l-2 border-white/20 pl-4">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <BedDouble size={18} className="text-accent" />
+                                    <span className="font-bold text-xl">{featured.beds}</span>
                                 </div>
-                            )}
+                                <span className="text-sm font-light text-white/70">Bedroom</span>
+                            </div>
+                            <div className="flex flex-col border-l-2 border-white/20 pl-4">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Bath size={18} className="text-accent" />
+                                    <span className="font-bold text-xl">{featured.baths}</span>
+                                </div>
+                                <span className="text-sm font-light text-white/70">Bathroom</span>
+                            </div>
+                            <div className="flex flex-col border-l-2 border-white/20 pl-4 col-span-2 md:col-span-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Maximize2 size={18} className="text-accent" />
+                                    <span className="font-bold text-xl">{featured.sqft} <span className="text-xs bg-white text-brand-black px-1 rounded-sm">SQFT</span></span>
+                                </div>
+                                <span className="text-sm font-light text-white/70">Flat size up to</span>
+                            </div>
                         </div>
 
-                        <div className="property-card-body" style={{ textAlign: 'center', padding: '40px 30px' }}>
-                            {project.statusType === 'upcoming' ? (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                                    <h3 style={{ fontSize: '32px', color: 'var(--cream)', letterSpacing: '4px', fontWeight: '600', textTransform: 'uppercase', margin: 0 }}>Coming Soon</h3>
-                                    <p style={{ color: 'var(--gold)', fontSize: '14px', fontWeight: '500', letterSpacing: '1px' }}>Something Extraordinary is Arriving</p>
-                                    <div style={{ padding: '10px 20px', background: 'var(--surface-2)', borderRadius: '6px', marginTop: '10px' }}>
-                                        <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                            Join the waitlist for exclusive priority access. Special pre-launch invitations arriving soon.
-                                        </p>
-                                    </div>
-                                    <a href="#contact" className="property-cta" style={{ width: '100%', marginTop: '10px' }}>
-                                        Inquire & Wait
-                                    </a>
+                        <a href="#contact" className="inline-flex items-center gap-2 border border-white/30 text-white hover:bg-white hover:text-brand-black transition-colors px-6 py-3 text-sm tracking-wide rounded-sm mb-12">
+                            Project Details <ArrowRight size={16} />
+                        </a>
+
+                        <div className="flex items-end justify-between">
+                            <div className="flex items-center gap-4">
+                                <span className="text-5xl font-bold">30</span>
+                                <span className="leading-tight text-xs uppercase tracking-widest font-semibold text-white/80">
+                                    Number<br/>of projects
+                                </span>
+                            </div>
+                            <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm p-1">
+                                <a href="#projects" className="px-4 py-2 hover:text-accent transition-colors text-sm uppercase tracking-wider font-medium">
+                                    View All Projects <ArrowRight size={14} className="inline ml-1" />
+                                </a>
+                                <div className="flex">
+                                    <button className="p-3 hover:bg-white/10 transition-colors border-l border-white/10">
+                                        <ArrowLeft size={16} />
+                                    </button>
+                                    <button className="p-3 hover:bg-white/10 transition-colors border-l border-white/10">
+                                        <ArrowRight size={16} />
+                                    </button>
                                 </div>
-                            ) : (
-                                <>
-                                    <p className="property-company">Kaz Properties &amp; Developers</p>
-                                    <h3 className="property-project-name">{project.name}</h3>
-                                    
-                                    <p className="property-description">{project.description}</p>
-
-                                    <div className="property-location">
-                                        <MapPin size={16} strokeWidth={1.5} style={{ flexShrink: 0, marginTop: '3px', color: 'var(--gold)' }} />
-                                        <p className="property-location-text" dangerouslySetInnerHTML={{ __html: project.location }} />
-                                    </div>
-
-                                    <div className="property-specs">
-                                        {project.specs.map(({ val, label }) => (
-                                            <div className="property-spec" key={label}>
-                                                <div className="property-spec-val">{val}</div>
-                                                <div className="property-spec-label">{label}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <a href="#contact" className="property-cta">
-                                        Inquire About Similar
-                                    </a>
-                                </>
-                            )}
+                            </div>
                         </div>
                     </div>
-                ))}
+
+                    {/* Right Column: Slider */}
+                    <div className="w-full lg:w-1/2 relative h-[400px] md:h-[500px]">
+                        <div className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl">
+                            {featured.images.map((img, i) => (
+                                <img
+                                    key={i}
+                                    src={img}
+                                    alt={`Featured Project Slide ${i}`}
+                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                />
+                            ))}
+                            {/* Parking Space tag just for mock */}
+                            <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 text-white bg-brand-black/50 backdrop-blur-sm px-3 py-1 rounded-sm">
+                                <Maximize2 size={14} />
+                                <span className="text-xs font-semibold tracking-wider">PARKING SPACE</span>
+                            </div>
+
+                            {/* Sound off mock */}
+                            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 text-white bg-brand-black/50 backdrop-blur-sm px-3 py-1 rounded-sm">
+                                <span className="text-xs font-semibold tracking-wider flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                    Sound off
+                                </span>
+                            </div>
+
+                            {/* Right side dots */}
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
+                                {featured.images.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setCurrentImageIndex(i)}
+                                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white ${i === currentImageIndex ? 'bg-white scale-125' : 'bg-transparent hover:bg-white/50'}`}
+                                        aria-label={`Featured image ${i + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom yellow accented pagination (mocking screenshot) */}
+                <div className="absolute bottom-6 right-12 z-20 flex gap-2">
+                    {[1,2,3,4,5,6,7].map((num) => (
+                        <div key={num} className={`h-1 transition-all duration-300 ${num === 4 ? 'w-8 bg-accent' : 'w-4 bg-white/30'}`}></div>
+                    ))}
+                </div>
             </div>
         </section>
     );
-};
-
-export default PropertySection;
+}

@@ -11,25 +11,21 @@ const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 99999,
-        background: '#f8f8f8',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transition: 'opacity 0.5s ease',
-        opacity: fadeOut ? 0 : 1,
-        pointerEvents: fadeOut ? 'none' : 'all',
-      }}
+      className={`fixed inset-0 z-[99999] bg-brand-light flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'}`}
     >
-      <img src="/logo.png" alt="Kaz Properties" className="loading-logo" />
-      <p className="loading-brand">KAZ</p>
-      <p className="loading-sub">PROPERTIES &amp; DEVELOPERS</p>
-      <div className="loading-bar-track">
-        <div className="loading-bar-fill" />
+      <img 
+        src="/logo.png" 
+        alt="Kaz Properties" 
+        className="w-48 sm:w-64 md:w-80 object-contain mb-8 filter grayscale brightness-0 opacity-80" 
+      />
+      
+      <div className="flex flex-col items-center gap-1 opacity-80 text-brand-black text-center px-4">
+          <p className="text-xl md:text-2xl font-bold tracking-[0.2em]">KAZ</p>
+          <p className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase">PROPERTIES & DEVELOPERS</p>
+      </div>
+      
+      <div className="w-48 md:w-64 h-1 bg-brand-black/10 mt-12 overflow-hidden rounded-full relative">
+        <div className="absolute top-0 left-0 h-full bg-accent animate-pulse w-full"></div>
       </div>
     </div>
   );

@@ -1,45 +1,37 @@
 import React from 'react';
 import { Phone, Mail, Facebook, Linkedin, Instagram } from 'lucide-react';
 
-// X/Twitter not in lucide-react core, using inline SVG
-const XIcon = () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-);
-
 const socials = [
-    { label: 'Phone', href: 'tel:+8801774873972', icon: <Phone size={15} strokeWidth={1.5} /> },
-    { label: 'Email', href: 'mailto:kazdevelopersteam@gmail.com', icon: <Mail size={15} strokeWidth={1.5} /> },
+    { label: 'Phone', href: 'tel:+8801774873972', icon: <Phone size={16} strokeWidth={1.5} /> },
+    { label: 'Email', href: 'mailto:kazdevelopersteam@gmail.com', icon: <Mail size={16} strokeWidth={1.5} /> },
     { label: 'divider' },
-    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61561571349588', icon: <Facebook size={15} strokeWidth={1.5} /> },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61561571349588', icon: <Facebook size={16} strokeWidth={1.5} /> },
 ];
 
 const SocialSidebar = () => (
-    <div className="social-sidebar">
-        <div className="social-sidebar-inner">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100] bg-brand-black/90 backdrop-blur-sm border-l border-white/10 rounded-l-md px-2 py-6 hidden md:flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-6">
             {socials.map((item, i) => {
                 if (item.label === 'divider') {
-                    return <div key="divider" className="social-sidebar-divider" />;
+                    return <div key={i} className="w-8 h-px bg-white/20" />;
                 }
                 return (
                     <a
-                        key={item.label}
+                        key={i}
                         href={item.href}
-                        className="social-sidebar-link"
+                        className="text-white hover:text-accent hover:scale-110 transition-all duration-300"
                         aria-label={item.label}
-                        style={{ animationDelay: `${i * 0.08 + 0.3}s` }}
                     >
                         {item.icon}
                     </a>
                 );
             })}
-            <div className="social-sidebar-follow">
-                <span>FOLLOW</span>
-            </div>
-            <div className="social-sidebar-scrollbar">
-                <div className="social-sidebar-scrollthumb" />
-            </div>
+        </div>
+        
+        {/* Follow Text Rotated */}
+        <div className="mt-4 writing-vertical-rl rotate-180 flex items-center gap-4">
+            <span className="text-white/80 tracking-widest text-xs uppercase font-medium">Follow</span>
+            <div className="w-px h-12 bg-accent opacity-70"></div>
         </div>
     </div>
 );
