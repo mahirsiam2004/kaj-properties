@@ -24,14 +24,16 @@ function useCountUp(end, duration = 2000, start = false) {
     return count;
 }
 
-function Counter({ end, suffix, label, start }) {
+function Counter({ end, suffix, label, start, index }) {
     const val = useCountUp(end, 2000, start);
+    // Remove border-r on even items on mobile (index 1 and 3 are right side)
+    const borderClass = index % 2 === 1 ? 'md:border-r border-white/10' : 'border-r border-white/10';
     return (
-        <div className="flex flex-col items-center justify-center p-6 border-r border-white/10 last:border-r-0">
-            <div className="text-4xl lg:text-5xl font-bold text-accent mb-2">
+        <div className={`flex flex-col items-center justify-center p-4 md:p-6 pb-6 md:pb-6 ${borderClass} last:border-r-0`}>
+            <div className="text-2xl lg:text-4xl font-bold text-accent mb-2">
                 {val}<span className="text-white">{suffix}</span>
             </div>
-            <div className="text-sm uppercase tracking-wider text-white/70 text-center">{label}</div>
+            <div className="text-xs md:text-sm uppercase tracking-wider text-white/70 text-center">{label}</div>
         </div>
     );
 }
@@ -57,7 +59,7 @@ export default function AboutSection() {
     }, []);
 
     return (
-        <section className="bg-brand-black text-white py-24 relative overflow-hidden" id="about">
+        <section className="bg-brand-black text-white py-12 md:py-24 relative overflow-hidden" id="about">
             <div className="container mx-auto px-6 lg:px-12 relative z-10 fade-up">
                 {/* Header */}
                 <div className="mb-16">
@@ -67,7 +69,7 @@ export default function AboutSection() {
                                 <div key={i} className={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/50'}`}></div>
                             ))}
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-light tracking-wide">About Us</h2>
+                        <h2 className="text-3xl md:text-4xl font-light tracking-wide">About Us</h2>
                     </div>
                     <div className="w-full h-px bg-white/10 mt-6"></div>
                 </div>
@@ -75,10 +77,10 @@ export default function AboutSection() {
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center mb-24">
                     {/* Left — text */}
                     <div className="w-full lg:w-1/2">
-                        <p className="text-lg leading-relaxed font-light text-white/90 text-justify mb-6">
+                        <p className="text-sm md:text-base leading-relaxed font-light text-white/90 text-justify mb-6">
                             Kaz Properties started its journey in the real estate development sector partnering with renowned projects. Backing with current good reputation and sector experience, Kaz Properties has expanded its footprint to the building construction sector; promising to provide a complete solution of the people's cherished residence focusing on quality, art, commitment, and value for money.
                         </p>
-                        <p className="text-lg leading-relaxed font-light text-white/90 text-justify mb-8">
+                        <p className="text-sm md:text-base leading-relaxed font-light text-white/90 text-justify mb-8">
                             We have a skilled, experienced, and committed management team. To achieve the ultimate mission and vision of the company, we gather widely experienced professionals, trained both at home and abroad, including civil engineers, structural engineers, and architects. We cordially invite you to be a proud member of our family to make your living as an art.
                         </p>
                         
@@ -121,9 +123,9 @@ export default function AboutSection() {
                 </div>
 
                 {/* Counters */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-white/10 rounded-sm bg-white/5 backdrop-blur-sm" ref={ref}>
-                    {counters.map((c) => (
-                        <Counter key={c.label} {...c} start={started} />
+                <div className="grid grid-cols-2 lg:grid-cols-4 border border-white/10 rounded-sm bg-white/5 backdrop-blur-sm" ref={ref}>
+                    {counters.map((c, i) => (
+                        <Counter key={c.label} {...c} start={started} index={i} />
                     ))}
                 </div>
             </div>

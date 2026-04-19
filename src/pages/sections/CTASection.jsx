@@ -1,16 +1,17 @@
 import React from 'react';
 import { Phone, Mail, Facebook, MessageCircle } from 'lucide-react';
+import Footer from '../../components/Footer'
 
 export default function CTASection() {
     return (
-        <section className="bg-brand-light py-24" id="contact">
+        <section className="bg-brand-light pt-12 md:pt-24 pb-0" id="contact">
             <div className="container mx-auto px-6 lg:px-12 fade-up">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {/* For Clients */}
                     <div className="bg-white p-10 md:p-14 border border-brand-black/5 shadow-xl rounded-sm">
-                        <p className="text-accent uppercase tracking-widest text-sm font-bold mb-4">Let's Connect</p>
-                        <h2 className="text-4xl md:text-5xl font-light text-brand-black mb-6">For Clients</h2>
-                        <p className="text-brand-black/70 leading-relaxed font-light text-lg mb-12">
+                        <p className="text-accent uppercase tracking-widest text-[10px] md:text-xs font-bold mb-3">Let's Connect</p>
+                        <h2 className="text-3xl md:text-4xl font-light text-brand-black mb-4">For Clients</h2>
+                        <p className="text-brand-black/70 leading-relaxed font-light text-base mb-8">
                             Explore premium living and smart investment opportunities with Kaz Properties.
                             From modern apartments to innovative commercial spaces, we craft environments
                             that elevate your lifestyle. Let's build your vision together.
@@ -52,9 +53,9 @@ export default function CTASection() {
                     <div className="bg-brand-black text-white p-10 md:p-14 rounded-sm shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
                         
-                        <p className="text-accent uppercase tracking-widest text-sm font-bold mb-4">Partner With Us</p>
-                        <h2 className="text-4xl md:text-5xl font-light mb-6">For Landowners</h2>
-                        <p className="text-white/70 leading-relaxed font-light text-lg mb-12">
+                        <p className="text-accent uppercase tracking-widest text-[10px] md:text-xs font-bold mb-3">Partner With Us</p>
+                        <h2 className="text-3xl md:text-4xl font-light mb-4 text-white">For Landowners</h2>
+                        <p className="text-white/70 leading-relaxed font-light text-base mb-10">
                             Maximize the potential of your land with Kaz Properties. We collaborate to transform
                             your property into landmark developments — from signature residences to thriving
                             commercial spaces. Together, we build projects that ensure lasting value.
@@ -85,6 +86,10 @@ export default function CTASection() {
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div className="mt-8">
+                <Footer />
             </div>
         </section>
     );

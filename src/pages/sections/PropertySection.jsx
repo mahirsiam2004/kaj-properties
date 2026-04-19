@@ -63,7 +63,7 @@ export default function PropertySection() {
                     
                     {/* Left Column: Details */}
                     <div className="w-full lg:w-1/2 text-white">
-                        <h2 className="text-4xl md:text-5xl font-light mb-4">Featured Projects</h2>
+                        <h2 className="text-3xl md:text-4xl font-light mb-4">Featured Projects</h2>
                         <div className="flex items-center gap-2 mb-4">
                             <div className="w-4 h-4 grid grid-cols-2 gap-0.5">
                                 <div className="bg-accent w-full h-full rounded-sm"></div>
@@ -94,10 +94,10 @@ export default function PropertySection() {
                             </div>
                             <div className="flex flex-col border-l-2 border-white/20 pl-4 col-span-2 md:col-span-1">
                                 <div className="flex items-center gap-2 mb-1">
-                                    <Maximize2 size={18} className="text-accent" />
-                                    <span className="font-bold text-xl">{featured.sqft} <span className="text-xs bg-white text-brand-black px-1 rounded-sm">SQFT</span></span>
+                                    <Maximize2 size={16} className="text-accent" />
+                                    <span className="font-bold text-lg md:text-xl">{featured.sqft} <span className="text-[10px] bg-white text-brand-black px-1 rounded-sm">SQFT</span></span>
                                 </div>
-                                <span className="text-sm font-light text-white/70">Flat size up to</span>
+                                <span className="text-xs md:text-sm font-light text-white/70">Flat size up to</span>
                             </div>
                         </div>
 

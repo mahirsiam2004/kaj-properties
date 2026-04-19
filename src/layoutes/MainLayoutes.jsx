@@ -8,7 +8,6 @@ const MainLayoutes = () => {
     <div>
         <Navbar></Navbar>
         <Outlet></Outlet>
-        <Footer></Footer>
     </div>
   )
 }

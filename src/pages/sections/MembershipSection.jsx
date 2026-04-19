@@ -24,12 +24,12 @@ export default function MembershipSection() {
         <section className="bg-brand-black py-24 relative overflow-hidden" id="businesses">
             <div className="container mx-auto px-6 lg:px-12 relative z-10 fade-up">
                 {/* Header */}
-                <div className="relative mb-16">
-                    <h2 className="text-5xl md:text-6xl text-white font-light relative z-10">
+                <div className="relative mb-12">
+                    <h2 className="text-3xl md:text-4xl text-white font-light relative z-10">
                         Kaz Properties Membership
                     </h2>
                     {/* Ghost Text */}
-                    <div className="absolute -top-10 left-0 text-[100px] md:text-[140px] font-bold text-white/5 whitespace-nowrap pointer-events-none select-none z-0 tracking-widest uppercase">
+                    <div className="absolute -top-6 left-0 text-[60px] md:text-[80px] font-bold text-white/5 whitespace-nowrap pointer-events-none select-none z-0 tracking-widest uppercase">
                         MEMBERSHIP
                     </div>
                 </div>

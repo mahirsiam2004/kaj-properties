@@ -7,7 +7,7 @@ import { LayoutGrid } from 'lucide-react';
 // Custom marker icon mimicking the 'Z' from Zubion
 const customIcon = new L.DivIcon({
     className: 'custom-map-marker',
-    html: `<div style="background-color: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-center; border-radius: 50%; border: 2px solid #fff; font-weight: bold; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);">Z</div>`,
+    html: `<div style="background-color: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-center; border-radius: 50%; border: 2px solid #fff; font-weight: bold; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);">K</div>`,
     iconSize: [30, 30],
     iconAnchor: [15, 15],
 });
@@ -72,7 +72,7 @@ export default function LocationSection() {
             {/* Content Overlays */}
             <div className="absolute inset-0 z-20 container mx-auto px-6 lg:px-12 pointer-events-none flex flex-col justify-end pb-12 fade-up">
                 <div className="flex flex-col gap-8">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-black w-max pointer-events-auto filter drop-shadow-md bg-white/30 backdrop-blur-sm p-4 rounded-md">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-black w-max pointer-events-auto filter drop-shadow-md bg-white/30 backdrop-blur-sm p-4 rounded-md">
                         Project Locations
                     </h2>
                     

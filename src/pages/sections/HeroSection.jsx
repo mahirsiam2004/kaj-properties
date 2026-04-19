@@ -64,15 +64,15 @@ export default function HeroSection() {
 
             {/* Content Container */}
             <div className="relative z-20 container mx-auto px-6 lg:px-12 h-full flex flex-col justify-center fade-up">
-                <div className="max-w-3xl mt-20">
-                    <p className="text-accent uppercase tracking-[0.3em] text-sm font-medium mb-4 ml-1">
+                <div className="max-w-2xl mt-12 md:mt-20">
+                    <p className="text-accent uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-3 ml-1">
                         Welcome to
                     </p>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-6 capitalize text-white">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-4 capitalize text-white">
                         <span className="block font-light">Your Abode of</span>
                         <span className="block">Peace</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-white/80 font-light max-w-xl mb-10 leading-relaxed">
+                    <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-6 md:mb-8 leading-relaxed">
                         Explore the Future of Urban Spaces with Kaz Properties
                     </p>
                     <div>
@@ -103,22 +103,22 @@ export default function HeroSection() {
                 <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-end gap-6 md:gap-0">
                     {/* Active Slide Info */}
                     <div className="w-full md:w-1/2 animate-fade-in-up flex items-end">
-                       <div className="bg-brand-black/50 backdrop-blur-md border-l-4 border-accent p-6 max-w-sm rounded-r-lg">
-                           <p className="text-sm text-accent mb-1 uppercase tracking-widest font-bold">Featured</p>
-                           <h3 className="text-xl font-medium text-white">{slides[current].label}</h3>
-                           <a href="#property" className="inline-block mt-4 text-sm underline text-white hover:text-accent transition-colors">
-                               Project Details
+                       <div className="bg-brand-black/50 backdrop-blur-md border-l-4 border-accent p-4 md:p-6 max-w-[280px] md:max-w-sm rounded-r-lg">
+                           <p className="text-[10px] md:text-xs text-accent mb-1 uppercase tracking-widest font-bold">Featured Project</p>
+                           <h3 className="text-base md:text-xl font-medium text-white">{slides[current].label}</h3>
+                           <a href="#property" className="inline-block mt-3 text-xs underline text-white hover:text-accent transition-colors">
+                               View Details
                            </a>
                        </div>
                     </div>
 
                     {/* Filter Tabs */}
-                    <div className="w-full md:w-1/2 flex justify-start md:justify-end gap-6">
+                    <div className="w-full md:w-1/2 flex justify-start md:justify-end gap-4 md:gap-6">
                         {filters.map(filter => (
                             <a 
                                 href={`#property?filter=${filter.toLowerCase()}`}
                                 key={filter}
-                                className="text-white hover:text-accent transition-colors font-medium text-lg lg:text-xl uppercase tracking-wide relative group"
+                                className="text-white hover:text-accent transition-colors font-medium text-sm md:text-lg lg:text-xl uppercase tracking-wider relative group"
                             >
                                 {filter}
                                 <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
