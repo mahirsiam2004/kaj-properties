@@ -5,7 +5,7 @@ const counters = [
     { end: 18, suffix: '+', label: 'Total SQFT Built (K)' },
     { end: 27, suffix: '+', label: 'Number Of Units' },
     { end: 100, suffix: '%', label: 'Happy Clients' },
-    { end: 4, suffix: '+', label: 'Number of Projects' },
+    { end: 2, suffix: '+', label: 'Number of Projects' },
 ];
 
 function useCountUp(end, duration = 2000, start = false) {

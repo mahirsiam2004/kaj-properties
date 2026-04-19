@@ -37,7 +37,7 @@ export default function FeaturesSection() {
                 <div className="flex flex-col lg:flex-row bg-brand-black text-white overflow-hidden rounded-sm">
                     <div className="w-full lg:w-1/2 p-12 md:p-16 flex flex-col justify-center">
                         <p className="text-accent uppercase font-bold tracking-widest text-sm mb-4">Floor Plan</p>
-                        <h3 className="text-3xl md:text-4xl font-light mb-6">1,700 Sq. Ft. of Thoughtful Space</h3>
+                        <h3 className="text-3xl md:text-4xl font-light mb-6">1,800 Sq. Ft. of Thoughtful Space</h3>
                         <p className="text-white/80 font-light leading-relaxed mb-10">Every square foot is optimized for maximum comfort and natural ventilation. South-facing units ensure light all day long.</p>
                         <a href="#contact" className="inline-flex items-center gap-3 bg-accent text-white px-8 py-4 uppercase tracking-widest text-sm font-semibold hover:bg-white hover:text-brand-black transition-colors w-max rounded-sm">
                             Request Floor Plan

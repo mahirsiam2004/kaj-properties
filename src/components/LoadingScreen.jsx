@@ -18,12 +18,7 @@ const LoadingScreen = ({ onComplete }) => {
         alt="Kaz Properties" 
         className="w-48 sm:w-64 md:w-80 object-contain mb-8 filter grayscale brightness-0 opacity-80" 
       />
-      
-      <div className="flex flex-col items-center gap-1 opacity-80 text-brand-black text-center px-4">
-          <p className="text-xl md:text-2xl font-bold tracking-[0.2em]">KAZ</p>
-          <p className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase">PROPERTIES & DEVELOPERS</p>
-      </div>
-      
+
       <div className="w-48 md:w-64 h-1 bg-brand-black/10 mt-12 overflow-hidden rounded-full relative">
         <div className="absolute top-0 left-0 h-full bg-accent animate-pulse w-full"></div>
       </div>

@@ -33,20 +33,22 @@ const Navbar = () => {
             <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10 ${scrolled ? 'bg-brand-black/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
                 <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
                     {/* Left: Projects link */}
-                    <a href="#property" className="flex items-center gap-2 text-white hover:text-accent font-medium tracking-wide transition-colors uppercase text-sm">
-                        <LayoutGrid size={16} className="text-accent" />
-                        Projects
-                    </a>
+                    <div className="flex-1 flex justify-start">
+                        <a href="#property" className="flex items-center gap-2 text-white hover:text-accent font-medium tracking-wide transition-colors uppercase text-sm">
+                            <LayoutGrid size={16} className="text-accent" />
+                            Projects
+                        </a>
+                    </div>
 
                     {/* Center: Logo */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="flex-shrink-0">
                         <NavLink to="/" className="flex items-center">
                             <Logo light={true} />
                         </NavLink>
                     </div>
 
                     {/* Right: Search + Menu */}
-                    <div className="flex items-center gap-6">
+                    <div className="flex-1 flex justify-end items-center gap-6">
                         <button className="text-white hover:text-accent transition-colors" aria-label="Search">
                             <Search size={22} />
                         </button>

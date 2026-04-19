@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, BedDouble, Bath, Maximize2, ArrowRight, ArrowLeft } from 'lucide-react';
+import chayabithi1 from '../../assets/Chayabithi/CHAYABITHI 7.jpg';
+import chayabithi2 from '../../assets/Chayabithi/KAJ POST 5.jpg';
+import chayabithi3 from '../../assets/Chayabithi/vhayabithi_01.png';
 
 const projects = [
     {
         id: 1,
+        name: 'Chhayabithi | Jahangirnagar University',
+        status: 'Flat Share for Sale',
+        location: 'Bachelor Gate, Ambagan Road, Jahangirnagar University. Adjacent to Dhaka-Aricha Highway.',
+        beds: '3+1',
+        baths: '4',
+        sqft: '1800',
+        images: [
+            chayabithi2,
+            chayabithi1,
+            chayabithi3
+        ],
+        mainBg: chayabithi3,
+        details: '18 Decimals Land. 27 Shares. 3 Beds, 1 Guest Room, 4 Baths, 6 Balconies, CCTV, South-facing.'
+    },
+    {
+        id: 2,
         name: 'Zubion Unison | Bashundhara R/A',
         status: 'Ongoing',
         location: 'Plot: 5732, 5781, Road: 46 (Butterfly), Block: N, Bashundhara R/A',
@@ -19,8 +38,13 @@ const projects = [
 ];
 
 export default function PropertySection() {
-    const [featured] = useState(projects[0]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const featured = projects[currentIndex];
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        setCurrentImageIndex(0);
+    }, [currentIndex]);
 
     return (
         <section className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center" id="property">
@@ -93,10 +117,16 @@ export default function PropertySection() {
                                     View All Projects <ArrowRight size={14} className="inline ml-1" />
                                 </a>
                                 <div className="flex">
-                                    <button className="p-3 hover:bg-white/10 transition-colors border-l border-white/10">
+                                    <button 
+                                        className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
+                                        onClick={() => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)}
+                                    >
                                         <ArrowLeft size={16} />
                                     </button>
-                                    <button className="p-3 hover:bg-white/10 transition-colors border-l border-white/10">
+                                    <button 
+                                        className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
+                                        onClick={() => setCurrentIndex((prev) => (prev + 1) % projects.length)}
+                                    >
                                         <ArrowRight size={16} />
                                     </button>
                                 </div>

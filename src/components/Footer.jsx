@@ -75,9 +75,14 @@ const Footer = () => (
 
         {/* Bottom Bar */}
         <div className="bg-brand-black py-6 mt-8">
-            <p className="text-center text-white/80 text-sm font-light">
-                © {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.
-            </p>
+            <div className="container mx-auto px-6 flex flex-col items-center gap-2">
+                <p className="text-center text-white/80 text-sm font-light">
+                    © {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.
+                </p>
+                <p className="text-center text-white/50 text-xs font-light">
+                    Developed by <a href="https://gentrixit.net/" target="_blank" rel="noopener noreferrer" className="hover:text-accent font-medium transition-colors underline decoration-white/30 hover:decoration-accent underline-offset-2">Gentrix IT</a>
+                </p>
+            </div>
         </div>
     </footer>
 );

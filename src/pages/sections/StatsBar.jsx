@@ -2,7 +2,7 @@ import React from 'react';
 
 const stats = [
     { num: '18', label: 'Decimals of Land' },
-    { num: '1700', label: 'Sq. Ft. Per Flat' },
+    { num: '1800', label: 'Sq. Ft. Per Flat' },
     { num: '27', label: 'Total Shares' },
     { num: '40%', label: 'Cost Savings' },
 ];

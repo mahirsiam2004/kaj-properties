@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import banner1 from '../../assets/banner/1 copy.jpg.jpeg';
+import banner2 from '../../assets/banner/3 copy.jpg.jpeg';
+import banner3 from '../../assets/banner/4 copy.jpg.jpeg';
+import banner4 from '../../assets/banner/5 copy.jpg.jpeg';
 
 const slides = [
     {
-        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80',
+        url: banner1,
         label: 'Chayabithi — Savar, Dhaka',
     },
     {
-        url: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1800&q=80',
+        url: banner2,
         label: 'Premium Living Spaces',
     },
     {
-        url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1800&q=80',
+        url: banner3,
         label: 'Modern Architecture',
     },
     {
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1800&q=80',
+        url: banner4,
         label: 'Luxury Interiors',
     },
 ];
@@ -62,11 +66,11 @@ export default function HeroSection() {
             <div className="relative z-20 container mx-auto px-6 lg:px-12 h-full flex flex-col justify-center fade-up">
                 <div className="max-w-3xl mt-20">
                     <p className="text-accent uppercase tracking-[0.3em] text-sm font-medium mb-4 ml-1">
-                        Welcome to the
+                        Welcome to
                     </p>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-6 capitalize text-white">
-                        <span className="block font-light">New Age for</span>
-                        <span className="block">High Living</span>
+                        <span className="block font-light">Your Abode of</span>
+                        <span className="block">Peace</span>
                     </h1>
                     <p className="text-lg md:text-xl text-white/80 font-light max-w-xl mb-10 leading-relaxed">
                         Explore the Future of Urban Spaces with Kaz Properties
