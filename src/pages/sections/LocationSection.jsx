@@ -7,16 +7,14 @@ import { LayoutGrid } from 'lucide-react';
 // Custom marker icon mimicking the 'Z' from Zubion
 const customIcon = new L.DivIcon({
     className: 'custom-map-marker',
-    html: `<div style="background-color: #000; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-center; border-radius: 50%; border: 2px solid #fff; font-weight: bold; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);">K</div>`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
+    html: `<div style="background-color: #BE9F98; color: #fff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 3px solid #fff; font-weight: bold; box-shadow: 0 4px 15px rgba(190, 159, 152, 0.4); font-size: 16px;">K</div>`,
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
 });
 
 const locations = [
-    { name: 'Uttara', count: 10, offsetLat: 23.8759, offsetLng: 90.3984 },
-    { name: 'Bashundhara', count: 6, offsetLat: 23.8225, offsetLng: 90.4300 },
-    { name: 'Jolshiri', count: 10, offsetLat: 23.8340, offsetLng: 90.5050 },
-    { name: 'POHS', count: 4, offsetLat: 23.8050, offsetLng: 90.4100 },
+    { name: 'Savar', count: 2, offsetLat: 23.8583, offsetLng: 90.2667 },
+    { name: 'Uttara', count: 1, offsetLat: 23.8759, offsetLng: 90.3984 },
 ];
 
 // Generate scattered pins
@@ -25,8 +23,8 @@ locations.forEach(loc => {
     for(let i=0; i<loc.count; i++) {
         pins.push({
             id: `${loc.name}-${i}`,
-            lat: loc.offsetLat + (Math.random() - 0.5) * 0.05,
-            lng: loc.offsetLng + (Math.random() - 0.5) * 0.05,
+            lat: loc.offsetLat + (Math.random() - 0.5) * 0.02,
+            lng: loc.offsetLng + (Math.random() - 0.5) * 0.02,
             area: loc.name
         });
     }
@@ -40,10 +38,11 @@ export default function LocationSection() {
     }, []);
 
     // Bangladesh center approx
-    const position = [23.83, 90.42];
+    // Centered between Savar and Uttara
+    const position = [23.8671, 90.3325];
 
     return (
-        <section className="relative w-full h-[600px] lg:h-[800px] bg-[#fdfdfd]" id="location">
+        <section className="relative w-full h-full min-h-screen bg-[#fdfdfd]" id="location">
             {/* The Map */}
             {isClient && (
                 <div className="absolute inset-0 z-0 select-none">
@@ -70,18 +69,18 @@ export default function LocationSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none z-10"></div>
 
             {/* Content Overlays */}
-            <div className="absolute inset-0 z-20 container mx-auto px-6 lg:px-12 pointer-events-none flex flex-col justify-end pb-12 fade-up">
-                <div className="flex flex-col gap-8">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-brand-black w-max pointer-events-auto filter drop-shadow-md bg-white/30 backdrop-blur-sm p-4 rounded-md">
+            <div className="absolute inset-0 z-20 container mx-auto px-6 lg:px-12 pointer-events-none flex flex-col justify-end pb-8 md:pb-12 pt-32 md:pt-24 lg:pt-20 fade-up">
+                <div className="flex flex-col gap-4 md:gap-8">
+                    <h2 className="text-base md:text-3xl lg:text-4xl font-semibold text-brand-black w-max pointer-events-auto filter drop-shadow-md bg-white/60 backdrop-blur-md px-3 py-1.5 rounded-sm border-l-4 border-accent">
                         Project Locations
                     </h2>
                     
-                    <div className="flex flex-wrap gap-4 pointer-events-auto max-w-fit">
+                    <div className="flex flex-wrap gap-2 md:gap-4 pointer-events-auto max-w-fit">
                         {locations.map((loc) => (
-                            <div key={loc.name} className="bg-white border-b-4 border-accent shadow-md px-6 py-4 flex flex-col items-center justify-center min-w-[120px]">
-                                <h4 className="text-brand-black text-sm md:text-base font-medium mb-1">{loc.name}</h4>
-                                <div className="flex items-center gap-1.5 text-brand-black font-bold text-xl md:text-2xl">
-                                    <div className="w-1.5 h-1.5 grid grid-cols-2 gap-0.5 mt-[-4px]">
+                            <div key={loc.name} className="bg-white/95 backdrop-blur-sm border-b-4 border-accent shadow-lg px-3 md:px-6 py-2 md:py-4 flex flex-col items-center justify-center min-w-[80px] md:min-w-[120px]">
+                                <h4 className="text-brand-black text-[10px] md:text-base font-medium mb-0.5 uppercase tracking-wider">{loc.name}</h4>
+                                <div className="flex items-center gap-1 text-brand-black font-bold text-base md:text-2xl">
+                                    <div className="w-1 h-1 grid grid-cols-2 gap-0.5 mt-[-2px]">
                                         <div className="bg-accent w-full h-full rounded-sm"></div>
                                         <div className="bg-accent w-full h-full rounded-sm"></div>
                                         <div className="bg-accent w-full h-full rounded-sm"></div>

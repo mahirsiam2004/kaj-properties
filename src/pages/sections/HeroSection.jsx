@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import banner1 from '../../assets/banner/1 copy.jpg.jpeg';
+// import banner1 from '../../assets/banner/1 copy.jpg.jpeg';
 import banner2 from '../../assets/banner/3 copy.jpg.jpeg';
 import banner3 from '../../assets/banner/4 copy.jpg.jpeg';
 import banner4 from '../../assets/banner/5 copy.jpg.jpeg';
 
 const slides = [
+    /*
     {
         url: banner1,
         label: 'Chayabithi — Savar, Dhaka',
     },
+    */
     {
         url: banner2,
         label: 'Premium Living Spaces',
@@ -42,7 +44,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative h-screen w-full overflow-hidden bg-brand-black text-white" id="home">
+        <section className="relative h-screen min-h-[100svh] w-full overflow-hidden bg-brand-black text-white" id="home">
             {/* Background Slides */}
             {slides.map((slide, i) => (
                 <div
@@ -63,31 +65,32 @@ export default function HeroSection() {
             ))}
 
             {/* Content Container */}
-            <div className="relative z-20 container mx-auto px-6 lg:px-12 h-full flex flex-col justify-center fade-up">
-                <div className="max-w-2xl mt-12 md:mt-20">
-                    <p className="text-accent uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-3 ml-1">
-                        Welcome to
-                    </p>
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-4 capitalize text-white">
-                        <span className="block font-light">Your Abode of</span>
-                        <span className="block">Peace</span>
+            <div className="container mx-auto px-6 lg:px-12 relative z-20 pt-32 md:pt-24 lg:pt-20 min-h-full flex flex-col justify-center">
+                <div className="max-w-4xl py-12">
+                    <div className="overflow-hidden mb-3">
+                        <span className="inline-block text-accent uppercase tracking-[0.2em] font-semibold text-[10px] md:text-sm animate-slide-up">
+                            Welcome to Kaj Properties
+                        </span>
+                    </div>
+                    
+                    <h1 className="text-3xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
+                        Crafting Your <br className="hidden md:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent/50">
+                            Abode of Peace
+                        </span>
                     </h1>
-                    <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-6 md:mb-8 leading-relaxed">
+                    <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-8 md:mb-10 leading-relaxed">
                         Explore the Future of Urban Spaces with Kaz Properties
                     </p>
-                    <div>
-                        <a 
-                            href="#property" 
-                            className="inline-flex items-center gap-3 bg-accent text-white px-8 py-4 uppercase tracking-wider text-sm font-medium hover:bg-white hover:text-brand-black transition-colors rounded-sm"
-                        >
-                            Explore Projects <ArrowRight size={18} />
-                        </a>
-                    </div>
+                    
+
+
+
                 </div>
             </div>
 
-            {/* Right Side Pagination Dots */}
-            <div className="absolute right-8 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-4">
+            {/* Right Side Pagination Dots - Hidden on Mobile */}
+            <div className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-30 flex-col gap-4">
                 {slides.map((_, i) => (
                     <button
                         key={i}
@@ -98,33 +101,8 @@ export default function HeroSection() {
                 ))}
             </div>
 
-            {/* Bottom Bar: Slide Info & Filters */}
-            <div className="absolute bottom-0 left-0 w-full z-30 bg-gradient-to-t from-brand-black to-transparent pt-20 pb-8">
-                <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-end gap-6 md:gap-0">
-                    {/* Active Slide Info */}
-                    <div className="w-full md:w-1/2 animate-fade-in-up flex items-end">
-                       <div className="bg-brand-black/50 backdrop-blur-md border-l-4 border-accent p-4 md:p-6 max-w-[280px] md:max-w-sm rounded-r-lg">
-                           <p className="text-[10px] md:text-xs text-accent mb-1 uppercase tracking-widest font-bold">Featured Project</p>
-                           <h3 className="text-base md:text-xl font-medium text-white">{slides[current].label}</h3>
-                           <a href="#property" className="inline-block mt-3 text-xs underline text-white hover:text-accent transition-colors">
-                               View Details
-                           </a>
-                       </div>
-                    </div>
-
-                    {/* Filter Tabs */}
-                    <div className="w-full md:w-1/2 flex justify-start md:justify-end gap-4 md:gap-6">
-                        {filters.map(filter => (
-                            <a 
-                                href={`#property?filter=${filter.toLowerCase()}`}
-                                key={filter}
-                                className="text-white hover:text-accent transition-colors font-medium text-sm md:text-lg lg:text-xl uppercase tracking-wider relative group"
-                            >
-                                {filter}
-                                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-                            </a>
-                        ))}
-                    </div>
+            <div className="absolute bottom-0 left-0 w-full z-30 bg-gradient-to-t from-brand-black/90 to-transparent pt-12 pb-8">
+                <div className="container mx-auto px-6 lg:px-12 flex justify-center items-end">
                 </div>
             </div>
         </section>

@@ -34,45 +34,45 @@ export default function TestimonialsSection() {
     const t = testimonials[current];
 
     return (
-        <section className="bg-white py-24" id="testimonials">
-            <div className="container mx-auto px-6 lg:px-12 fade-up">
-                <div className="flex flex-col-reverse lg:flex-row gap-16 lg:gap-24 items-center">
+        <section className="bg-white min-h-screen flex items-start md:items-center overflow-hidden" id="testimonials">
+            <div className="container mx-auto px-6 lg:px-12 pt-32 md:pt-24 lg:pt-20 fade-up mb-12">
+                <div className="flex flex-col-reverse lg:flex-row gap-8 md:gap-16 lg:gap-24 items-center">
                     
                     {/* Thumbnails */}
                     <div className="w-full lg:w-1/3 flex lg:flex-col gap-4 justify-center">
                         {testimonials.map((item, i) => (
                             <button
                                 key={i}
-                                className={`relative overflow-hidden rounded-full transition-all duration-300 transform outline-none ${i === current ? 'w-24 h-24 lg:w-32 lg:h-32 shadow-xl ring-4 ring-accent ring-offset-4' : 'w-16 h-16 lg:w-20 lg:h-20 opacity-50 hover:opacity-100 hover:scale-105'}`}
+                                className={`relative overflow-hidden rounded-full transition-all duration-300 transform outline-none ${i === current ? 'w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 shadow-xl ring-4 ring-accent ring-offset-4' : 'w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 opacity-50 hover:opacity-100 hover:scale-105'}`}
                                 onClick={() => setCurrent(i)}
                             >
                                 <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                             </button>
                         ))}
                     </div>
-
+ 
                     {/* Content */}
                     <div className="w-full lg:w-2/3">
-                        <p className="text-accent tracking-widest text-sm font-semibold uppercase mb-4">Happy Clients</p>
-                        <h2 className="text-4xl md:text-5xl tracking-tight text-brand-black mb-8 font-light">
+                        <p className="text-accent tracking-widest text-[10px] md:text-sm font-semibold uppercase mb-4">Happy Clients</p>
+                        <h2 className="text-2xl md:text-5xl tracking-tight text-brand-black mb-6 md:mb-8 font-light leading-tight">
                             What Customers Say About Us
                         </h2>
-
+ 
                         <div className="flex gap-2 mb-6">
                             {Array.from({ length: t.rating }).map((_, i) => (
-                                <Star key={i} size={24} fill="#BE9F98" color="#BE9F98" />
+                                <Star key={i} size={20} fill="#BE9F98" color="#BE9F98" className="md:w-6 md:h-6" />
                             ))}
                         </div>
-
-                        <blockquote className="text-2xl md:text-3xl text-brand-black/90 font-light leading-relaxed mb-10 min-h-[160px]">
+ 
+                        <blockquote className="text-lg md:text-3xl text-brand-black/90 font-light leading-relaxed mb-6 md:mb-10 min-h-[140px] md:min-h-[160px]">
                             "{t.quote}"
                         </blockquote>
-
-                        <div className="flex items-center gap-6 mb-12">
-                            <img src={t.img} alt={t.name} className="w-16 h-16 rounded-full object-cover lg:hidden" />
+ 
+                        <div className="flex items-center gap-6 mb-8 md:mb-12">
+                            <img src={t.img} alt={t.name} className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover lg:hidden" />
                             <div>
-                                <div className="text-xl font-bold text-brand-black">{t.name}</div>
-                                <div className="text-brand-black/60 uppercase text-sm tracking-wide mt-1">{t.role}</div>
+                                <div className="text-lg md:text-xl font-bold text-brand-black">{t.name}</div>
+                                <div className="text-brand-black/60 uppercase text-[10px] md:text-sm tracking-wide mt-1">{t.role}</div>
                             </div>
                         </div>
 

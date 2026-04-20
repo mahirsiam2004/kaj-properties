@@ -12,7 +12,7 @@ import PropertySection from './sections/PropertySection';
 import FeaturesSection from './sections/FeaturesSection';
 import LocationSection from './sections/LocationSection';
 import TestimonialsSection from './sections/TestimonialsSection';
-import MembershipSection from './sections/MembershipSection';
+import PropertyShowcase from './sections/PropertyShowcase';
 import CTASection from './sections/CTASection';
 import SocialSidebar from '../components/SocialSidebar';
 
@@ -23,7 +23,7 @@ export const Home = () => {
         '#home': 0,
         '#about': 1,
         '#property': 2,
-        '#membership': 3,
+        '#showcase': 3,
         '#features': 4,
         '#location': 5,
         '#testimonials': 6,
@@ -111,14 +111,14 @@ export const Home = () => {
                 modules={[Mousewheel, Pagination, EffectCreative, Parallax]}
                 className="h-[100dvh] w-full"
             >
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide"><HeroSection /></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><AboutSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><PropertySection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><MembershipSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><FeaturesSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><LocationSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><TestimonialsSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden"><div data-swiper-parallax="-300"><CTASection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col"><HeroSection /></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><AboutSection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><PropertySection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><PropertyShowcase /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><FeaturesSection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><LocationSection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><TestimonialsSection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><CTASection /></div></SwiperSlide>
             </Swiper>
         </div>
     );

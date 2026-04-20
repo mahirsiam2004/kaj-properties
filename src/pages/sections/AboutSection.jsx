@@ -26,14 +26,12 @@ function useCountUp(end, duration = 2000, start = false) {
 
 function Counter({ end, suffix, label, start, index }) {
     const val = useCountUp(end, 2000, start);
-    // Remove border-r on even items on mobile (index 1 and 3 are right side)
-    const borderClass = index % 2 === 1 ? 'md:border-r border-white/10' : 'border-r border-white/10';
     return (
-        <div className={`flex flex-col items-center justify-center p-4 md:p-6 pb-6 md:pb-6 ${borderClass} last:border-r-0`}>
+        <div className={`flex flex-col items-center justify-center p-4 md:p-6 pb-6 md:pb-6 border-b lg:border-b-0 border-white/10 ${index % 2 === 0 ? 'border-r' : 'lg:border-r'} last:border-r-0 last:border-b-0`}>
             <div className="text-2xl lg:text-4xl font-bold text-accent mb-2">
                 {val}<span className="text-white">{suffix}</span>
             </div>
-            <div className="text-xs md:text-sm uppercase tracking-wider text-white/70 text-center">{label}</div>
+            <div className="text-[10px] md:text-sm uppercase tracking-wider text-white/70 text-center">{label}</div>
         </div>
     );
 }
@@ -41,13 +39,6 @@ function Counter({ end, suffix, label, start, index }) {
 export default function AboutSection() {
     const ref = useRef(null);
     const [started, setStarted] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    const slides = [
-        'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
-        'https://images.unsplash.com/photo-1574360743954-c2a6c2d3a373?w=800&q=80',
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    ];
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -59,24 +50,23 @@ export default function AboutSection() {
     }, []);
 
     return (
-        <section className="bg-brand-black text-white py-12 md:py-24 relative overflow-hidden" id="about">
-            <div className="container mx-auto px-6 lg:px-12 relative z-10 fade-up">
+        <section className="bg-brand-black text-white relative overflow-hidden min-h-screen flex items-center py-20 md:py-32" id="about">
+            <div className="container mx-auto px-6 lg:px-12 pt-32 md:pt-24 lg:pt-20 min-h-full flex flex-col justify-center">
                 {/* Header */}
-                <div className="mb-16">
+                <div className="mb-12 md:mb-16">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-8 h-8 grid grid-cols-3 gap-1">
                             {[...Array(9)].map((_, i) => (
                                 <div key={i} className={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/50'}`}></div>
                             ))}
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-light tracking-wide">About Us</h2>
+                        <h2 className="text-2xl md:text-4xl font-light tracking-wide uppercase">About Us</h2>
                     </div>
-                    <div className="w-full h-px bg-white/10 mt-6"></div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center mb-24">
+                <div className="flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 items-center mb-16 md:mb-24">
                     {/* Left — text */}
-                    <div className="w-full lg:w-1/2">
+                    <div className="w-full lg:w-1/2 order-2 lg:order-1">
                         <p className="text-sm md:text-base leading-relaxed font-light text-white/90 text-justify mb-6">
                             Kaz Properties started its journey in the real estate development sector partnering with renowned projects. Backing with current good reputation and sector experience, Kaz Properties has expanded its footprint to the building construction sector; promising to provide a complete solution of the people's cherished residence focusing on quality, art, commitment, and value for money.
                         </p>
@@ -89,35 +79,20 @@ export default function AboutSection() {
                         </a>
                     </div>
 
-                    {/* Right — image/video slider */}
-                    <div className="w-full lg:w-1/2 relative">
-                        <div className="relative aspect-video w-full overflow-hidden rounded-sm group">
-                            {slides.map((url, i) => (
-                                <img
-                                    key={i}
-                                    src={url}
-                                    alt={`About Us Slide ${i + 1}`}
-                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                                />
-                            ))}
-                            
-                            {/* Sound button overlay (like video) */}
-                            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2 bg-brand-black/70 backdrop-blur-sm px-3 py-1.5 rounded-sm">
-                                <Volume2 size={16} className="text-white" />
-                                <span className="text-xs font-medium uppercase tracking-wider">Sound on</span>
-                            </div>
-
-                            {/* Right side dots pagination inside the image container */}
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-3">
-                                {slides.map((_, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => setCurrentSlide(i)}
-                                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border border-white ${i === currentSlide ? 'bg-white scale-125' : 'bg-white/30 hover:bg-white/70'}`}
-                                        aria-label={`Slide ${i + 1}`}
-                                    />
-                                ))}
-                            </div>
+                    {/* Right — video slider */}
+                    <div className="w-full lg:w-1/2 relative order-1 lg:order-2">
+                        <div className="relative aspect-video w-full overflow-hidden rounded-sm group bg-brand-black border border-white/10">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/nQD1CNlsArE?si=-54bb1Cdn4NIOdZl" 
+                                title="YouTube video player" 
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerPolicy="strict-origin-when-cross-origin" 
+                                allowFullScreen
+                                className="absolute inset-0"
+                            ></iframe>
                         </div>
                     </div>
                 </div>
