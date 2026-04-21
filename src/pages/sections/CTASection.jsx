@@ -1,6 +1,5 @@
 import React from 'react';
 import { Phone, Mail, Facebook, MessageCircle } from 'lucide-react';
-import Footer from '../../components/Footer'
 
 export default function CTASection() {
     return (
@@ -86,10 +85,6 @@ export default function CTASection() {
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div className="mt-8">
-                <Footer />
             </div>
         </section>
     );

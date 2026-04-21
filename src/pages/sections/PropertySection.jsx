@@ -3,15 +3,17 @@ import { MapPin, BedDouble, Bath, Maximize2, ArrowRight, ArrowLeft, X, Phone, Bu
 import chayabithi1 from '../../assets/Chayabithi/CHAYABITHI 7.jpg';
 import chayabithi2 from '../../assets/Chayabithi/KAJ POST 5.jpg';
 import chayabithi3 from '../../assets/Chayabithi/vhayabithi_01.png';
+import projectBgLeft from '../../assets/projects/01.png';
+import projectBgRight from '../../assets/projects/02.png';
 
 const projects = [
     {
         id: 1,
-        name: 'Chhayabithi | Jahangirnagar University',
+        name: 'Chayabithi | Jahangirnagar University',
         status: 'Flat Share for Sale',
-        location: 'Bachelor Gate, Ambagan Road, Jahangirnagar University. Adjacent to Dhaka-Aricha Highway.',
-        beds: '3+1',
-        baths: '4',
+        location: 'Senwalia, Ashulia, Savar, Dhaka.',
+        beds: '3',
+        baths: '3',
         sqft: '1800',
         images: [
             chayabithi2,
@@ -19,7 +21,7 @@ const projects = [
             chayabithi3
         ],
         mainBg: chayabithi3,
-        details: '18 Decimals Land. 27 Shares. 3 Beds, 1 Guest Room, 4 Baths, 6 Balconies, CCTV, South-facing.'
+        details: '18 Decimals Land. 27 Shares. 3 Beds, 3 Baths, 6 Balconies, CCTV, South-facing.'
     },
 ];
 
@@ -35,11 +37,16 @@ export default function PropertySection() {
 
     return (
         <section className="relative w-full min-h-screen overflow-hidden flex items-center bg-brand-black" id="property">
-            {/* Background Map/Image */}
-            <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-60"
-                style={{ backgroundImage: `url(${featured.mainBg})` }}
-            >
+            {/* Split Background: left half = 01.png, right half = 02.png */}
+            <div className="absolute inset-0 flex">
+                <div
+                    className="w-1/2 h-full bg-cover bg-right bg-no-repeat opacity-60"
+                    style={{ backgroundImage: `url(${projectBgLeft})` }}
+                />
+                <div
+                    className="w-1/2 h-full bg-cover bg-left bg-no-repeat opacity-60"
+                    style={{ backgroundImage: `url(${projectBgRight})` }}
+                />
                 {/* Gradient Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/70 to-transparent"></div>
                 <div className="absolute inset-0 bg-brand-black/40"></div>
@@ -96,27 +103,30 @@ export default function PropertySection() {
 
                         <div className="flex items-end justify-between border-t border-white/10 pt-8 mt-auto">
                             <div className="flex items-center gap-4">
-                                <span className="text-4xl md:text-5xl font-bold">1</span>
+                                <span className="text-4xl md:text-5xl font-bold">2</span>
                                 <span className="leading-tight text-[10px] uppercase tracking-widest font-semibold text-white/80">
                                     Number<br/>of projects
                                 </span>
                             </div>
-                            <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm p-1">
-                                <div className="flex">
-                                    <button 
-                                        className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
-                                        onClick={() => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)}
-                                    >
-                                        <ArrowLeft size={16} />
-                                    </button>
-                                    <button 
-                                        className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
-                                        onClick={() => setCurrentIndex((prev) => (prev + 1) % projects.length)}
-                                    >
-                                        <ArrowRight size={16} />
-                                    </button>
+                            {/* Only show navigation arrows when there's more than 1 project */}
+                            {projects.length > 1 && (
+                                <div className="flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-sm p-1">
+                                    <div className="flex">
+                                        <button 
+                                            className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
+                                            onClick={() => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)}
+                                        >
+                                            <ArrowLeft size={16} />
+                                        </button>
+                                        <button 
+                                            className="p-3 hover:bg-white/10 transition-colors border-l border-white/10"
+                                            onClick={() => setCurrentIndex((prev) => (prev + 1) % projects.length)}
+                                        >
+                                            <ArrowRight size={16} />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
 
@@ -197,7 +207,7 @@ export default function PropertySection() {
                                             <Building2 size={16} className="text-accent" />
                                             <span className="text-accent uppercase text-[10px] font-bold tracking-[0.2em]">Kaj Properties & Developers</span>
                                         </div>
-                                        <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2">Chhayabithi</h3>
+                                        <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2">Chayabithi</h3>
                                         <p className="text-accent text-sm font-medium">Flat Share for Sale Near Jahangirnagar University</p>
                                     </div>
                                     
@@ -253,10 +263,9 @@ export default function PropertySection() {
                                         <h4 className="text-white font-bold uppercase tracking-widest text-xs border-b border-white/10 pb-2">Apartment Features</h4>
                                         <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                                             {[
-                                                '3 Bedrooms', '1 Guest Room', 'Dining & Drawing', 
-                                                '4 Bathrooms', '6 Balconies', 'Standard Kitchen',
-                                                'Parking Facility', 'Lift & Generator', 'CCTV Surveillance',
-                                                'South-facing'
+                                                '3 Bedrooms', 'Dining & Drawing', 'Standard Kitchen', 
+                                                '3 Bathrooms', '6 Balconies', 'South Facing',
+                                                'Parking Facility', 'Lift & Generator', 'CCTV Surveillance'
                                             ].map(feature => (
                                                 <div key={feature} className="flex items-center gap-2">
                                                     <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>

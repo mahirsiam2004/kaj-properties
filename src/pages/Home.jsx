@@ -15,6 +15,7 @@ import TestimonialsSection from './sections/TestimonialsSection';
 import PropertyShowcase from './sections/PropertyShowcase';
 import CTASection from './sections/CTASection';
 import SocialSidebar from '../components/SocialSidebar';
+import Footer from '../components/Footer';
 
 export const Home = () => {
     const swiperRef = useRef(null);
@@ -28,6 +29,7 @@ export const Home = () => {
         '#location': 5,
         '#testimonials': 6,
         '#contact': 7,
+        '#footer': 8,
     };
 
     useEffect(() => {
@@ -119,6 +121,7 @@ export const Home = () => {
                 <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><LocationSection /></div></SwiperSlide>
                 <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><TestimonialsSection /></div></SwiperSlide>
                 <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><CTASection /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col" id="footer"><div data-swiper-parallax="-300" className="flex-1 w-full"><Footer /></div></SwiperSlide>
             </Swiper>
         </div>
     );
