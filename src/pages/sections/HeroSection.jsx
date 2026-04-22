@@ -67,16 +67,10 @@ export default function HeroSection() {
             {/* Content Container */}
             <div className="container mx-auto px-6 lg:px-12 relative z-20 pt-32 md:pt-24 lg:pt-20 min-h-full flex flex-col justify-center">
                 <div className="max-w-4xl py-12">
-                    <div className="overflow-hidden mb-3">
-                        <span className="inline-block text-accent uppercase tracking-[0.2em] font-semibold text-[10px] md:text-sm animate-slide-up">
-                            Welcome to Your Abode of Peace ........
-                        </span>
-                    </div>
-                    
                     <h1 className="text-3xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
-                        Crafting Your <br className="hidden md:block" />
+                        Welcome to <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent/50">
-                            Abode of Peace
+                            Your Abode of Peace
                         </span>
                     </h1>
                     <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-8 md:mb-10 leading-relaxed">
