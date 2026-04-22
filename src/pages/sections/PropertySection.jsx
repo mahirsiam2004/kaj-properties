@@ -3,8 +3,8 @@ import { MapPin, BedDouble, Bath, Maximize2, ArrowRight, ArrowLeft, X, Phone, Bu
 import chayabithi1 from '../../assets/Chayabithi/CHAYABITHI 7.jpg';
 import chayabithi2 from '../../assets/Chayabithi/KAJ POST 5.jpg';
 import chayabithi3 from '../../assets/Chayabithi/vhayabithi_01.png';
-import projectBgLeft from '../../assets/projects/01.png';
-import projectBgRight from '../../assets/projects/02.png';
+import projectBgLeft from '../../assets/Projects/01.png';
+import projectBgRight from '../../assets/Projects/02.png';
 
 const projects = [
     {

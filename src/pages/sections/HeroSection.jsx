@@ -69,7 +69,7 @@ export default function HeroSection() {
                 <div className="max-w-4xl py-12">
                     <div className="overflow-hidden mb-3">
                         <span className="inline-block text-accent uppercase tracking-[0.2em] font-semibold text-[10px] md:text-sm animate-slide-up">
-                            Welcome to Kaj Properties
+                            Welcome to Your Abode of Peace ........
                         </span>
                     </div>
                     
