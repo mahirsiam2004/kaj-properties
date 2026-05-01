@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router';
-import { Logo } from './logo/Logo';
 import { Facebook, Instagram, Youtube, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => (
@@ -11,10 +10,9 @@ const Footer = () => (
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-            {/* Top Area: Logo & Vision */}
+            {/* Top Area: Vision */}
             <div className="flex flex-col items-center text-center mb-16">
-                <Logo light={false} />
-                <p className="mt-6 text-sm lg:text-base font-light max-w-2xl text-brand-black/70">
+                <p className="text-sm lg:text-base font-light max-w-2xl text-brand-black/70">
                     Our vision is to create the ideal living environment for all people, where they can thrive and flourish
                 </p>
             </div>
