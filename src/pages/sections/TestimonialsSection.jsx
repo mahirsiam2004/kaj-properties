@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
+import imgTahomina from '../../assets/review/Tahomina akter.jpeg';
+import imgIkbal from '../../assets/review/Ikbal Hossain.jpeg';
+
 const testimonials = [
     {
-        name: 'Md. Rafiqul Islam',
-        role: 'Homeowner — Chayabithi',
-        quote: 'As a landowner, we chose Kaz Properties for their proven expertise, modern design approach, and strong commitment to timely project delivery. Their transparent communication and dedicated quality control impressed us from the start.',
+        name: 'Tahomina akter',
+        role: 'Client',
+        quote: 'We looked at several projects before deciding on Kaz Properties, but what really sold us was their transparency. From the first site visit to the handover discussion, they were incredibly upfront about timelines and materials. It’s rare to find a developer that values building a relationship as much as building a structure. We’re so excited to start this new chapter in our flat!',
         rating: 5,
-        img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
+        img: imgTahomina,
     },
     {
-        name: 'Fatema Begum',
-        role: 'Resident — Chayabithi',
-        quote: 'The land-share model was something I had never heard of before. Kaz Properties explained everything clearly and helped us save nearly 40% compared to buying a flat the traditional way. We are so happy with our home.',
+        name: 'Ikbal Hossain',
+        role: 'Client',
+        quote: 'ছায়াবীথির (Chayabithi) লোকেশন একদম বেস্ট! সত্যি বলতে, এমন লোকেশনে এখন বাসা পাওয়া একদম দায়। যাতায়াতের দারুণ সুবিধার পাশাপাশি এখানকার কমিউনিটিও বেশ মার্জিত। সব মিলিয়ে থাকার জন্য এটা একটা চমৎকার জায়গা!',
         rating: 5,
-        img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
-    },
-    {
-        name: 'Karim Hossain',
-        role: 'Investor — Chayabithi',
-        quote: 'The young, innovative management team\'s high vision and professionalism gave us confidence to partner with them. The project was completed on schedule and the quality exceeded our expectations.',
-        rating: 5,
-        img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80',
-    },
+        img: imgIkbal,
+    }
 ];
 
 export default function TestimonialsSection() {

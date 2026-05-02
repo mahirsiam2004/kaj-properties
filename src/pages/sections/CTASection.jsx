@@ -1,5 +1,7 @@
 import React from 'react';
 import { Phone, Mail, Facebook, MessageCircle } from 'lucide-react';
+import ceoImg from '../../assets/team/Abu Bakar Siddique.jpg';
+import managerImg from '../../assets/team/Sharmin Akter.jpeg';
 
 export default function CTASection() {
     return (
@@ -16,34 +18,45 @@ export default function CTASection() {
                             that elevate your lifestyle. Let's build your vision together.
                         </p>
 
-                        <div className="flex items-center gap-6 mb-12 border-l-4 border-accent pl-6 bg-brand-light py-4">
-                            <img
-                                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
-                                alt="Sales Manager"
-                                className="w-16 h-16 object-cover rounded-full shadow-sm"
-                            />
-                            <div>
-                                <div className="text-xl font-bold text-brand-black">Kaz Sales Team</div>
-                                <div className="text-sm uppercase tracking-wider text-brand-black/60 mt-1">Manager | Sales</div>
+                        <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                            <div className="flex-1 flex items-center gap-4 border-l-4 border-accent pl-4 bg-brand-light py-3">
+                                <img src={ceoImg} alt="CEO" className="w-12 h-12 object-cover rounded-full shadow-sm" />
+                                <div>
+                                    <div className="text-base font-bold text-brand-black">Abu Bakar Siddique</div>
+                                    <div className="text-xs uppercase tracking-wider text-brand-black/60 mt-0.5">CEO</div>
+                                </div>
+                            </div>
+                            <div className="flex-1 flex items-center gap-4 border-l-4 border-accent pl-4 bg-brand-light py-3">
+                                <img src={managerImg} alt="Sales Manager" className="w-12 h-12 object-cover rounded-full shadow-sm" />
+                                <div>
+                                    <div className="text-base font-bold text-brand-black">Sharmin Akter</div>
+                                    <div className="text-xs uppercase tracking-wider text-brand-black/60 mt-0.5">Manager | Sales</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <a href="tel:+8801774873972" className="flex items-center gap-3 text-brand-black hover:text-accent transition-colors border border-brand-black/5 p-4 rounded-sm">
-                                <Phone size={20} className="text-accent" />
-                                <span className="font-medium">+880 1774-873972</span>
+                                <Phone size={20} className="text-accent shrink-0" />
+                                <div className="flex flex-col">
+                                    <span className="font-medium text-sm">+880 1774-873972</span>
+                                    <span className="text-[10px] uppercase tracking-wider text-brand-black/50">CEO</span>
+                                </div>
+                            </a>
+                            <a href="tel:01913715734" className="flex items-center gap-3 text-brand-black hover:text-accent transition-colors border border-brand-black/5 p-4 rounded-sm">
+                                <Phone size={20} className="text-accent shrink-0" />
+                                <div className="flex flex-col">
+                                    <span className="font-medium text-sm">01913-715734</span>
+                                    <span className="text-[10px] uppercase tracking-wider text-brand-black/50">Sales</span>
+                                </div>
                             </a>
                             <a href="https://wa.me/8801774873972" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-brand-black hover:text-accent transition-colors border border-brand-black/5 p-4 rounded-sm">
-                                <MessageCircle size={20} className="text-accent" />
-                                <span className="font-medium">WhatsApp</span>
-                            </a>
-                            <a href="https://www.facebook.com/profile.php?id=61561571349588" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-brand-black hover:text-accent transition-colors border border-brand-black/5 p-4 rounded-sm">
-                                <Facebook size={20} className="text-accent" />
-                                <span className="font-medium">Facebook</span>
+                                <MessageCircle size={20} className="text-accent shrink-0" />
+                                <span className="font-medium text-sm">WhatsApp</span>
                             </a>
                             <a href="mailto:kazdevelopersteam@gmail.com" className="flex items-center gap-3 text-brand-black hover:text-accent transition-colors border border-brand-black/5 p-4 rounded-sm">
-                                <Mail size={20} className="text-accent" />
-                                <span className="font-medium">Email Us</span>
+                                <Mail size={20} className="text-accent shrink-0" />
+                                <span className="font-medium text-sm">Email Us</span>
                             </a>
                         </div>
                     </div>
