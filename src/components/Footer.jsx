@@ -36,7 +36,7 @@ const Footer = () => (
                     </div>
                 </div>
 
-                {/* Support */}
+             
                 <div>
                     <h6 className="text-xl font-semibold mb-6">Support</h6>
                     <div className="flex flex-col space-y-3 text-sm text-gray-700">
