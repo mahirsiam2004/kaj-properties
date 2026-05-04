@@ -75,14 +75,19 @@ export const Home = () => {
         const isScrollingDown = e.deltaY ? e.deltaY > 0 : false;
         const isScrollingUp = e.deltaY ? e.deltaY < 0 : false;
 
-        // Tolerance for rounding issues
-        const isAtBottom = Math.ceil(container.scrollTop + container.clientHeight) >= container.scrollHeight - 10;
-        const isAtTop = container.scrollTop <= 10;
+        // Increased tolerance for better scroll detection
+        const isAtBottom = Math.ceil(container.scrollTop + container.clientHeight) >= container.scrollHeight - 5;
+        const isAtTop = container.scrollTop <= 5;
 
+        // Only allow swiper navigation when at edges
         if (isScrollingDown && !isAtBottom) {
+            e.stopPropagation();
             swiperRef.current.mousewheel.disable();
+            setTimeout(() => swiperRef.current?.mousewheel.enable(), 50);
         } else if (isScrollingUp && !isAtTop) {
+            e.stopPropagation();
             swiperRef.current.mousewheel.disable();
+            setTimeout(() => swiperRef.current?.mousewheel.enable(), 50);
         } else {
             swiperRef.current.mousewheel.enable();
         }
@@ -97,9 +102,10 @@ export const Home = () => {
                 mousewheel={{
                     forceToAxis: true,
                     releaseOnEdges: true,
-                    sensitivity: 1.2, // Slightly increased for "easy" feel
-                    thresholdDelta: 0,
-                    thresholdTime: 0,
+                    sensitivity: 1,
+                    thresholdDelta: 10,
+                    thresholdTime: 300,
+                    eventsTarget: 'container',
                 }}
                 speed={1000}
                 parallax={true}
@@ -113,15 +119,33 @@ export const Home = () => {
                 modules={[Mousewheel, Pagination, EffectCreative, Parallax]}
                 className="h-[100dvh] w-full"
             >
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col"><HeroSection /></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><AboutSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><PropertySection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><PropertyShowcase /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><FeaturesSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><LocationSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><TestimonialsSection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col"><div data-swiper-parallax="-300" className="flex-1 w-full"><CTASection /></div></SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col" id="footer"><div data-swiper-parallax="-300" className="flex-1 w-full"><Footer /></div></SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col">
+                    <HeroSection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <AboutSection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <PropertySection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <PropertyShowcase />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <FeaturesSection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <LocationSection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <TestimonialsSection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                    <CTASection />
+                </SwiperSlide>
+                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col" id="footer">
+                    <Footer />
+                </SwiperSlide>
             </Swiper>
         </div>
     );

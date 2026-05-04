@@ -36,7 +36,7 @@ export default function PropertySection() {
     }, [currentIndex]);
 
     return (
-        <section className="relative w-full min-h-screen overflow-hidden flex items-center bg-brand-black" id="property">
+        <section className="relative w-full min-h-[100dvh] overflow-hidden flex items-center bg-brand-black" id="property">
             {/* Split Background: left half = 01.png, right half = 02.png */}
             <div className="absolute inset-0 flex">
                 <div
@@ -52,59 +52,59 @@ export default function PropertySection() {
                 <div className="absolute inset-0 bg-brand-black/40"></div>
             </div>
 
-            <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-24 md:pt-20 lg:pt-16 min-h-full flex flex-col justify-center">
-                <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+            <div className="container mx-auto px-4 lg:px-12 relative z-10 w-full py-3 lg:py-12 max-h-[100dvh]">
+                <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-12">
                     
                     {/* Left Column: Details */}
                     <div className="w-full lg:w-1/2 text-white">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="w-4 h-4 grid grid-cols-2 gap-0.5">
+                        <div className="flex items-center gap-1.5 mb-2">
+                            <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 grid grid-cols-2 gap-0.5">
                                 <div className="bg-accent w-full h-full rounded-sm"></div>
                                 <div className="bg-accent/50 w-full h-full rounded-sm"></div>
                                 <div className="bg-accent/50 w-full h-full rounded-sm"></div>
                                 <div className="bg-accent w-full h-full rounded-sm"></div>
                             </div>
-                            <span className="text-accent uppercase font-semibold text-xs md:text-sm tracking-widest">{featured.status}</span>
+                            <span className="text-accent uppercase font-semibold text-[8px] lg:text-xs tracking-widest">{featured.status}</span>
                         </div>
                         
-                        <h3 className="text-2xl md:text-4xl font-bold mb-3">{featured.name}</h3>
-                        <p className="text-sm md:text-base text-white/80 font-light mb-8 max-w-lg">{featured.location}</p>
+                        <h3 className="text-base lg:text-3xl font-bold mb-1 lg:mb-2">{featured.name}</h3>
+                        <p className="text-[9px] lg:text-sm text-white/80 font-light mb-2 lg:mb-5 max-w-lg">{featured.location}</p>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-10">
-                            <div className="flex flex-col border-l-2 border-white/20 pl-4">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <BedDouble size={18} className="text-accent" />
-                                    <span className="font-bold text-lg md:text-xl">{featured.beds}</span>
+                        <div className="grid grid-cols-3 gap-2 lg:gap-4 mb-3 lg:mb-6">
+                            <div className="flex flex-col border-l-2 border-white/20 pl-2">
+                                <div className="flex items-center gap-1 mb-0.5">
+                                    <BedDouble size={12} className="text-accent lg:w-4 lg:h-4" />
+                                    <span className="font-bold text-xs lg:text-lg">{featured.beds}</span>
                                 </div>
-                                <span className="text-[10px] md:text-sm font-light text-white/70 uppercase">Bedroom</span>
+                                <span className="text-[7px] lg:text-xs font-light text-white/70 uppercase">Bedroom</span>
                             </div>
-                            <div className="flex flex-col border-l-2 border-white/20 pl-4">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <Bath size={18} className="text-accent" />
-                                    <span className="font-bold text-lg md:text-xl">{featured.baths}</span>
+                            <div className="flex flex-col border-l-2 border-white/20 pl-2">
+                                <div className="flex items-center gap-1 mb-0.5">
+                                    <Bath size={12} className="text-accent lg:w-4 lg:h-4" />
+                                    <span className="font-bold text-xs lg:text-lg">{featured.baths}</span>
                                 </div>
-                                <span className="text-[10px] md:text-sm font-light text-white/70 uppercase">Bathroom</span>
+                                <span className="text-[7px] lg:text-xs font-light text-white/70 uppercase">Bathroom</span>
                             </div>
-                            <div className="flex flex-col border-l-2 border-white/20 pl-4 col-span-2 md:col-span-1">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <Maximize2 size={16} className="text-accent" />
-                                    <span className="font-bold text-base md:text-xl">{featured.sqft} <span className="text-[10px] bg-white text-brand-black px-1 rounded-sm ml-1 uppercase">SQFT</span></span>
+                            <div className="flex flex-col border-l-2 border-white/20 pl-2">
+                                <div className="flex items-center gap-1 mb-0.5">
+                                    <Maximize2 size={10} className="text-accent lg:w-3.5 lg:h-3.5" />
+                                    <span className="font-bold text-[10px] lg:text-base">{featured.sqft} <span className="text-[6px] lg:text-[8px] bg-white text-brand-black px-0.5 lg:px-1 rounded-sm ml-0.5 lg:ml-1 uppercase">SQFT</span></span>
                                 </div>
-                                <span className="text-[10px] md:text-sm font-light text-white/70 uppercase">Flat size up to</span>
+                                <span className="text-[7px] lg:text-xs font-light text-white/70 uppercase">Flat size</span>
                             </div>
                         </div>
 
                         <button 
                             onClick={() => setIsModalOpen(true)} 
-                            className="inline-flex items-center gap-2 border border-white/30 text-white hover:bg-white hover:text-brand-black transition-colors px-6 py-3 text-xs md:text-sm tracking-wide rounded-sm mb-12"
+                            className="inline-flex items-center gap-1.5 border border-white/30 text-white hover:bg-white hover:text-brand-black transition-colors px-3 lg:px-5 py-1 lg:py-2 text-[8px] lg:text-xs tracking-wide rounded-sm mb-3 lg:mb-6"
                         >
                             Project Details <ArrowRight size={16} />
                         </button>
 
-                        <div className="flex items-end justify-between border-t border-white/10 pt-8 mt-auto">
-                            <div className="flex items-center gap-4">
-                                <span className="text-4xl md:text-5xl font-bold">2</span>
-                                <span className="leading-tight text-[10px] uppercase tracking-widest font-semibold text-white/80">
+                        <div className="flex items-end justify-between border-t border-white/10 pt-2 lg:pt-5 mt-auto">
+                            <div className="flex items-center gap-2">
+                                <span className="text-xl lg:text-4xl font-bold">2</span>
+                                <span className="leading-tight text-[7px] lg:text-[9px] uppercase tracking-widest font-semibold text-white/80">
                                     Number<br/>of projects
                                 </span>
                             </div>
@@ -131,7 +131,7 @@ export default function PropertySection() {
                     </div>
 
                     {/* Right Column: Video */}
-                    <div className="w-full lg:w-1/2 relative h-[300px] md:h-[500px]">
+                    <div className="w-full lg:w-1/2 relative h-[180px] lg:h-[380px]">
                         <div className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl bg-brand-black border border-white/5">
                             <iframe 
                                 width="100%" 
@@ -160,7 +160,7 @@ export default function PropertySection() {
                     
                     {/* Modal Content */}
                     <div 
-                        className="relative z-10 bg-[#121212] border border-white/10 w-full max-w-5xl min-h-screen md:min-h-0 md:max-h-[90vh] overflow-y-auto rounded-none md:rounded-sm shadow-2xl custom-scrollbar animate-in fade-in zoom-in duration-300"
+                        className="relative z-10 bg-[#121212] border border-white/10 w-full max-w-5xl min-h-screen md:min-h-0 md:max-h-[90vh] overflow-y-auto rounded-none md:rounded-sm shadow-2xl animate-in fade-in zoom-in duration-300 scrollbar-thin scrollbar-thumb-accent/50 scrollbar-track-white/5"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}

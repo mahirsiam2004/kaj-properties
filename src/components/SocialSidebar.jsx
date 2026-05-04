@@ -9,7 +9,7 @@ const socials = [
 ];
 
 const SocialSidebar = () => (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100] bg-brand-black/90 backdrop-blur-sm border-l border-white/10 rounded-l-md px-2 py-6 hidden 2xl:flex flex-col items-center gap-6">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[50] bg-brand-black/90 backdrop-blur-sm border-l border-white/10 rounded-l-md px-2 py-6 hidden 2xl:flex flex-col items-center gap-6">
         <div className="flex flex-col items-center gap-6">
             {socials.map((item, i) => {
                 if (item.label === 'divider') {

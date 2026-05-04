@@ -111,7 +111,7 @@ export default function PropertyShowcase() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full h-screen overflow-hidden bg-brand-black"
+            className="relative w-full h-[100dvh] overflow-hidden bg-brand-black"
             id="showcase"
         >
             {/* Full-screen YouTube Player Container */}

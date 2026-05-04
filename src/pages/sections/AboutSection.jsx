@@ -27,11 +27,11 @@ function useCountUp(end, duration = 2000, start = false) {
 function Counter({ end, suffix, label, start, index }) {
     const val = useCountUp(end, 2000, start);
     return (
-        <div className={`flex flex-col items-center justify-center p-4 md:p-6 pb-6 md:pb-6 border-b lg:border-b-0 border-white/10 ${index % 2 === 0 ? 'border-r' : 'lg:border-r'} last:border-r-0 last:border-b-0`}>
-            <div className="text-2xl lg:text-4xl font-bold text-accent mb-2">
+        <div className={`flex flex-col items-center justify-center p-2 lg:p-4 pb-2 lg:pb-4 border-b lg:border-b-0 border-white/10 ${index % 2 === 0 ? 'border-r' : 'lg:border-r'} last:border-r-0 last:border-b-0`}>
+            <div className="text-base lg:text-3xl font-bold text-accent mb-0.5">
                 {val}<span className="text-white">{suffix}</span>
             </div>
-            <div className="text-[10px] md:text-sm uppercase tracking-wider text-white/70 text-center">{label}</div>
+            <div className="text-[7px] lg:text-xs uppercase tracking-wider text-white/70 text-center leading-tight">{label}</div>
         </div>
     );
 }
@@ -50,31 +50,31 @@ export default function AboutSection() {
     }, []);
 
     return (
-        <section className="bg-brand-black text-white relative overflow-hidden min-h-screen flex items-center py-20 md:py-32" id="about">
-            <div className="container mx-auto px-6 lg:px-12 pt-32 md:pt-24 lg:pt-20 min-h-full flex flex-col justify-center">
+        <section className="bg-brand-black text-white relative overflow-hidden min-h-[100dvh] flex items-center" id="about">
+            <div className="container mx-auto px-4 lg:px-12 w-full py-3 lg:py-12 max-h-[100dvh]">
                 {/* Header */}
-                <div className="mb-12 md:mb-16">
-                    <div className="flex items-center gap-4 mb-4">
-                        <div className="w-8 h-8 grid grid-cols-3 gap-1">
+                <div className="mb-3 lg:mb-8">
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="w-5 h-5 lg:w-6 lg:h-6 grid grid-cols-3 gap-0.5">
                             {[...Array(9)].map((_, i) => (
-                                <div key={i} className={`w-1.5 h-1.5 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/50'}`}></div>
+                                <div key={i} className={`w-1 h-1 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/50'}`}></div>
                             ))}
                         </div>
-                        <h2 className="text-2xl md:text-4xl font-light tracking-wide uppercase">About Us</h2>
+                        <h2 className="text-base lg:text-2xl font-light tracking-wide uppercase">About Us</h2>
                     </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-24 items-center mb-16 md:mb-24">
+                <div className="flex flex-col lg:flex-row gap-3 lg:gap-16 items-center mb-3 lg:mb-10">
                     {/* Left — text */}
                     <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                        <p className="text-sm md:text-base leading-relaxed font-light text-white/90 text-justify mb-6">
-                            Kaz Properties started its journey in the real estate development sector partnering with renowned projects. Backing with current good reputation and sector experience, Kaz Properties has expanded its footprint to the building construction sector; promising to provide a complete solution of the people's cherished residence focusing on quality, art, commitment, and value for money.
+                        <p className="text-[10px] lg:text-sm leading-snug lg:leading-relaxed font-light text-white/90 text-justify mb-2 lg:mb-4">
+                            Kaz Properties started its journey in the real estate development sector partnering with renowned projects. Backing with current good reputation and sector experience, Kaz Properties has expanded its footprint to the building construction sector.
                         </p>
-                        <p className="text-sm md:text-base leading-relaxed font-light text-white/90 text-justify mb-8">
-                            We have a skilled, experienced, and committed management team. To achieve the ultimate mission and vision of the company, we gather widely experienced professionals, trained both at home and abroad, including civil engineers, structural engineers, and architects. We cordially invite you to be a proud member of our family to make your living as an art.
+                        <p className="text-[10px] lg:text-sm leading-snug lg:leading-relaxed font-light text-white/90 text-justify mb-3 lg:mb-5">
+                            We have a skilled, experienced, and committed management team. We gather widely experienced professionals, trained both at home and abroad, including civil engineers, structural engineers, and architects.
                         </p>
                         
-                        <a href="#property" className="inline-block border border-accent text-accent hover:bg-accent hover:text-brand-black transition-colors px-6 py-2 uppercase tracking-wide text-sm rounded-sm">
+                        <a href="#property" className="inline-block border border-accent text-accent hover:bg-accent hover:text-brand-black transition-colors px-3 lg:px-5 py-1 lg:py-2 uppercase tracking-wide text-[9px] lg:text-xs rounded-sm">
                             Learn More
                         </a>
                     </div>

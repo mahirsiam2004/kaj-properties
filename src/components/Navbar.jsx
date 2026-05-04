@@ -48,9 +48,9 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeIndex, setActiveIndex] = useState(0);
 
-    // Light bg sections: Features(4), Testimonials(6), CTA(7), Footer(8)
-    // Dark bg sections: Hero(0), About(1), Property(2), Showcase(3), Location(5)
-    const isLightSection = [4, 6, 7, 8].includes(activeIndex);
+    // Light bg sections: Location(5), Testimonials(6), CTA(7), Footer(8)
+    // Dark bg sections: Hero(0), About(1), Property(2), Showcase(3), Features(4)
+    const isLightSection = [5, 6, 7, 8].includes(activeIndex);
 
     const filteredSections = searchQuery
         ? searchableSections.filter(s => s.label.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -106,7 +106,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent ${scrolled ? 'py-1.5 shadow-sm border-b border-brand-black/5' : 'py-3'}`}>
+            <nav className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 bg-transparent ${scrolled ? 'py-1.5 shadow-sm border-b border-brand-black/5 bg-brand-black/95 backdrop-blur-md' : 'py-3'}`}>
                 <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
 
                     {/* Left: Projects link */}
@@ -201,7 +201,7 @@ const Navbar = () => {
             </nav>
 
             {/* Full-screen overlay menu */}
-            <div className={`fixed inset-0 z-[100] bg-brand-black/98 backdrop-blur-xl flex flex-col justify-center items-center transition-all duration-500 origin-top ${menuOpen ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+            <div className={`fixed inset-0 z-[110] bg-brand-black/98 backdrop-blur-xl flex flex-col justify-center items-center transition-all duration-500 origin-top ${menuOpen ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
                 <button
                     className="absolute top-8 right-8 lg:right-16 text-white hover:text-accent transition-colors p-2 border border-white/10 rounded-full"
                     onClick={() => setMenuOpen(false)}

@@ -6,17 +6,48 @@
   --color-bg-light: #FAF7F5;
   --color-brand-black: #000000;
   --color-brand-white: #FFFFFF;
+  
+  /* Add custom breakpoint for laptops */
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
 }
 
 /* Global Styles & Animations */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+/* Adjust base font size for laptop screens to make everything proportionally smaller */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 body {
   font-family: 'Outfit', sans-serif;
   color: var(--color-brand-black);
   background-color: var(--color-brand-white);
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal scroll issues */
+* {
+  box-sizing: border-box;
 }
 
 .fade-up {
@@ -43,4 +74,40 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Custom scrollbar for modals and overflow areas */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(190, 159, 152, 0.5);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(190, 159, 152, 0.7);
+}
+
+/* Smooth scroll for swiper slides */
+.swiper-slide {
+  scroll-behavior: smooth;
+}
+
+/* Prevent content shift during scroll */
+.swiper-wrapper {
+  will-change: transform;
+}
+
+/* Fix for iOS viewport height */
+@supports (-webkit-touch-callout: none) {
+  .h-\[100dvh\] {
+    height: -webkit-fill-available;
+  }
 }

@@ -67,7 +67,7 @@ export default function LocationSection() {
     const center = [23.891, 90.312];
 
     return (
-        <section className="relative w-full h-full min-h-screen bg-white overflow-hidden" id="location">
+        <section className="relative w-full h-full min-h-[100dvh] bg-white overflow-hidden" id="location">
 
             {/* Dark map fills the full background */}
             {isClient && (

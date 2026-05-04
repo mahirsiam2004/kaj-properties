@@ -44,7 +44,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative h-screen min-h-[100svh] w-full overflow-hidden bg-brand-black text-white" id="home">
+        <section className="relative h-[100dvh] w-full overflow-hidden bg-brand-black text-white" id="home">
             {/* Background Slides */}
             {slides.map((slide, i) => (
                 <div
@@ -65,8 +65,8 @@ export default function HeroSection() {
             ))}
 
             {/* Content Container */}
-            <div className="container mx-auto px-6 lg:px-12 relative z-20 pt-32 md:pt-24 lg:pt-20 min-h-full flex flex-col justify-center">
-                <div className="max-w-4xl py-12">
+            <div className="container mx-auto px-6 lg:px-12 relative z-20 h-full flex items-center">
+                <div className="max-w-4xl w-full">
                     <h1 className="text-3xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
                         Welcome to <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent/50">
@@ -76,10 +76,6 @@ export default function HeroSection() {
                     <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-8 md:mb-10 leading-relaxed">
                         Explore the Future of Urban Spaces with Kaz Properties
                     </p>
-                    
-
-
-
                 </div>
             </div>
 
