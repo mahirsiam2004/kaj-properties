@@ -6,7 +6,6 @@
   position: relative;
 }
 
-/* Ensure body doesn't cause horizontal scroll */
 body {
   overflow-x: hidden;
   position: relative;
