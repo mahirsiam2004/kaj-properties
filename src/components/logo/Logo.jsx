@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "/logo.png";
+import logo from "/logo1.png";
 
 export const Logo = ({ light = false }) => {
   return (
