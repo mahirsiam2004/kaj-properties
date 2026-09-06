@@ -3,39 +3,55 @@ import { NavLink } from 'react-router';
 import { Logo } from './logo/Logo';
 import { Search, Menu, X, LayoutGrid } from 'lucide-react';
 
-// Section-to-Swiper-index map (must match Home.jsx sectionMap)
-const SECTION_INDEX = {
-    '#home': 0,
-    '#about': 1,
-    '#property': 2,
-    '#showcase': 3,
-    '#features': 4,
-    '#location': 5,
-    '#testimonials': 6,
-    '#contact': 7,
-    '#footer': 8,
-};
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
-const menuLinks = [
-    { hash: '#home',         label: 'Home' },
-    { hash: '#about',        label: 'About' },
-    { hash: '#property',     label: 'Projects' },
-    { hash: '#features',     label: 'Features' },
-    { hash: '#location',     label: 'Location' },
-    { hash: '#testimonials', label: 'Testimonials' },
-    { hash: '#contact',      label: 'Contact' },
-];
+function buildSectionIndex(hasNews) {
+    return {
+        '#home': 0,
+        '#about': 1,
+        ...(hasNews ? { '#news': 2 } : {}),
+        '#property': hasNews ? 3 : 2,
+        '#showcase': hasNews ? 4 : 3,
+        '#features': hasNews ? 5 : 4,
+        '#location': hasNews ? 6 : 5,
+        '#testimonials': hasNews ? 7 : 6,
+        '#contact': hasNews ? 8 : 7,
+        '#footer': hasNews ? 9 : 8,
+    };
+}
 
-const searchableSections = [
-    { label: 'Home',         hash: '#home',         index: 0 },
-    { label: 'About Us',     hash: '#about',        index: 1 },
-    { label: 'Projects',     hash: '#property',     index: 2 },
-    { label: 'Video Tour',   hash: '#showcase',     index: 3 },
-    { label: 'Features',     hash: '#features',     index: 4 },
-    { label: 'Location',     hash: '#location',     index: 5 },
-    { label: 'Testimonials', hash: '#testimonials', index: 6 },
-    { label: 'Contact',      hash: '#contact',      index: 7 },
-];
+function buildMenuLinks(hasNews) {
+    const links = [
+        { hash: '#home',         label: 'Home' },
+        { hash: '#about',        label: 'About' },
+    ];
+    if (hasNews) links.push({ hash: '#news', label: 'News' });
+    links.push(
+        { hash: '#property',     label: 'Projects' },
+        { hash: '#features',     label: 'Features' },
+        { hash: '#location',     label: 'Location' },
+        { hash: '#testimonials', label: 'Testimonials' },
+        { hash: '#contact',      label: 'Contact' },
+    );
+    return links;
+}
+
+function buildSearchableSections(hasNews) {
+    const sections = [
+        { label: 'Home',         hash: '#home',         index: 0 },
+        { label: 'About Us',     hash: '#about',        index: 1 },
+    ];
+    if (hasNews) sections.push({ label: 'Latest News', hash: '#news', index: 2 });
+    sections.push(
+        { label: 'Projects',     hash: '#property',     index: hasNews ? 3 : 2 },
+        { label: 'Video Tour',   hash: '#showcase',     index: hasNews ? 4 : 3 },
+        { label: 'Features',     hash: '#features',     index: hasNews ? 5 : 4 },
+        { label: 'Location',     hash: '#location',     index: hasNews ? 6 : 5 },
+        { label: 'Testimonials', hash: '#testimonials', index: hasNews ? 7 : 6 },
+        { label: 'Contact',      hash: '#contact',      index: hasNews ? 8 : 7 },
+    );
+    return sections;
+}
 
 function slideTo(index) {
     window.dispatchEvent(new CustomEvent('remoteSlideTo', { detail: { index } }));
@@ -47,10 +63,29 @@ const Navbar = () => {
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [activeIndex, setActiveIndex] = useState(0);
+    const [hasNews, setHasNews] = useState(false);
 
-    // Light bg sections: Location(5), Testimonials(6), CTA(7), Footer(8)
-    // Dark bg sections: Hero(0), About(1), Property(2), Showcase(3), Features(4)
-    const isLightSection = [5, 6, 7, 8].includes(activeIndex);
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/updates`);
+                const data = await res.json();
+                if (data.success && data.data.length > 0) {
+                    setHasNews(true);
+                }
+            } catch (error) {
+                // silently fail
+            }
+        };
+        fetchNews();
+    }, []);
+
+    const SECTION_INDEX = buildSectionIndex(hasNews);
+    const menuLinks = buildMenuLinks(hasNews);
+    const searchableSections = buildSearchableSections(hasNews);
+
+    const lightIndices = hasNews ? [6, 7, 8, 9] : [5, 6, 7, 8];
+    const isLightSection = lightIndices.includes(activeIndex);
 
     const filteredSections = searchQuery
         ? searchableSections.filter(s => s.label.toLowerCase().includes(searchQuery.toLowerCase()))

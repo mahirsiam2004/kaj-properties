@@ -8,6 +8,7 @@ import 'swiper/css/effect-creative';
 
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
+import LatestNewsSection from './sections/LatestNewsSection';
 import PropertySection from './sections/PropertySection';
 import FeaturesSection from './sections/FeaturesSection';
 import LocationSection from './sections/LocationSection';
@@ -17,19 +18,40 @@ import CTASection from './sections/CTASection';
 import SocialSidebar from '../components/SocialSidebar';
 import Footer from '../components/Footer';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
+const SWIPE_CLASS = "overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col";
+
 export const Home = () => {
     const swiperRef = useRef(null);
+    const [hasNews, setHasNews] = useState(false);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const res = await fetch(`${API_BASE}/api/updates`);
+                const data = await res.json();
+                if (data.success && data.data.length > 0) {
+                    setHasNews(true);
+                }
+            } catch (error) {
+                // silently fail - section stays hidden
+            }
+        };
+        fetchNews();
+    }, []);
 
     const sectionMap = {
         '#home': 0,
         '#about': 1,
-        '#property': 2,
-        '#showcase': 3,
-        '#features': 4,
-        '#location': 5,
-        '#testimonials': 6,
-        '#contact': 7,
-        '#footer': 8,
+        ...(hasNews ? { '#news': 2 } : {}),
+        '#property': hasNews ? 3 : 2,
+        '#showcase': hasNews ? 4 : 3,
+        '#features': hasNews ? 5 : 4,
+        '#location': hasNews ? 6 : 5,
+        '#testimonials': hasNews ? 7 : 6,
+        '#contact': hasNews ? 8 : 7,
+        '#footer': hasNews ? 9 : 8,
     };
 
     useEffect(() => {
@@ -65,9 +87,8 @@ export const Home = () => {
             window.removeEventListener('remoteSlideTo', onRemoteSlide);
             observer.disconnect();
         };
-    }, []);
+    }, [hasNews]);
 
-    // Smart Scroll Priority: Prevent swiper from moving if inner content is still scrollable
     const handleScroll = (e) => {
         if (!swiperRef.current) return;
         
@@ -75,11 +96,9 @@ export const Home = () => {
         const isScrollingDown = e.deltaY ? e.deltaY > 0 : false;
         const isScrollingUp = e.deltaY ? e.deltaY < 0 : false;
 
-        // Increased tolerance for better scroll detection
         const isAtBottom = Math.ceil(container.scrollTop + container.clientHeight) >= container.scrollHeight - 5;
         const isAtTop = container.scrollTop <= 5;
 
-        // Only allow swiper navigation when at edges
         if (isScrollingDown && !isAtBottom) {
             e.stopPropagation();
             swiperRef.current.mousewheel.disable();
@@ -122,28 +141,33 @@ export const Home = () => {
                 <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col">
                     <HeroSection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <AboutSection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                {hasNews && (
+                    <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
+                        <LatestNewsSection />
+                    </SwiperSlide>
+                )}
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <PropertySection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <PropertyShowcase />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <FeaturesSection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <LocationSection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <TestimonialsSection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col">
+                <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
                     <CTASection />
                 </SwiperSlide>
-                <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col" id="footer">
+                <SwiperSlide onWheel={handleScroll} className={`${SWIPE_CLASS}`} id="footer">
                     <Footer />
                 </SwiperSlide>
             </Swiper>
