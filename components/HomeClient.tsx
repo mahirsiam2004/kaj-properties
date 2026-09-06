@@ -110,7 +110,7 @@ export default function HomeClient() {
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-    <div className="bg-brand-light h-[100dvh] overflow-hidden">
+      <div className={`bg-brand-light h-[100dvh] overflow-hidden transition-opacity duration-500 ${loading ? 'opacity-0' : 'opacity-100'}`}>
       <SocialSidebar />
       <Swiper
         direction="vertical"

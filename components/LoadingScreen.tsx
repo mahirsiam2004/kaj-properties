@@ -5,32 +5,111 @@ import { useEffect, useState } from 'react';
 interface Props { onComplete: () => void; }
 
 export default function LoadingScreen({ onComplete }: Props) {
-  const [fadeOut, setFadeOut] = useState(false);
+  const [phase, setPhase] = useState<'enter' | 'hold' | 'exit'>('enter');
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setFadeOut(true), 1200);
+    // Phase 1: logo glows in (0 → 600ms)
+    const holdTimer = setTimeout(() => setPhase('hold'), 600);
+    // Phase 2: hold briefly (600 → 1200ms)
+    const exitTimer = setTimeout(() => setPhase('exit'), 1200);
+    // Phase 3: fade out complete → show site (1200 → 1700ms)
     const doneTimer = setTimeout(() => onComplete(), 1700);
-    return () => { clearTimeout(fadeTimer); clearTimeout(doneTimer); };
+
+    return () => {
+      clearTimeout(holdTimer);
+      clearTimeout(exitTimer);
+      clearTimeout(doneTimer);
+    };
   }, [onComplete]);
 
   return (
-    <div className={`fixed inset-0 z-[99999] bg-brand-light flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${fadeOut ? 'opacity-0 blur-xl pointer-events-none' : 'opacity-100 pointer-events-auto'}`}>
-      <div className={`transition-all duration-1000 delay-100 transform ${fadeOut ? 'scale-110 opacity-0' : 'scale-100 opacity-100'} flex flex-col items-center`}>
+    <div
+      className="fixed inset-0 z-[99999] flex items-center justify-center"
+      style={{
+        backgroundColor: '#FAF7F5',
+        opacity: phase === 'exit' ? 0 : 1,
+        transition: phase === 'exit' ? 'opacity 0.5s ease-in-out' : 'none',
+        pointerEvents: phase === 'exit' ? 'none' : 'auto',
+      }}
+    >
+      {/* Ambient glow behind logo */}
+      <div
+        style={{
+          position: 'absolute',
+          width: 260,
+          height: 260,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(190,159,152,0.35) 0%, rgba(190,159,152,0.08) 60%, transparent 100%)',
+          opacity: phase === 'enter' ? 0 : 1,
+          transform: phase === 'enter' ? 'scale(0.6)' : 'scale(1)',
+          transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+        }}
+      />
+
+      {/* Logo */}
+      <div
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 24,
+          opacity: phase === 'enter' ? 0 : 1,
+          transform: phase === 'enter' ? 'scale(0.85)' : 'scale(1)',
+          transition: 'opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1)',
+        }}
+      >
         <img
-          src="/logo.png"
+          src="/logo1.png"
           alt="Kaz Properties"
-          className="w-32 md:w-48 object-contain mb-8 filter grayscale brightness-0 opacity-90 transition-transform duration-[2000ms] ease-out"
+          style={{
+            width: 140,
+            objectFit: 'contain',
+            filter: 'brightness(0)',
+          }}
         />
-        <div className="flex flex-col items-center">
-          <p className="text-accent uppercase tracking-[0.4em] text-[10px] md:text-xs font-semibold mb-6 animate-pulse">
-            Welcome to Your Abode of Peace
-          </p>
-          <div className="w-32 md:w-48 h-[1px] bg-brand-black/10 overflow-hidden relative">
-            <div
-              className="absolute top-0 left-0 h-full bg-accent transition-transform duration-[1500ms] ease-out origin-left w-full"
-              style={{ transform: `scaleX(${fadeOut ? 1 : 0.8})` }}
-            />
-          </div>
+
+        {/* Tagline */}
+        <p
+          style={{
+            color: '#BE9F98',
+            fontSize: 10,
+            letterSpacing: '0.4em',
+            textTransform: 'uppercase',
+            fontWeight: 600,
+            fontFamily: 'Outfit, sans-serif',
+            opacity: phase === 'hold' || phase === 'exit' ? 1 : 0,
+            transition: 'opacity 0.6s ease-out 0.2s',
+          }}
+        >
+          Welcome to Your Abode of Peace
+        </p>
+
+        {/* Progress bar */}
+        <div
+          style={{
+            width: 140,
+            height: 1,
+            background: 'rgba(0,0,0,0.08)',
+            overflow: 'hidden',
+            position: 'relative',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              height: '100%',
+              background: '#BE9F98',
+              width: phase === 'enter' ? '0%' : phase === 'hold' ? '70%' : '100%',
+              transition: phase === 'enter'
+                ? 'width 0.6s ease-out'
+                : phase === 'hold'
+                ? 'width 0.5s ease-out'
+                : 'width 0.4s ease-out',
+            }}
+          />
         </div>
       </div>
     </div>

@@ -136,7 +136,9 @@ export default function AdminClient() {
   if (!isAuthenticated) return (
     <div className="ap-login">
       <div className="ap-login-card">
-        <div className="ap-login-header"><h1>Admin Portal</h1><p>Sign in to manage website content</p></div>
+        <div className="ap-login-header">
+            <img src="/logo1.png" alt="Kaz Properties" style={{ width: 80, margin: '0 auto 16px', display: 'block', filter: 'brightness(0) invert(1)' }} />
+            <h1>Admin Portal</h1><p>Sign in to manage website content</p></div>
         <form onSubmit={handleLogin}>
           {loginError && <div className="ap-alert ap-alert-error">{loginError}</div>}
           <div className="ap-field"><label>Username</label><input type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter admin username" /></div>
@@ -150,7 +152,10 @@ export default function AdminClient() {
   return (
     <div className="ap-dashboard">
       <aside className="ap-sidebar">
-        <div className="ap-sidebar-header"><span>Dashboard</span></div>
+        <div className="ap-sidebar-header">
+          <img src="/logo1.png" alt="Kaz Properties" style={{ width: 60, marginBottom: 8, filter: 'brightness(0) invert(1)' }} />
+          <span>Dashboard</span>
+        </div>
         <div className="ap-sidebar-nav">
           <button className={activeTab === 'list' ? 'active' : ''} onClick={() => setActiveTab('list')}>📋 All Updates</button>
           <button className={activeTab === 'add' ? 'active' : ''} onClick={() => { resetForm(); setActiveTab('add'); }}>➕ {editingId ? 'Edit Update' : 'Add New'}</button>
