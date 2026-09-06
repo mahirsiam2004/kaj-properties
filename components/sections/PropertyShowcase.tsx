@@ -1,0 +1,116 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
+
+const VIDEO_ID = 'Ou75T-40wuw';
+
+declare global {
+  interface Window {
+    YT: { Player: new (el: HTMLElement, opts: object) => YTPlayer; };
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
+interface YTPlayer {
+  mute: () => void; unMute: () => void;
+  playVideo: () => void; destroy: () => void;
+  setVolume: (v: number) => void;
+  getIframe: () => HTMLIFrameElement;
+}
+
+let ytApiLoaded = false;
+const ytCallbacks: (() => void)[] = [];
+
+function loadYTApi() {
+  if (ytApiLoaded) return;
+  ytApiLoaded = true;
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady = () => { ytCallbacks.forEach(cb => cb()); ytCallbacks.length = 0; };
+}
+
+export default function PropertyShowcase() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [playerReady, setPlayerReady] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([e]) => setIsVisible(e.isIntersecting), { threshold: 0.2 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    const init = () => {
+      if (!containerRef.current || playerRef.current) return;
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: VIDEO_ID,
+        playerVars: { autoplay: 1, loop: 1, playlist: VIDEO_ID, controls: 0, rel: 0, mute: 1, modestbranding: 1, iv_load_policy: 3, disablekb: 1, fs: 0, playsinline: 1 },
+        events: {
+          onReady: (e: { target: YTPlayer }) => {
+            e.target.mute(); e.target.playVideo();
+            const iframe = e.target.getIframe();
+            if (iframe) { Object.assign(iframe.style, { position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', pointerEvents: 'none' }); }
+            setPlayerReady(true);
+          },
+        },
+      });
+    };
+    if (window.YT?.Player) init(); else { ytCallbacks.push(init); loadYTApi(); }
+    return () => { try { playerRef.current?.destroy(); } catch (_) {} playerRef.current = null; setPlayerReady(false); setIsMuted(true); };
+  }, [isVisible]);
+
+  const toggleMute = () => {
+    if (!playerRef.current || !playerReady) return;
+    if (isMuted) { playerRef.current.unMute(); playerRef.current.setVolume(80); }
+    else playerRef.current.mute();
+    setIsMuted(p => !p);
+  };
+
+  return (
+    <section ref={sectionRef} className="relative w-full h-[100dvh] overflow-hidden bg-brand-black" id="showcase">
+      {isVisible && (
+        <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ pointerEvents: 'none' }}>
+          <div ref={containerRef} className="absolute inset-0 w-full h-full" />
+        </div>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/30 pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-black/60 via-transparent to-transparent pointer-events-none z-20" />
+
+      <div className="absolute left-5 lg:left-10 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-4">
+        <button onClick={toggleMute}
+          className="group relative w-11 h-11 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-accent hover:border-accent transition-all duration-300 flex items-center justify-center text-white shadow-lg"
+          aria-label={isMuted ? 'Unmute' : 'Mute'}>
+          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          {!isMuted && <span className="absolute inset-0 rounded-full border border-accent animate-ping opacity-50" />}
+        </button>
+        <div className="h-20 w-px bg-white/20" />
+        <span className="text-white/40 text-[9px] uppercase tracking-[0.25em] whitespace-nowrap"
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+          {isMuted ? 'Sound Off' : 'Sound On'}
+        </span>
+      </div>
+
+      <div className="absolute inset-0 z-30 flex flex-col justify-end pl-20 lg:pl-28 pr-6 lg:pr-12 pb-12 pointer-events-none fade-up">
+        <div>
+          <div className="absolute -top-8 left-0 text-[60px] md:text-[90px] font-bold text-white/5 whitespace-nowrap select-none tracking-widest uppercase">SHOWCASE</div>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-4 h-4 grid grid-cols-2 gap-0.5">
+              <div className="bg-accent w-full h-full rounded-sm" /><div className="bg-accent/50 w-full h-full rounded-sm" />
+              <div className="bg-accent/50 w-full h-full rounded-sm" /><div className="bg-accent w-full h-full rounded-sm" />
+            </div>
+            <span className="text-accent uppercase font-semibold text-xs tracking-widest">Video Tour</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl text-white font-light tracking-wide">Property Showcase</h2>
+          <p className="text-white/50 text-sm mt-2 font-light max-w-md">Experience our properties through an immersive video tour.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
