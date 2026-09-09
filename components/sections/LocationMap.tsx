@@ -27,7 +27,7 @@ const makeIcon = (active: boolean) => new L.DivIcon({
 export default function LocationMap({ locations, activeIdx, onSelect }: Props) {
   return (
     <MapContainer
-      center={[23.891, 90.312]}
+      center={[23.885, 90.291]}
       zoom={12}
       scrollWheelZoom={false}
       zoomControl={false}

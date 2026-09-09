@@ -8,8 +8,8 @@ const Map = dynamic(() => import('./LocationMap'), { ssr: false });
 
 const locations = [
   { name: 'Chayabithi', area: 'Senwalia, Ashulia, Savar', city: 'Dhaka', lat: 23.8955, lng: 90.3212, mapUrl: 'https://maps.app.goo.gl/UDWjGdeHk4AG6XJe6', tag: 'Flat Share for Sale' },
-  { name: 'Kaz Project', area: 'Colony, Savar', city: 'Savar, Dhaka', lat: 23.8475, lng: 90.2635, mapUrl: 'https://maps.app.goo.gl/yPWpcXj4djTQnarG8', tag: 'Upcoming' },
-  { name: 'Kaz Project', area: 'Uttara', city: 'Dhaka', lat: 23.8759, lng: 90.3980, mapUrl: 'https://maps.app.goo.gl/Fz8LJ6eJHn1Trpug6', tag: 'Upcoming' },
+  { name: 'Kaz Project', area: 'Colony, Savar', city: 'Savar, Dhaka', lat: 23.897, lng: 90.269, mapUrl: 'https://maps.app.goo.gl/yPWpcXj4djTQnarG8', tag: 'Upcoming' },
+  { name: 'Kaz Project', area: 'Uttara', city: 'Dhaka', lat: 23.873, lng: 90.261, mapUrl: 'https://maps.app.goo.gl/yPWpcXj4djTQnarG8', tag: 'Upcoming' },
 ];
 
 export default function LocationSection() {

@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
               <img
                 src={t.img}
                 alt={t.name}
-                className="w-14 h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full object-cover shadow-lg ring-2 ring-accent/30"
+                className="hidden lg:block w-14 h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 rounded-full object-cover shadow-lg ring-2 ring-accent/30"
               />
               <div>
                 <div className="text-sm xl:text-base 2xl:text-lg font-bold text-brand-black">{t.name}</div>
@@ -131,8 +131,8 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Right: portrait gallery */}
-          <div className="lg:w-72 xl:w-80 2xl:w-96 shrink-0 flex flex-col gap-4 xl:gap-5 2xl:gap-6 justify-center items-center">
+          {/* Right: portrait gallery — hidden on mobile/tablet */}
+          <div className="hidden lg:flex lg:w-72 xl:w-80 2xl:w-96 shrink-0 flex-col gap-4 xl:gap-5 2xl:gap-6 justify-center items-center">
             {testimonials.map((item, i) => (
               <button
                 key={i}

@@ -31,6 +31,7 @@ function buildMenuLinks(hasNews: boolean) {
     { hash: '#showcase',     label: 'Virtual Tour' },
     { hash: '#location',     label: 'Location' },
     { hash: '#testimonials', label: 'Testimonials' },
+    { hash: '#career',       label: 'Career' },
     { hash: '#contact',      label: 'Contact' },
   );
   return links;
@@ -235,19 +236,19 @@ export default function Navbar() {
         </div>
         <ul className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10 text-2xl lg:text-4xl xl:text-5xl capitalize font-light tracking-wide text-white">
           {menuLinks.map(({ hash, label }) => (
-            <li key={hash} className="overflow-hidden">
+            <li key={hash}>
               <a href={hash} onClick={(e) => handleNavClick(e, hash)}
-                className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2">
+                className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2 whitespace-nowrap">
                 {label}
               </a>
             </li>
           ))}
           {/* Real page links */}
-          <li className="overflow-hidden">
+          <li>
             <Link
               href="/management-team"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2"
+              className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2 whitespace-nowrap"
             >
               Management Team
             </Link>

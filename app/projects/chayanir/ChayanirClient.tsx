@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowLeft, MapPin, BedDouble, Bath, Phone, Mail,
   ChevronLeft, ChevronRight, CheckCircle2, Download, ChevronDown,
@@ -30,6 +30,7 @@ const features = [
 ];
 
 export default function ChayanirClient() {
+  const router = useRouter();
   const [activeImg, setActiveImg] = useState(0);
   const prev = () => setActiveImg(i => (i - 1 + gallery.length) % gallery.length);
   const next = () => setActiveImg(i => (i + 1) % gallery.length);
@@ -39,10 +40,10 @@ export default function ChayanirClient() {
 
       {/* ── Top nav ── */}
       <div className="sticky top-0 z-30 bg-brand-black/95 backdrop-blur-md border-b border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group">
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
+          Back
+        </button>
         <img src="/logo1.png" alt="Kaz Properties" className="h-7 md:h-8 w-auto object-contain" />
       </div>
 
@@ -281,9 +282,9 @@ export default function ChayanirClient() {
       {/* Footer */}
       <div className="border-t border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
-        <Link href="/" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-          <ArrowLeft size={11} /> Back to Home
-        </Link>
+        <button onClick={() => router.back()} className="flex items-center gap-1.5 hover:text-accent transition-colors">
+          <ArrowLeft size={11} /> Back
+        </button>
       </div>
 
     </div>

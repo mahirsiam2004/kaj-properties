@@ -27,6 +27,8 @@ export default function HomeClient() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [hasNews, setHasNews] = useState(false);
   const [loading, setLoading] = useState(true);
+  // Track whether we've already restored the saved slide index
+  const restoredRef = useRef(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -38,6 +40,31 @@ export default function HomeClient() {
     };
     fetchNews();
   }, []);
+
+  // Restore saved slide after hasNews settles (so slide count is correct)
+  useEffect(() => {
+    if (restoredRef.current) return;
+    const saved = sessionStorage.getItem('lastSlideIndex');
+    if (!saved) {
+      // First ever visit — seed with 0 so back always has a value
+      sessionStorage.setItem('lastSlideIndex', '0');
+      return;
+    }
+    const idx = parseInt(saved, 10);
+    if (isNaN(idx) || idx <= 0) {
+      sessionStorage.removeItem('lastSlideIndex');
+      return;
+    }
+    // Give Swiper a tick to fully initialise with the correct slide count
+    const timer = setTimeout(() => {
+      if (swiperRef.current && !restoredRef.current) {
+        restoredRef.current = true;
+        sessionStorage.removeItem('lastSlideIndex');
+        swiperRef.current.slideTo(idx, 0);
+      }
+    }, 80);
+    return () => clearTimeout(timer);
+  }, [hasNews]); // re-run when hasNews changes so slide count is correct
 
   const sectionMap: Record<string, number> = {
     '#home': 0,
@@ -129,6 +156,8 @@ export default function HomeClient() {
         onSlideChange={(swiper) => {
           document.documentElement.setAttribute('data-scrolled', swiper.activeIndex > 0 ? 'true' : 'false');
           window.dispatchEvent(new CustomEvent('swiperChange', { detail: { index: swiper.activeIndex } }));
+          // Persist so subpages can return to the right slide
+          sessionStorage.setItem('lastSlideIndex', String(swiper.activeIndex));
         }}
         modules={[Mousewheel, Pagination, EffectCreative, Parallax]}
         className="h-[100dvh] w-full"

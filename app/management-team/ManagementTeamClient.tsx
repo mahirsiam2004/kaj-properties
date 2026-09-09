@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 
 const team = [
@@ -42,18 +43,19 @@ const team = [
 ];
 
 export default function ManagementTeamClient() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-brand-black text-white overflow-y-auto h-screen">
 
       {/* ── Top nav bar ── */}
       <div className="relative z-10 px-5 md:px-10 lg:px-16 xl:px-24 py-5 md:py-6 flex items-center justify-between border-b border-white/10">
-        <Link
-          href="/"
+        <button
+          onClick={() => router.back()}
           className="flex items-center gap-2 text-white/50 hover:text-accent transition-colors text-sm font-medium group"
         >
           <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
+          Back
+        </button>
         <img src="/logo1.png" alt="Kaz Properties" className="h-8 md:h-10 xl:h-12 w-auto object-contain" />
       </div>
 
@@ -200,10 +202,10 @@ export default function ManagementTeamClient() {
       {/* ── Footer strip ── */}
       <div className="border-t border-white/10 px-5 md:px-10 lg:px-16 xl:px-24 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/30">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
-        <Link href="/" className="flex items-center gap-2 hover:text-accent transition-colors">
+        <button onClick={() => router.back()} className="flex items-center gap-2 hover:text-accent transition-colors">
           <ArrowLeft size={12} />
-          Back to Home
-        </Link>
+          Back
+        </button>
       </div>
 
     </div>
