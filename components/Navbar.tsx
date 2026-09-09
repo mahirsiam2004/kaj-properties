@@ -68,7 +68,7 @@ export default function Navbar() {
   const isHome = pathname === '/';
 
   // Detail pages have their own internal nav — hide global Navbar there
-  const hideNavbar = pathname.startsWith('/projects/') || pathname.startsWith('/management-team');
+  const hideNavbar = pathname.startsWith('/projects/') || pathname.startsWith('/management-team') || pathname.startsWith('/admin');
 
   useEffect(() => {
     fetch('/api/updates')

@@ -153,8 +153,9 @@ export default function AdminClient() {
     <div className="ap-dashboard">
       <aside className="ap-sidebar">
         <div className="ap-sidebar-header">
-          <img src="/logo1.png" alt="Kaz Properties" style={{ width: 60, marginBottom: 8, filter: 'brightness(0) invert(1)' }} />
-          <span>Dashboard</span>
+          <img src="/logo1.png" alt="Kaz Properties" style={{ width: 44, filter: 'brightness(0) invert(1)', display: 'none' }} className="ap-logo-desktop" />
+          <img src="/logo1.png" alt="Kaz Properties" style={{ width: 32, filter: 'brightness(0) invert(1)' }} />
+          <span>Admin</span>
         </div>
         <div className="ap-sidebar-nav">
           <button className={activeTab === 'list' ? 'active' : ''} onClick={() => setActiveTab('list')}>📋 All Updates</button>
