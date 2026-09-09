@@ -69,6 +69,9 @@ export default function Navbar() {
   const router = useRouter();
   const isHome = pathname === '/';
 
+  // Detail pages have their own internal nav — hide global Navbar there
+  const hideNavbar = pathname.startsWith('/projects/') || pathname.startsWith('/management-team');
+
   useEffect(() => {
     fetch('/api/updates')
       .then(r => r.json())
@@ -134,6 +137,8 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
+
+  if (hideNavbar) return null;
 
   return (
     <>

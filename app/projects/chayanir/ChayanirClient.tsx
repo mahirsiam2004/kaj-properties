@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeft, MapPin, BedDouble, Bath, Phone, Mail,
-  ChevronLeft, ChevronRight, CheckCircle2, Download,
+  ChevronLeft, ChevronRight, CheckCircle2, Download, ChevronDown,
 } from 'lucide-react';
 
 const WhatsAppIcon = () => (
@@ -14,9 +14,7 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const gallery = [
-  '/assets/feature/2.jpg',
-];
+const gallery = ['/assets/feature/2.jpg'];
 
 const features = [
   '3 Spacious Bedrooms',
@@ -33,215 +31,192 @@ const features = [
 
 export default function ChayanirClient() {
   const [activeImg, setActiveImg] = useState(0);
-
   const prev = () => setActiveImg(i => (i - 1 + gallery.length) % gallery.length);
   const next = () => setActiveImg(i => (i + 1) % gallery.length);
 
   return (
-    <div className="h-screen overflow-y-auto bg-brand-black text-white scrollbar-thin">
+    <div className="h-screen overflow-y-auto bg-brand-black text-white scroll-smooth">
 
       {/* ── Top nav ── */}
-      <div className="sticky top-0 z-30 bg-brand-black/90 backdrop-blur-md border-b border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group"
-        >
-          <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Home</span>
+      <div className="sticky top-0 z-30 bg-brand-black/95 backdrop-blur-md border-b border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group">
+          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+          Back to Home
         </Link>
-        <img src="/logo1.png" alt="Kaz Properties" className="h-8 md:h-9 xl:h-10 w-auto object-contain" />
+        <img src="/logo1.png" alt="Kaz Properties" className="h-7 md:h-8 w-auto object-contain" />
       </div>
 
-      {/* ══════════════════════════════════════════════
-          HERO — left text  |  right image
-      ══════════════════════════════════════════════ */}
-      <section className="px-5 md:px-10 lg:px-14 xl:px-20 py-10 md:py-14 xl:py-16 border-b border-white/10">
-        <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start">
+      {/* ══════════════════════════════════════════
+          ABOVE THE FOLD — hero capped at ~80vh
+          so content below is always visible
+      ══════════════════════════════════════════ */}
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 pt-5 pb-4 border-b border-white/10" style={{ maxHeight: '82vh' }}>
+        <div className="flex flex-col lg:flex-row gap-6 items-start h-full">
 
-          {/* Left: title block */}
-          <div className="flex-1 min-w-0">
-            <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">
-              Kaz Properties — Residential Project
-            </span>
-            <h1 className="text-5xl md:text-6xl xl:text-7xl font-light mt-3 mb-4 leading-none tracking-tight">
-              Chayanir
-            </h1>
-            <div className="flex items-start gap-2 text-white/50 mb-8">
-              <MapPin size={13} className="text-accent shrink-0 mt-0.5" />
-              <span className="text-xs md:text-sm font-light leading-snug">
-                Jahangirnagar Society, Savar<br />
-                Dhaka, Bangladesh
-              </span>
+          {/* Left: title + stats + CTAs */}
+          <div className="flex-1 min-w-0 flex flex-col justify-between">
+            <div>
+              <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Kaz Properties — Residential Project</span>
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-light mt-2 mb-2 leading-tight tracking-tight">Chayanir</h1>
+              <div className="flex items-start gap-2 text-white/50 mb-4">
+                <MapPin size={12} className="text-accent shrink-0 mt-0.5" />
+                <span className="text-xs font-light leading-snug">Jahangirnagar Society, Savar · Dhaka, Bangladesh</span>
+              </div>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-4 gap-2 mb-4">
+                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                  <BedDouble size={16} className="text-accent" />
+                  <div className="text-xl font-bold text-white">3</div>
+                  <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Beds</div>
+                </div>
+                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
+                    <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                  <div className="text-xl font-bold text-white">1</div>
+                  <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Hall</div>
+                </div>
+                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
+                    <path d="M8 6h8M8 12h8M8 18h8M4 6h.01M4 12h.01M4 18h.01"/>
+                  </svg>
+                  <div className="text-xl font-bold text-white">1</div>
+                  <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Kitchen</div>
+                </div>
+                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                  <Bath size={16} className="text-accent" />
+                  <div className="text-[9px] text-accent uppercase tracking-wider font-semibold mt-1">Baths</div>
+                  <div className="text-white/40 text-[9px]">Avail.</div>
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-2">
+                <a href="tel:+8801774873972" className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <Phone size={12} /> Call Us
+                </a>
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <WhatsAppIcon /> WhatsApp
+                </a>
+                <a href="/#contact" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <Mail size={12} /> Email
+                </a>
+              </div>
             </div>
 
-            {/* Quick stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-              <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 flex flex-col items-center text-center gap-1.5">
-                <BedDouble size={18} className="text-accent" />
-                <div className="text-2xl xl:text-3xl font-bold text-white">3</div>
-                <div className="text-accent font-semibold text-[10px] xl:text-xs uppercase tracking-wider">Beds</div>
-              </div>
-              <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 flex flex-col items-center text-center gap-1.5">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
-                  <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                </svg>
-                <div className="text-2xl xl:text-3xl font-bold text-white">1</div>
-                <div className="text-accent font-semibold text-[10px] xl:text-xs uppercase tracking-wider">Hall</div>
-              </div>
-              <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 flex flex-col items-center text-center gap-1.5">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
-                  <path d="M8 6h8M8 12h8M8 18h8M4 6h.01M4 12h.01M4 18h.01"/>
-                </svg>
-                <div className="text-2xl xl:text-3xl font-bold text-white">1</div>
-                <div className="text-accent font-semibold text-[10px] xl:text-xs uppercase tracking-wider">Kitchen</div>
-              </div>
-              <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 flex flex-col items-center text-center gap-1.5">
-                <Bath size={18} className="text-accent" />
-                <div className="text-accent font-semibold text-[10px] xl:text-xs uppercase tracking-wider mt-1">Bathrooms</div>
-                <div className="text-white/40 text-[9px]">Available</div>
-              </div>
-            </div>
-
-            {/* CTA buttons */}
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="tel:+8801774873972"
-                className="flex items-center gap-2 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest"
-              >
-                <Phone size={13} /> Call Us
-              </a>
-              <a
-                href="https://wa.me/8801856621076"
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest"
-              >
-                <WhatsAppIcon /> WhatsApp
-              </a>
-              <a
-                href="/#contact"
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest"
-              >
-                <Mail size={13} /> Email
-              </a>
+            {/* Scroll hint */}
+            <div className="hidden lg:flex items-center gap-2 mt-4 text-white/25 text-[10px] uppercase tracking-widest">
+              <ChevronDown size={13} className="animate-bounce" />
+              Scroll for details
             </div>
           </div>
 
-          {/* Right: image */}
-          <div className="w-full lg:w-[52%] xl:w-[55%] shrink-0 flex flex-col gap-3">
-            <div className="relative w-full overflow-hidden rounded-sm bg-white/[0.03]" style={{ aspectRatio: '16/10' }}>
+          {/* Right: image — capped height so content below peeks */}
+          <div className="w-full lg:w-[52%] shrink-0">
+            <div className="relative w-full rounded-sm overflow-hidden bg-white/[0.03]" style={{ maxHeight: '55vh', aspectRatio: '4/3' }}>
               <img
                 src={gallery[activeImg]}
                 alt="Chayanir"
-                className="w-full h-full object-contain transition-all duration-500"
+                className="w-full h-full object-contain"
               />
               {gallery.length > 1 && (
                 <>
-                  <button onClick={prev} aria-label="Previous"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-brand-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                    <ChevronLeft size={14} />
+                  <button onClick={prev} aria-label="Prev" className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+                    <ChevronLeft size={13} />
                   </button>
-                  <button onClick={next} aria-label="Next"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-brand-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-accent hover:border-accent transition-all">
-                    <ChevronRight size={14} />
+                  <button onClick={next} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+                    <ChevronRight size={13} />
                   </button>
                 </>
               )}
             </div>
-            {/* Thumbnail strip — only shows when >1 image */}
-            {gallery.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-                {gallery.map((src, i) => (
-                  <button key={i} onClick={() => setActiveImg(i)}
-                    className={`shrink-0 w-20 h-14 rounded-sm overflow-hidden border-2 transition-all ${i === activeImg ? 'border-accent opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}>
-                    <img src={src} alt="" className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ══════════════════════════════════════════════
+      {/* ── Scroll invite strip — always visible below hero ── */}
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center gap-3 border-b border-white/8 bg-white/[0.02]">
+        <ChevronDown size={14} className="text-accent animate-bounce shrink-0" />
+        <span className="text-white/40 text-xs font-light">Overview · Features · Location · Floor Plan · Project Details</span>
+      </div>
+
+      {/* ══════════════════════════════════════════
           MAIN CONTENT
-      ══════════════════════════════════════════════ */}
-      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-12 xl:py-16">
-        <div className="flex flex-col lg:flex-row gap-12 xl:gap-16">
+      ══════════════════════════════════════════ */}
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-6">
+        <div className="flex flex-col lg:flex-row gap-8">
 
           {/* Left column */}
-          <div className="flex-1 min-w-0 space-y-12 xl:space-y-14">
+          <div className="flex-1 min-w-0 space-y-7">
 
             {/* Overview */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-px h-6 bg-accent" />
-                <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">Overview</span>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-px h-5 bg-accent" />
+                <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Overview</span>
               </div>
-              <h2 className="text-2xl xl:text-3xl font-light mb-3 leading-snug">A Home Designed for Comfortable Living</h2>
-              <p className="text-white/55 font-light text-sm xl:text-base leading-relaxed">
-                Chayanir is a thoughtfully planned residential project located in Jahangirnagar Society, Savar —
-                offering spacious 3-bedroom apartments with a dedicated hall, modern kitchen, full bathrooms, and
-                generous balconies, all within a well-connected community setting.
+              <p className="text-white/55 font-light text-sm leading-relaxed">
+                Chayanir is a thoughtfully planned residential project in Jahangirnagar Society, Savar — offering spacious
+                3-bedroom apartments with a dedicated hall, modern kitchen, full bathrooms, and generous balconies, all
+                within a well-connected community setting.
               </p>
             </div>
 
-            {/* Features */}
-            <div>
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-px h-6 bg-accent" />
-                <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">Apartment Features</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 xl:gap-3">
-                {features.map(f => (
-                  <div key={f} className="flex items-center gap-3 py-2 border-b border-white/5">
-                    <CheckCircle2 size={13} className="text-accent shrink-0" strokeWidth={2} />
-                    <span className="text-white/65 text-xs xl:text-sm font-light">{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Location */}
-            <div>
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-px h-6 bg-accent" />
-                <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">Location</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  { direction: 'Society',  place: 'Jahangirnagar Society' },
-                  { direction: 'Area',     place: 'Savar, Dhaka' },
-                  { direction: 'Nearby',   place: 'Jahangirnagar University' },
-                  { direction: 'Access',   place: 'Dhaka-Aricha Highway' },
-                ].map(item => (
-                  <div key={item.direction} className="flex items-start gap-3 bg-white/[0.03] border border-white/8 rounded-sm p-4">
-                    <MapPin size={13} className="text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-white/30 text-[9px] uppercase tracking-wider mb-0.5">{item.direction}</div>
-                      <div className="text-white text-xs xl:text-sm font-medium">{item.place}</div>
+            {/* Features + Location side by side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-px h-5 bg-accent" />
+                  <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Apartment Features</span>
+                </div>
+                <div className="space-y-0">
+                  {features.map(f => (
+                    <div key={f} className="flex items-center gap-2.5 py-1.5 border-b border-white/5">
+                      <CheckCircle2 size={11} className="text-accent shrink-0" strokeWidth={2} />
+                      <span className="text-white/60 text-xs font-light">{f}</span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-px h-5 bg-accent" />
+                  <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Location</span>
+                </div>
+                <div className="space-y-2">
+                  {[
+                    { direction: 'Society', place: 'Jahangirnagar Society' },
+                    { direction: 'Area',    place: 'Savar, Dhaka' },
+                    { direction: 'Nearby',  place: 'Jahangirnagar University' },
+                    { direction: 'Access',  place: 'Dhaka-Aricha Highway' },
+                  ].map(item => (
+                    <div key={item.direction} className="flex items-start gap-2.5 bg-white/[0.03] border border-white/8 rounded-sm p-3">
+                      <MapPin size={11} className="text-accent shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-white/30 text-[9px] uppercase tracking-wider">{item.direction}</div>
+                        <div className="text-white text-xs font-medium">{item.place}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* Floor Plan */}
             <div>
-              <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+              <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-px h-6 bg-accent" />
-                  <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">Floor Plan</span>
+                  <div className="w-px h-5 bg-accent" />
+                  <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Floor Plan</span>
                 </div>
-                <a
-                  href="/assets/feature/chayanir_plan.jpeg"
-                  download="Chayanir-Floor-Plan.jpeg"
-                  className="flex items-center gap-2 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-widest"
-                >
-                  <Download size={12} />
-                  Download Floor Plan
+                <a href="/assets/feature/chayanir_plan.jpeg" download="Chayanir-Floor-Plan.jpeg"
+                  className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-3 py-1.5 rounded-sm text-[10px] font-semibold uppercase tracking-widest">
+                  <Download size={11} /> Download
                 </a>
               </div>
-              <div className="rounded-sm overflow-hidden border border-white/10 bg-white/[0.02]">
+              <div className="border border-white/10 rounded-sm bg-white/[0.02] overflow-hidden">
                 <img
                   src="/assets/feature/chayanir_plan.jpeg"
                   alt="Chayanir Floor Plan"
@@ -253,65 +228,61 @@ export default function ChayanirClient() {
           </div>
 
           {/* Right sidebar */}
-          <div className="w-full lg:w-72 xl:w-80 shrink-0 space-y-4">
-            <div className="bg-white/[0.04] border border-white/10 rounded-sm p-5 xl:p-6 lg:sticky lg:top-6">
-              <h3 className="text-white font-semibold text-sm xl:text-base mb-4 pb-4 border-b border-white/10">
-                Project Details
-              </h3>
-              <div className="space-y-2.5 text-xs mb-5">
-                {[
-                  { label: 'Project Name', value: 'Chayanir' },
-                  { label: 'Developer',    value: 'Kaz Properties & Developers' },
-                  { label: 'Type',         value: 'Residential' },
-                  { label: 'Location',     value: 'Jahangirnagar Society, Savar' },
-                  { label: 'Bedrooms',     value: '3 Bedrooms' },
-                  { label: 'Hall',         value: '1 Hall / Drawing Room' },
-                  { label: 'Kitchen',      value: '1 Modern Kitchen' },
-                  { label: 'Bathrooms',    value: 'Available' },
-                  { label: 'Balconies',    value: 'Available' },
-                  { label: 'Status',       value: 'Available' },
-                ].map(row => (
-                  <div key={row.label} className="flex justify-between gap-2 py-2 border-b border-white/5 last:border-0">
-                    <span className="text-white/40 shrink-0">{row.label}</span>
-                    <span className="text-white font-medium text-right">{row.value}</span>
-                  </div>
-                ))}
+          <div className="w-full lg:w-64 xl:w-72 shrink-0">
+            <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 lg:sticky lg:top-4 space-y-4">
+
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-3 pb-3 border-b border-white/10">Project Details</h3>
+                <div className="space-y-0 text-xs">
+                  {[
+                    { label: 'Project',   value: 'Chayanir' },
+                    { label: 'Developer', value: 'Kaz Properties' },
+                    { label: 'Type',      value: 'Residential' },
+                    { label: 'Location',  value: 'Jahangirnagar Society' },
+                    { label: 'Bedrooms',  value: '3 Bedrooms' },
+                    { label: 'Hall',      value: '1 Hall / Drawing Room' },
+                    { label: 'Kitchen',   value: '1 Modern Kitchen' },
+                    { label: 'Bathrooms', value: 'Available' },
+                    { label: 'Balconies', value: 'Available' },
+                    { label: 'Status',    value: 'Available' },
+                  ].map(row => (
+                    <div key={row.label} className="flex justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
+                      <span className="text-white/35 shrink-0">{row.label}</span>
+                      <span className="text-white font-medium text-right">{row.value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-2.5">
-                <a href="tel:+8801774873972"
-                  className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-white text-white hover:text-brand-black transition-colors py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest">
-                  <Phone size={13} /> Call Us Now
+              <div className="space-y-2 pt-1 border-t border-white/10">
+                <a href="tel:+8801774873972" className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-white text-white hover:text-brand-black transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <Phone size={12} /> Call Us
                 </a>
-                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
-                <a href="/#contact"
-                  className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest">
-                  <Mail size={13} /> Email Us
+                <a href="/#contact" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <Mail size={12} /> Email Us
                 </a>
               </div>
-            </div>
 
-            <div className="bg-white/[0.03] border border-white/8 rounded-sm p-4 xl:p-5">
-              <h4 className="text-white/40 text-[10px] uppercase tracking-widest mb-2">Office Address</h4>
-              <p className="text-white/65 text-xs font-light leading-relaxed">
-                Bachelor Gate, Ambagan Road,<br />
-                Jahangirnagar University,<br />
-                Savar, Dhaka, Bangladesh
-              </p>
+              <div className="pt-1 border-t border-white/10">
+                <p className="text-white/30 text-[9px] uppercase tracking-widest mb-1">Office</p>
+                <p className="text-white/55 text-xs font-light leading-relaxed">
+                  Bachelor Gate, Ambagan Road,<br />Jahangirnagar University,<br />Savar, Dhaka
+                </p>
+              </div>
+
             </div>
           </div>
-
         </div>
       </div>
 
-      {/* Footer strip */}
-      <div className="border-t border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/30">
+      {/* Footer */}
+      <div className="border-t border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
-        <Link href="/" className="flex items-center gap-2 hover:text-accent transition-colors">
-          <ArrowLeft size={12} /> Back to Home
+        <Link href="/" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+          <ArrowLeft size={11} /> Back to Home
         </Link>
       </div>
 
