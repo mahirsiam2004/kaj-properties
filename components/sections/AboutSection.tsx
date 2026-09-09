@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 const counters = [
-  { end: 18, suffix: '+', label: 'Total SQFT Built (K)' },
-  { end: 27, suffix: '+', label: 'Number Of Units' },
+  { end: 18,  suffix: '+', label: 'Total SQFT Built (K)' },
+  { end: 27,  suffix: '+', label: 'Number Of Units' },
   { end: 100, suffix: '%', label: 'Happy Clients' },
-  { end: 2, suffix: '+', label: 'Number of Projects' },
+  { end: 2,   suffix: '+', label: 'Number of Projects' },
 ];
 
 function useCountUp(end: number, duration = 2000, start = false) {
@@ -25,12 +26,21 @@ function useCountUp(end: number, duration = 2000, start = false) {
   return count;
 }
 
-function Counter({ end, suffix, label, start, index }: { end: number; suffix: string; label: string; start: boolean; index: number }) {
+function Counter({ end, suffix, label, start, index }: {
+  end: number; suffix: string; label: string; start: boolean; index: number;
+}) {
   const val = useCountUp(end, 2000, start);
   return (
-    <div className={`flex flex-col items-center justify-center p-2 lg:p-5 xl:p-7 pb-2 lg:pb-5 border-b lg:border-b-0 border-white/10 ${index % 2 === 0 ? 'border-r' : 'lg:border-r'} last:border-r-0 last:border-b-0`}>
-      <div className="text-base lg:text-3xl xl:text-4xl font-bold text-accent mb-0.5">{val}<span className="text-white">{suffix}</span></div>
-      <div className="text-[7px] lg:text-xs xl:text-sm uppercase tracking-wider text-white/70 text-center leading-tight">{label}</div>
+    <div className={`flex flex-col items-center justify-center py-4 px-2 sm:py-5 sm:px-4
+      ${index < 3 ? 'border-b sm:border-b-0 sm:border-r border-white/10' : ''}
+      ${index === 1 ? 'border-r border-white/10 sm:border-r' : ''}
+    `}>
+      <div className="text-2xl sm:text-3xl xl:text-4xl font-bold text-accent leading-none">
+        {val}<span className="text-white">{suffix}</span>
+      </div>
+      <div className="text-[9px] sm:text-[10px] xl:text-xs uppercase tracking-wider text-white/60 text-center mt-1 leading-tight">
+        {label}
+      </div>
     </div>
   );
 }
@@ -40,50 +50,119 @@ export default function AboutSection() {
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([e]) => { if (e.isIntersecting) setStarted(true); }, { threshold: 0.3 });
+    const observer = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setStarted(true); },
+      { threshold: 0.2 }
+    );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="bg-brand-black text-white relative overflow-hidden min-h-[100dvh] flex items-center" id="about">
-      <div className="container mx-auto px-4 lg:px-12 xl:px-20 w-full py-3 lg:py-12 xl:py-16 max-h-[100dvh]">
-        <div className="mb-3 lg:mb-8 xl:mb-10">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-5 h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 grid grid-cols-3 gap-0.5">
-              {[...Array(9)].map((_, i) => <div key={i} className={`w-1 h-1 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/50'}`} />)}
-            </div>
-            <h2 className="text-base lg:text-2xl xl:text-3xl font-light tracking-wide uppercase">About Us</h2>
-          </div>
+    <section
+      className="bg-brand-black text-white relative w-full h-[100dvh] flex items-center overflow-hidden"
+      id="about"
+    >
+      {/* Dot grid bg */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '28px 28px' }}
+      />
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" />
+
+      <div className="relative z-10 w-full h-full flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-36 py-6 sm:py-8">
+
+        {/* Section label */}
+        <div className="flex items-center gap-2 mb-4 sm:mb-5">
+          <div className="w-px h-6 sm:h-8 bg-accent" />
+          <span className="text-accent uppercase tracking-widest text-xs sm:text-sm font-bold">About Us</span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-3 lg:gap-16 xl:gap-20 items-center mb-3 lg:mb-10 xl:mb-12">
-          <div className="w-full lg:w-1/2 order-2 lg:order-1">
-            <p className="text-xs lg:text-sm xl:text-base leading-relaxed font-light text-white/90 text-justify mb-2 lg:mb-4 xl:mb-5">
-              Kaz Properties started its journey in the real estate development sector partnering with renowned projects. Backing with current good reputation and sector experience, Kaz Properties has expanded its footprint to the building construction sector.
+        {/* Main grid: text left | video right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-14 xl:gap-20 items-center flex-1 min-h-0">
+
+          {/* Left: text */}
+          <div className="flex flex-col justify-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-light leading-tight mb-3 sm:mb-4">
+              Building Tomorrow&apos;s<br className="hidden sm:block" /> Legacy, Today
+            </h2>
+            <p className="text-xs sm:text-sm xl:text-base leading-relaxed font-light text-white/70 mb-3 sm:mb-4">
+              Kaz Properties started its journey in the real estate development sector partnering with renowned projects.
+              Backed by current good reputation and sector experience, Kaz Properties has expanded its footprint to the
+              building construction sector.
             </p>
-            <p className="text-xs lg:text-sm xl:text-base leading-relaxed font-light text-white/90 text-justify mb-3 lg:mb-5 xl:mb-6">
-              We have a skilled, experienced, and committed management team. We gather widely experienced professionals, trained both at home and abroad, including civil engineers, structural engineers, and architects.
+            <p className="text-xs sm:text-sm xl:text-base leading-relaxed font-light text-white/70 mb-5 sm:mb-6">
+              We have a skilled, experienced, and committed management team — widely experienced professionals trained
+              both at home and abroad, including civil engineers, structural engineers, and architects.
             </p>
-            <a href="#property" className="inline-block border border-accent text-accent hover:bg-accent hover:text-brand-black transition-colors px-3 lg:px-5 xl:px-7 py-1 lg:py-2 xl:py-3 uppercase tracking-wide text-xs lg:text-xs xl:text-sm rounded-sm">
-              Learn More
-            </a>
+
+            {/* Stats grid */}
+            <div
+              ref={ref}
+              className="grid grid-cols-4 border border-white/10 rounded-sm bg-white/[0.04] backdrop-blur-sm mb-5 sm:mb-6"
+            >
+              {counters.map((c, i) => (
+                <Counter key={c.label} {...c} start={started} index={i} />
+              ))}
+            </div>
+
+            {/* Learn More → management team */}
+            <div>
+              <Link
+                href="/management-team"
+                className="inline-flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-brand-black transition-colors px-5 py-2 sm:px-6 sm:py-2.5 uppercase tracking-widest text-xs sm:text-sm rounded-sm font-semibold"
+              >
+                Learn More
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
+            </div>
           </div>
-          <div className="w-full lg:w-1/2 relative order-1 lg:order-2">
-            <div className="relative aspect-video w-full overflow-hidden rounded-sm bg-brand-black border border-white/10">
-              <iframe width="100%" height="100%"
+
+          {/* Right: video — hidden on very small screens to avoid overflow */}
+          <div className="hidden sm:flex flex-col justify-center">
+            <div className="relative w-full rounded-sm overflow-hidden border border-white/10 bg-white/[0.03]"
+              style={{ aspectRatio: '16/9' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/nQD1CNlsArE?si=-54bb1Cdn4NIOdZl"
-                title="About Kaz Properties" frameBorder="0"
+                title="About Kaz Properties"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="absolute inset-0" />
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            {/* Decorative accent line below video */}
+            <div className="mt-3 flex items-center gap-3">
+              <div className="h-px flex-1 bg-accent/20" />
+              <span className="text-white/20 text-[10px] uppercase tracking-widest">Kaz Properties</span>
+              <div className="h-px flex-1 bg-accent/20" />
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 border border-white/10 rounded-sm bg-white/5 backdrop-blur-sm" ref={ref}>
-          {counters.map((c, i) => <Counter key={c.label} {...c} start={started} index={i} />)}
+        {/* Video shown below on mobile */}
+        <div className="sm:hidden mt-4">
+          <div className="relative w-full rounded-sm overflow-hidden border border-white/10 bg-white/[0.03]"
+            style={{ aspectRatio: '16/9' }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/nQD1CNlsArE?si=-54bb1Cdn4NIOdZl"
+              title="About Kaz Properties"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
         </div>
+
       </div>
+
+      {/* Bottom divider */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-white/10" />
     </section>
   );

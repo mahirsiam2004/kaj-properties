@@ -13,7 +13,6 @@ import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import FeaturedProjectsSection from '@/components/sections/FeaturedProjectsSection';
 import LatestNewsSection from '@/components/sections/LatestNewsSection';
-import PropertySection from '@/components/sections/PropertySection';
 import PropertyShowcase from '@/components/sections/PropertyShowcase';
 import LocationSection from '@/components/sections/LocationSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
@@ -43,14 +42,13 @@ export default function HomeClient() {
   const sectionMap: Record<string, number> = {
     '#home': 0,
     ...(hasNews ? { '#news': 1 } : {}),
-    '#about':       hasNews ? 2 : 1,
-    '#featured':    hasNews ? 3 : 2,
-    '#property':    hasNews ? 4 : 3,
-    '#showcase':    hasNews ? 5 : 4,
-    '#location':    hasNews ? 6 : 5,
-    '#testimonials':hasNews ? 7 : 6,
-    '#contact':     hasNews ? 8 : 7,
-    '#footer':      hasNews ? 9 : 8,
+    '#about':        hasNews ? 2 : 1,
+    '#featured':     hasNews ? 3 : 2,
+    '#showcase':     hasNews ? 4 : 3,
+    '#location':     hasNews ? 5 : 4,
+    '#testimonials': hasNews ? 6 : 5,
+    '#contact':      hasNews ? 7 : 6,
+    '#footer':       hasNews ? 8 : 7,
   };
 
   useEffect(() => {
@@ -146,9 +144,6 @@ export default function HomeClient() {
         </SwiperSlide>
         <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <FeaturedProjectsSection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
-          <PropertySection />
         </SwiperSlide>
         <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <PropertyShowcase />

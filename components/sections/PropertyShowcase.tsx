@@ -107,7 +107,7 @@ export default function PropertyShowcase() {
             </div>
             <span className="text-accent uppercase font-semibold text-xs xl:text-sm tracking-widest">Video Tour</span>
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-light tracking-wide">Property Showcase</h2>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-light tracking-wide">Virtual Tour</h2>
           <p className="text-white/50 text-sm xl:text-base mt-2 font-light max-w-md xl:max-w-lg">Experience our properties through an immersive video tour.</p>
         </div>
       </div>

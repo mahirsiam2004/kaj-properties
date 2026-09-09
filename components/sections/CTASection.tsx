@@ -99,7 +99,7 @@ export default function CTASection() {
                 { href: 'tel:+8801774873972',                            icon: <Phone size={15} />,  label: '+880 1774-873972', sub: 'Director Operations' },
                 { href: 'tel:01913715734',                               icon: <Phone size={15} />,  label: '01913-715734',     sub: 'Director Sales' },
                 { href: 'https://wa.me/8801774873972', target: '_blank', icon: <WhatsAppIcon />,     label: 'WhatsApp',         sub: 'Chat with us' },
-                { href: 'mailto:kazdevelopersteam@gmail.com',            icon: <Mail size={15} />,   label: 'Email Us',         sub: 'Get in touch' },
+                { href: 'mailto:hellokazpnd@gmail.com',            icon: <Mail size={15} />,   label: 'Email Us',         sub: 'Get in touch' },
               ].map(item => (
                 <a
                   key={item.label}

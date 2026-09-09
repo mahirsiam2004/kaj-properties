@@ -16,7 +16,7 @@ const WhatsAppIcon = () => (
 // Dispatch remoteSlideTo so the Swiper jumps to the contact section
 function slideToContact(e: React.MouseEvent<HTMLAnchorElement>) {
   e.preventDefault();
-  window.dispatchEvent(new CustomEvent('remoteSlideTo', { detail: { index: 8 } }));
+  window.dispatchEvent(new CustomEvent('remoteSlideTo', { detail: { index: 7 } }));
 }
 
 const socials = [

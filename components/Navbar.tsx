@@ -12,12 +12,11 @@ function buildSectionIndex(hasNews: boolean) {
     ...(hasNews ? { '#news': 1 } : {}),
     '#about':        hasNews ? 2 : 1,
     '#featured':     hasNews ? 3 : 2,
-    '#property':     hasNews ? 4 : 3,
-    '#showcase':     hasNews ? 5 : 4,
-    '#location':     hasNews ? 6 : 5,
-    '#testimonials': hasNews ? 7 : 6,
-    '#contact':      hasNews ? 8 : 7,
-    '#footer':       hasNews ? 9 : 8,
+    '#showcase':     hasNews ? 4 : 3,
+    '#location':     hasNews ? 5 : 4,
+    '#testimonials': hasNews ? 6 : 5,
+    '#contact':      hasNews ? 7 : 6,
+    '#footer':       hasNews ? 8 : 7,
   } as Record<string, number>;
 }
 
@@ -29,7 +28,7 @@ function buildMenuLinks(hasNews: boolean) {
   if (hasNews) links.push({ hash: '#news', label: 'News' });
   links.push(
     { hash: '#featured',     label: 'Featured Projects' },
-    { hash: '#property',     label: 'Projects' },
+    { hash: '#showcase',     label: 'Virtual Tour' },
     { hash: '#location',     label: 'Location' },
     { hash: '#testimonials', label: 'Testimonials' },
     { hash: '#contact',      label: 'Contact' },
@@ -45,11 +44,10 @@ function buildSearchable(hasNews: boolean) {
   if (hasNews) s.push({ label: 'Latest News', hash: '#news', index: 2 });
   s.push(
     { label: 'Featured Projects', hash: '#featured',     index: hasNews ? 3 : 2 },
-    { label: 'Projects',          hash: '#property',     index: hasNews ? 4 : 3 },
-    { label: 'Video Tour',        hash: '#showcase',     index: hasNews ? 5 : 4 },
-    { label: 'Location',          hash: '#location',     index: hasNews ? 6 : 5 },
-    { label: 'Testimonials',      hash: '#testimonials', index: hasNews ? 7 : 6 },
-    { label: 'Contact',           hash: '#contact',      index: hasNews ? 8 : 7 },
+    { label: 'Virtual Tour',      hash: '#showcase',     index: hasNews ? 4 : 3 },
+    { label: 'Location',          hash: '#location',     index: hasNews ? 5 : 4 },
+    { label: 'Testimonials',      hash: '#testimonials', index: hasNews ? 6 : 5 },
+    { label: 'Contact',           hash: '#contact',      index: hasNews ? 7 : 6 },
   );
   return s;
 }
@@ -82,7 +80,7 @@ export default function Navbar() {
   const SECTION_INDEX = buildSectionIndex(hasNews);
   const menuLinks = buildMenuLinks(hasNews);
   const searchable = buildSearchable(hasNews);
-  const lightIndices = hasNews ? [7, 8, 9] : [6, 7, 8];
+  const lightIndices = hasNews ? [6, 7, 8] : [5, 6, 7];
   const isLight = lightIndices.includes(activeIndex);
 
   const filtered = searchQuery
