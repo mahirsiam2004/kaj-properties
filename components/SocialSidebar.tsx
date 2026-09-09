@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail } from 'lucide-react';
 
 const FacebookIcon = () => (
@@ -11,11 +13,17 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
+// Dispatch remoteSlideTo so the Swiper jumps to the contact section
+function slideToContact(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  window.dispatchEvent(new CustomEvent('remoteSlideTo', { detail: { index: 8 } }));
+}
+
 const socials = [
-  { label: 'WhatsApp', href: 'https://wa.me/8801856621076', icon: <WhatsAppIcon /> },
-  { label: 'Email', href: '/#contact', icon: <Mail size={16} strokeWidth={1.5} /> },
+  { label: 'WhatsApp', href: 'https://wa.me/8801856621076', icon: <WhatsAppIcon />, onClick: undefined },
+  { label: 'Email',    href: '#contact',                    icon: <Mail size={16} strokeWidth={1.5} />, onClick: slideToContact },
   { label: 'divider' },
-  { label: 'Facebook', href: 'https://www.facebook.com/share/19RCkfoS3k/', icon: <FacebookIcon /> },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/19RCkfoS3k/', icon: <FacebookIcon />, onClick: undefined },
 ];
 
 export default function SocialSidebar() {
@@ -25,7 +33,15 @@ export default function SocialSidebar() {
         {socials.map((item, i) => {
           if (item.label === 'divider') return <div key={i} className="w-8 h-px bg-white/20" />;
           return (
-            <a key={i} href={item.href} className="text-white hover:text-accent hover:scale-110 transition-all duration-300" aria-label={item.label}>
+            <a
+              key={i}
+              href={item.href}
+              target={item.onClick ? undefined : '_blank'}
+              rel={item.onClick ? undefined : 'noopener noreferrer'}
+              onClick={item.onClick}
+              className="text-white hover:text-accent hover:scale-110 transition-all duration-300"
+              aria-label={item.label}
+            >
               {item.icon}
             </a>
           );

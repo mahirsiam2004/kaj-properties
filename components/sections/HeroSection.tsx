@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 
 const slides = [
-  { url: '/assets/banner/3 copy.jpg.jpeg', label: 'Premium Living Spaces' },
-  { url: '/assets/banner/4 copy.jpg.jpeg', label: 'Modern Architecture' },
-  { url: '/assets/banner/5 copy.jpg.jpeg', label: 'Luxury Interiors' },
+  { url: '/assets/banner/1.jpeg', label: 'Premium Living Spaces' },
+  { url: '/assets/banner/2.jpeg', label: 'Modern Architecture' },
+  { url: '/assets/banner/3.png',  label: 'Luxury Interiors' },
 ];
 
 export default function HeroSection() {

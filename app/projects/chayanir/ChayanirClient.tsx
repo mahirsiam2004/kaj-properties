@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeft, MapPin, BedDouble, Bath, Phone, Mail,
-  ChevronLeft, ChevronRight, CheckCircle2,
+  ChevronLeft, ChevronRight, CheckCircle2, Download,
 } from 'lucide-react';
 
 const WhatsAppIcon = () => (
@@ -222,6 +222,31 @@ export default function ChayanirClient() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Floor Plan */}
+            <div>
+              <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-px h-6 bg-accent" />
+                  <span className="text-accent uppercase tracking-widest text-[10px] xl:text-xs font-bold">Floor Plan</span>
+                </div>
+                <a
+                  href="/assets/feature/chayanir_plan.jpeg"
+                  download="Chayanir-Floor-Plan.jpeg"
+                  className="flex items-center gap-2 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-widest"
+                >
+                  <Download size={12} />
+                  Download Floor Plan
+                </a>
+              </div>
+              <div className="rounded-sm overflow-hidden border border-white/10 bg-white/[0.02]">
+                <img
+                  src="/assets/feature/chayanir_plan.jpeg"
+                  alt="Chayanir Floor Plan"
+                  className="w-full h-auto object-contain"
+                />
               </div>
             </div>
 
