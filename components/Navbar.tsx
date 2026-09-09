@@ -234,8 +234,9 @@ export default function Navbar() {
             <Logo />
           </a>
         </div>
-        <ul className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10 text-2xl lg:text-4xl xl:text-5xl capitalize font-light tracking-wide text-white">
-          {menuLinks.map(({ hash, label }) => (
+        <ul className="flex flex-col items-center gap-3 lg:gap-4 xl:gap-5 text-xl lg:text-2xl xl:text-3xl capitalize font-light tracking-wide text-white">
+          {/* All links except Contact */}
+          {menuLinks.filter(({ hash }) => hash !== '#contact').map(({ hash, label }) => (
             <li key={hash}>
               <a href={hash} onClick={(e) => handleNavClick(e, hash)}
                 className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2 whitespace-nowrap">
@@ -243,7 +244,7 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          {/* Real page links */}
+          {/* Management Team — before Contact */}
           <li>
             <Link
               href="/management-team"
@@ -252,6 +253,13 @@ export default function Navbar() {
             >
               Management Team
             </Link>
+          </li>
+          {/* Contact — always last */}
+          <li>
+            <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}
+              className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2 whitespace-nowrap">
+              Contact
+            </a>
           </li>
         </ul>
         <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Calendar, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 
 interface Update {
   _id: string;
@@ -39,108 +39,149 @@ export default function LatestNewsSection() {
 
   return (
     <section
-      className="relative bg-brand-black text-white w-full h-[100dvh] overflow-hidden flex flex-col"
+      className="relative bg-brand-black text-white w-full h-[100dvh] overflow-hidden"
       id="news"
     >
-      {/* Top accent line */}
-      <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent shrink-0" />
+      {/* ── Full-bleed two-column grid ── */}
+      <div className="absolute inset-0 flex flex-col lg:flex-row">
 
-      {/* Main two-column layout */}
-      <div className="flex-1 flex flex-col lg:flex-row min-h-0">
-
-        {/* ── LEFT: Image panel ── */}
-        <div className="relative w-full lg:w-[52%] xl:w-[55%] h-52 sm:h-64 lg:h-full shrink-0 overflow-hidden">
+        {/* ══ LEFT — image fills its half completely ══ */}
+        <div className="relative w-full lg:w-1/2 h-[45vw] max-h-[50vh] lg:max-h-none lg:h-full overflow-hidden">
           <img
             key={item._id}
             src={item.imageUrl}
             alt={item.title}
-            className="w-full h-full object-cover transition-all duration-700"
+            className="absolute inset-0 w-full h-full object-cover transition-all duration-700 scale-[1.02] hover:scale-100"
+            style={{ transition: 'transform 8s ease, opacity 0.7s ease' }}
           />
-          {/* Dark gradient overlay for desktop right-edge blend */}
-          <div className="hidden lg:block absolute inset-y-0 right-0 w-32 bg-gradient-to-r from-transparent to-brand-black pointer-events-none" />
-          {/* Bottom fade on mobile */}
-          <div className="lg:hidden absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-brand-black to-transparent pointer-events-none" />
+          {/* Subtle dark bottom vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent pointer-events-none" />
+          {/* Right-edge blend to the dark panel */}
+          <div className="hidden lg:block absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-brand-black pointer-events-none" />
 
-          {/* Index badge */}
-          <div className="absolute top-4 left-4 bg-brand-black/70 backdrop-blur-sm border border-white/10 rounded-sm px-3 py-1 flex items-center gap-2">
-            <Newspaper size={11} className="text-accent" />
-            <span className="text-white/60 text-[10px] uppercase tracking-widest font-medium">
-              {String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          {/* Floating issue tag on image */}
+          <div className="absolute top-6 left-6 flex items-center gap-2">
+            <span className="bg-accent text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-sm">
+              News Update
             </span>
           </div>
         </div>
 
-        {/* ── RIGHT: Content panel ── */}
-        <div className="flex-1 flex flex-col justify-between px-6 md:px-10 lg:px-12 xl:px-16 2xl:px-20 py-8 lg:py-16 xl:py-20 min-h-0">
+        {/* ══ RIGHT — content panel, three rows ══ */}
+        <div className="relative flex-1 flex flex-col bg-brand-black overflow-hidden">
 
-          {/* Section label */}
-          <div className="flex items-center gap-2 mb-6 lg:mb-10">
-            <div className="w-5 h-5 grid grid-cols-3 gap-0.5 shrink-0">
-              {[...Array(9)].map((_, i) => (
-                <div key={i} className={`w-1 h-1 rounded-full ${i % 2 === 0 ? 'bg-accent' : 'bg-white/30'}`} />
-              ))}
+          {/* Faint dot-grid texture */}
+          <div
+            className="absolute inset-0 opacity-[0.025] pointer-events-none"
+            style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '22px 22px' }}
+          />
+
+          {/* ── ROW 1: Header bar ── */}
+          <div className="relative z-10 flex items-center justify-between px-8 lg:px-10 xl:px-14 pt-10 lg:pt-14 xl:pt-16 pb-0 shrink-0">
+            <div className="flex items-center gap-3">
+              <div className="w-px h-8 bg-accent" />
+              <div>
+                <p className="text-accent text-[10px] uppercase tracking-[0.2em] font-bold">Latest News</p>
+                <p className="text-white/25 text-[10px] uppercase tracking-widest mt-0.5">Kaz Properties</p>
+              </div>
             </div>
-            <span className="text-white/40 uppercase tracking-widest text-xs font-medium">Latest News</span>
+            {/* Large ghost counter */}
+            <span className="text-5xl xl:text-6xl font-black text-white/[0.05] tabular-nums select-none leading-none">
+              {String(current + 1).padStart(2, '0')}<span className="text-2xl xl:text-3xl">/{String(total).padStart(2, '0')}</span>
+            </span>
           </div>
 
-          {/* Article content */}
-          <div className="flex-1 flex flex-col justify-center">
-            {/* Date */}
-            <div className="flex items-center gap-2 text-accent text-xs uppercase tracking-widest mb-4">
-              <Calendar size={11} />
-              <span>{fmt(item.date, item.createdAt)}</span>
+          {/* ── ROW 2: Article body — flex-1 fills all remaining space ── */}
+          <div className="relative z-10 flex-1 flex flex-col justify-center px-8 lg:px-10 xl:px-14 py-6 xl:py-8 min-h-0">
+
+            {/* Date chip */}
+            <div className="inline-flex items-center gap-2 border border-accent/30 rounded-sm px-3 py-1.5 w-fit mb-5 xl:mb-7">
+              <Calendar size={11} className="text-accent shrink-0" />
+              <span className="text-accent text-[11px] uppercase tracking-widest font-medium">
+                {fmt(item.date, item.createdAt)}
+              </span>
             </div>
 
-            {/* Title */}
-            <h3 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-semibold leading-tight mb-5 xl:mb-7">
+            {/* Headline */}
+            <h2 className="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold leading-[1.15] mb-5 xl:mb-7 text-white">
               {item.title}
-            </h3>
+            </h2>
 
-            {/* Description */}
-            <p className="text-sm md:text-base lg:text-base xl:text-lg text-white/60 leading-relaxed max-w-lg line-clamp-4">
+            {/* Accent underline */}
+            <div className="flex items-center gap-2 mb-5 xl:mb-7">
+              <div className="w-8 h-0.5 bg-accent rounded-full" />
+              <div className="w-2 h-0.5 bg-white/15 rounded-full" />
+            </div>
+
+            {/* Body copy */}
+            <p className="text-sm xl:text-base 2xl:text-lg text-white/55 leading-[1.8] xl:leading-[1.9] line-clamp-5 xl:line-clamp-6">
               {item.description}
             </p>
-          </div>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              aria-label="Previous news"
-              className="w-10 h-10 xl:w-11 xl:h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-accent hover:border-accent transition-all duration-300 shrink-0"
-            >
-              <ChevronLeft size={16} />
-            </button>
-
-            {/* Dots */}
-            <div className="flex gap-2 items-center">
-              {updates.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`News ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? 'w-6 h-2 bg-accent'
-                      : 'w-2 h-2 bg-white/15 hover:bg-accent/40'
-                  }`}
-                />
-              ))}
+            {/* Tags / meta row */}
+            <div className="flex items-center gap-3 mt-6 xl:mt-8 flex-wrap">
+              <span className="text-[10px] uppercase tracking-[0.15em] text-white/25 border border-white/10 px-2.5 py-1 rounded-sm">
+                Real Estate
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.15em] text-white/25 border border-white/10 px-2.5 py-1 rounded-sm">
+                Bangladesh
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.15em] text-white/25 border border-white/10 px-2.5 py-1 rounded-sm">
+                Kaz Properties
+              </span>
             </div>
-
-            <button
-              onClick={next}
-              aria-label="Next news"
-              className="w-10 h-10 xl:w-11 xl:h-11 rounded-full border border-white/15 flex items-center justify-center hover:bg-accent hover:border-accent transition-all duration-300 shrink-0"
-            >
-              <ChevronRight size={16} />
-            </button>
           </div>
+
+          {/* ── ROW 3: Controls bar ── */}
+          <div className="relative z-10 border-t border-white/8 mx-8 lg:mx-10 xl:mx-14 shrink-0">
+            <div className="flex items-center justify-between py-5 xl:py-6">
+
+              {/* Prev / dots / next */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prev}
+                  aria-label="Previous"
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-white transition-all duration-300"
+                >
+                  <ChevronLeft size={15} />
+                </button>
+
+                <div className="flex gap-1.5 items-center">
+                  {updates.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrent(i)}
+                      aria-label={`News ${i + 1}`}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === current
+                          ? 'w-5 h-1.5 bg-accent'
+                          : 'w-1.5 h-1.5 bg-white/15 hover:bg-accent/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={next}
+                  aria-label="Next"
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:bg-accent hover:border-accent hover:text-white transition-all duration-300"
+                >
+                  <ChevronRight size={15} />
+                </button>
+              </div>
+
+              {/* CTA */}
+              <button className="hidden sm:flex items-center gap-2 text-white/40 hover:text-accent transition-colors duration-300 group">
+                <span className="text-[11px] uppercase tracking-[0.15em] font-semibold">Read Article</span>
+                <div className="w-6 h-6 rounded-full border border-white/15 group-hover:border-accent flex items-center justify-center transition-colors duration-300">
+                  <ArrowUpRight size={11} className="group-hover:text-accent" />
+                </div>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* Bottom line */}
-      <div className="w-full h-px bg-white/8 shrink-0" />
     </section>
   );
 }
