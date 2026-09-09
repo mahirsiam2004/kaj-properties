@@ -15,9 +15,9 @@ const projects = [
     image: '/assets/feature/CHAYABITHI.jpg',
     stats: [
       { icon: 'sqft', value: '1800', label: 'Sq. Ft.' },
-      { icon: 'bed',  value: '3',    label: 'Beds' },
+      { icon: 'bed',  value: '4',    label: 'Beds' },
       { icon: 'bath', value: '4',    label: 'Baths' },
-      { icon: 'balcony', value: '6', label: 'Balconies' },
+      { icon: 'balcony', value: '4', label: 'Balconies' },
     ],
   },
   {
