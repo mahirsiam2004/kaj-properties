@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Logo } from './logo/Logo';
 import { Search, Menu, X, LayoutGrid } from 'lucide-react';
 
@@ -63,6 +65,9 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasNews, setHasNews] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     fetch('/api/updates')
@@ -81,10 +86,22 @@ export default function Navbar() {
     ? searchable.filter(s => s.label.toLowerCase().includes(searchQuery.toLowerCase()))
     : [];
 
+  // Page links (not sections) that are also searchable
+  const pageLinks = [
+    { label: 'Management Team', href: '/management-team' },
+  ];
+  const filteredPages = searchQuery
+    ? pageLinks.filter(p => p.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    : [];
+
   const handleNavClick = (e: React.MouseEvent, hash: string) => {
     e.preventDefault();
-    const idx = SECTION_INDEX[hash];
-    if (idx !== undefined) slideTo(idx);
+    if (!isHome) {
+      router.push(`/${hash}`);
+    } else {
+      const idx = SECTION_INDEX[hash];
+      if (idx !== undefined) slideTo(idx);
+    }
     setMenuOpen(false);
     setSearchOpen(false);
   };
@@ -132,7 +149,15 @@ export default function Navbar() {
           </div>
           {/* Center */}
           <div className="flex-shrink-0">
-            <a href="#home" onClick={(e) => { e.preventDefault(); slideTo(0); }}>
+            <a
+              href="/"
+              onClick={(e) => {
+                if (isHome) {
+                  e.preventDefault();
+                  slideTo(0);
+                }
+              }}
+            >
               <Logo light={!isLight} />
             </a>
           </div>
@@ -168,7 +193,7 @@ export default function Navbar() {
                   </button>
                 )}
               </div>
-              {filtered.length > 0 && (
+              {(filtered.length > 0 || filteredPages.length > 0) && (
                 <div className="mt-4 bg-white/5 border border-white/10 rounded-xl overflow-hidden backdrop-blur-md">
                   {filtered.map((s) => (
                     <button key={s.index} onClick={() => { setSearchOpen(false); setSearchQuery(''); slideTo(s.index); }}
@@ -177,9 +202,16 @@ export default function Navbar() {
                       <LayoutGrid size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
                   ))}
+                  {filteredPages.map((p) => (
+                    <Link key={p.href} href={p.href} onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
+                      className="w-full text-left px-6 py-3 hover:bg-accent hover:text-white transition-colors text-white/80 flex items-center justify-between group border-b border-white/5 last:border-0">
+                      <span>{p.label}</span>
+                      <LayoutGrid size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  ))}
                 </div>
               )}
-              {searchQuery && filtered.length === 0 && (
+              {searchQuery && filtered.length === 0 && filteredPages.length === 0 && (
                 <p className="mt-4 text-white/40 text-sm text-center py-3">No sections found for &quot;{searchQuery}&quot;</p>
               )}
             </div>
@@ -193,7 +225,11 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)} aria-label="Close menu">
           <X size={28} />
         </button>
-        <div className="absolute top-8 left-8 lg:left-16"><Logo /></div>
+        <div className="absolute top-8 left-8 lg:left-16">
+          <a href="/" onClick={(e) => { if (isHome) { e.preventDefault(); slideTo(0); } setMenuOpen(false); }}>
+            <Logo />
+          </a>
+        </div>
         <ul className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10 text-2xl lg:text-4xl xl:text-5xl capitalize font-light tracking-wide text-white">
           {menuLinks.map(({ hash, label }) => (
             <li key={hash} className="overflow-hidden">
@@ -203,6 +239,16 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          {/* Real page links */}
+          <li className="overflow-hidden">
+            <Link
+              href="/management-team"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-accent transition-colors duration-300 inline-block transform hover:translate-x-2"
+            >
+              Management Team
+            </Link>
+          </li>
         </ul>
         <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}
           className="mt-12 xl:mt-16 px-8 xl:px-10 py-3 xl:py-4 bg-accent text-white font-medium tracking-wide uppercase text-sm xl:text-base hover:bg-white hover:text-brand-black transition-colors rounded-sm">

@@ -14,20 +14,24 @@ const projects = [
     image: '/assets/feature/CHAYABITHI.jpg',
     stats: [
       { icon: 'sqft', value: '1800', label: 'Sq. Ft.' },
-      { icon: 'bed',  value: '3+1',  label: 'Beds' },
+      { icon: 'bed',  value: '3',    label: 'Beds' },
       { icon: 'bath', value: '4',    label: 'Baths' },
       { icon: 'balcony', value: '6', label: 'Balconies' },
     ],
   },
   {
-    id: 'project-2',
-    name: 'Project Two',
-    tagline: 'Our next landmark development — crafted for modern living.',
-    location: 'Dhaka, Bangladesh',
-    status: 'Coming Soon',
-    comingSoon: true,
+    id: 'chayanir',
+    name: 'Chayanir',
+    tagline: 'A thoughtfully designed residential project in the heart of Jahangirnagar Society.',
+    location: 'Jahangirnagar Society, Savar, Dhaka',
+    status: 'Available',
+    comingSoon: false,
     image: '/assets/feature/2.jpg',
-    stats: [],
+    stats: [
+      { icon: 'bed',     value: '3',  label: 'Beds' },
+      { icon: 'bath',    value: '—',  label: 'Baths' },
+      { icon: 'balcony', value: '—',  label: 'Balconies' },
+    ],
   },
   {
     id: 'project-3',
@@ -90,34 +94,23 @@ export default function FeaturedProjectsSection() {
               /* ── Coming Soon card ── */
               <div
                 key={project.id}
-                className="group relative overflow-hidden rounded-sm border border-white/10 bg-white/[0.02] flex flex-col"
+                className="group relative overflow-hidden rounded-sm border border-white/10 flex flex-col"
                 style={{ minHeight: '460px' }}
               >
-                {/* Background image dimmed */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-15 transition-opacity duration-700"
-                  style={{ backgroundImage: `url(${project.image})` }}
+                {/* Full-opacity background image */}
+                <img
+                  src={project.image}
+                  alt="Coming Soon"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/95 via-brand-black/60 to-brand-black/40" />
+                {/* Light gradient only at bottom so badge is readable */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent" />
 
-                {/* Coming soon badge */}
-                <div className="relative z-10 p-5 xl:p-7 flex-1 flex flex-col justify-between">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs xl:text-sm font-bold uppercase tracking-widest text-white/30">0{i + 1}</span>
-                    <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-                      <Clock size={11} className="text-accent" />
-                      <span className="text-xs text-white/60 uppercase tracking-widest font-medium">Coming Soon</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-auto">
-                    <div className="w-10 xl:w-12 h-px bg-accent/40 mb-4 xl:mb-5" />
-                    <h3 className="text-xl xl:text-2xl 2xl:text-3xl font-light text-white/50 mb-2">{project.name}</h3>
-                    <p className="text-white/30 text-xs xl:text-sm font-light leading-relaxed mb-4">{project.tagline}</p>
-                    <div className="flex items-center gap-1.5 text-white/20">
-                      <MapPin size={11} />
-                      <span className="text-xs font-light">{project.location}</span>
-                    </div>
+                {/* Coming Soon badge — centered */}
+                <div className="relative z-10 flex-1 flex items-center justify-center">
+                  <div className="flex items-center gap-2 bg-brand-black/60 backdrop-blur-sm border border-white/20 px-5 py-2.5 rounded-full">
+                    <Clock size={13} className="text-accent" />
+                    <span className="text-sm text-white font-semibold uppercase tracking-widest">Coming Soon</span>
                   </div>
                 </div>
               </div>
