@@ -141,7 +141,7 @@ export default function ChayabithiClient() {
                 <WhatsAppIcon /> WhatsApp
               </a>
               <a
-                href="mailto:hellokazpnd@gmail.com"
+                href="/#contact"
                 className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest"
               >
                 <Mail size={13} /> Email
@@ -347,7 +347,7 @@ export default function ChayabithiClient() {
                   <WhatsAppIcon /> WhatsApp
                 </a>
                 <a
-                  href="mailto:hellokazpnd@gmail.com"
+                  href="/#contact"
                   className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white transition-colors py-2.5 rounded-sm font-semibold text-xs uppercase tracking-widest"
                 >
                   <Mail size={13} /> Email Us

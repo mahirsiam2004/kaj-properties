@@ -13,9 +13,9 @@ const WhatsAppIcon = () => (
 
 const socials = [
   { label: 'WhatsApp', href: 'https://wa.me/8801856621076', icon: <WhatsAppIcon /> },
-  { label: 'Email', href: 'mailto:kazdevelopersteam@gmail.com', icon: <Mail size={16} strokeWidth={1.5} /> },
+  { label: 'Email', href: '/#contact', icon: <Mail size={16} strokeWidth={1.5} /> },
   { label: 'divider' },
-  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61561571349588', icon: <FacebookIcon /> },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/19RCkfoS3k/', icon: <FacebookIcon /> },
 ];
 
 export default function SocialSidebar() {

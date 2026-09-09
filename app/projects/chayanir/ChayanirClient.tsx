@@ -132,7 +132,7 @@ export default function ChayanirClient() {
               <img
                 src={gallery[activeImg]}
                 alt="Chayanir"
-                className="w-full h-full object-cover transition-all duration-500"
+                className="w-full h-full object-contain transition-all duration-500"
               />
               {gallery.length > 1 && (
                 <>

@@ -16,10 +16,10 @@ const InstagramIcon = () => (
 );
 
 const socials = [
-  { Icon: FacebookIcon, href: 'https://www.facebook.com/profile.php?id=61561571349588', label: 'Facebook' },
-  { Icon: LinkedinIcon, href: '#', label: 'LinkedIn' },
+  { Icon: FacebookIcon, href: 'https://www.facebook.com/share/19RCkfoS3k/', label: 'Facebook' },
+  { Icon: LinkedinIcon, href: 'https://www.linkedin.com/company/kaz-properties-and-developers/', label: 'LinkedIn' },
   { Icon: TwitterXIcon, href: '#', label: 'Twitter / X' },
-  { Icon: YoutubeIcon, href: '#', label: 'YouTube' },
+  { Icon: YoutubeIcon, href: 'https://youtube.com/@abimperio1?si=UdZtXcD4qGanNTkN', label: 'YouTube' },
   { Icon: InstagramIcon, href: '#', label: 'Instagram' },
 ];
 
