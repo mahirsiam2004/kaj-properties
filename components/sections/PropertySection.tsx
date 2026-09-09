@@ -33,53 +33,53 @@ export default function PropertySection() {
         <div className="absolute inset-0 bg-brand-black/40" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-12 relative z-10 w-full py-3 lg:py-12 max-h-[100dvh]">
-        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-12">
+      <div className="container mx-auto px-4 lg:px-12 xl:px-20 relative z-10 w-full py-3 lg:py-12 xl:py-16 max-h-[100dvh]">
+        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-12 xl:gap-16">
           {/* Left */}
           <div className="w-full lg:w-1/2 text-white">
-            <div className="flex items-center gap-1.5 mb-2">
-              <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 grid grid-cols-2 gap-0.5">
+            <div className="flex items-center gap-1.5 mb-2 xl:mb-3">
+              <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 xl:w-4 xl:h-4 grid grid-cols-2 gap-0.5">
                 <div className="bg-accent w-full h-full rounded-sm" /><div className="bg-accent/50 w-full h-full rounded-sm" />
                 <div className="bg-accent/50 w-full h-full rounded-sm" /><div className="bg-accent w-full h-full rounded-sm" />
               </div>
-              <span className="text-accent uppercase font-semibold text-[8px] lg:text-xs tracking-widest">{featured.status}</span>
+              <span className="text-accent uppercase font-semibold text-xs lg:text-xs xl:text-sm tracking-widest">{featured.status}</span>
             </div>
-            <h3 className="text-base lg:text-3xl font-bold mb-1 lg:mb-2">{featured.name}</h3>
-            <p className="text-[9px] lg:text-sm text-white/80 font-light mb-2 lg:mb-5 max-w-lg">{featured.location}</p>
+            <h3 className="text-base lg:text-3xl xl:text-4xl font-bold mb-1 lg:mb-2 xl:mb-3">{featured.name}</h3>
+            <p className="text-xs lg:text-sm xl:text-base text-white/80 font-light mb-2 lg:mb-5 xl:mb-6 max-w-lg xl:max-w-xl">{featured.location}</p>
 
-            <div className="grid grid-cols-3 gap-2 lg:gap-4 mb-3 lg:mb-6">
+            <div className="grid grid-cols-3 gap-2 lg:gap-4 xl:gap-6 mb-3 lg:mb-6 xl:mb-8">
               {[
-                { icon: <BedDouble size={12} className="text-accent lg:w-4 lg:h-4" />, val: featured.beds, label: 'Bedroom' },
-                { icon: <Bath size={12} className="text-accent lg:w-4 lg:h-4" />, val: featured.baths, label: 'Bathroom' },
-                { icon: <Maximize2 size={10} className="text-accent lg:w-3.5 lg:h-3.5" />, val: featured.sqft, label: 'Flat size', sqft: true },
+                { icon: <BedDouble size={12} className="text-accent lg:w-4 lg:h-4 xl:w-5 xl:h-5" />, val: featured.beds, label: 'Bedroom' },
+                { icon: <Bath size={12} className="text-accent lg:w-4 lg:h-4 xl:w-5 xl:h-5" />, val: featured.baths, label: 'Bathroom' },
+                { icon: <Maximize2 size={10} className="text-accent lg:w-3.5 lg:h-3.5 xl:w-5 xl:h-5" />, val: featured.sqft, label: 'Flat size', sqft: true },
               ].map(({ icon, val, label, sqft }) => (
-                <div key={label} className="flex flex-col border-l-2 border-white/20 pl-2">
+                <div key={label} className="flex flex-col border-l-2 border-white/20 pl-2 xl:pl-3">
                   <div className="flex items-center gap-1 mb-0.5">
                     {icon}
-                    <span className="font-bold text-xs lg:text-lg">{val}
-                      {sqft && <span className="text-[6px] lg:text-[8px] bg-white text-brand-black px-0.5 lg:px-1 rounded-sm ml-0.5 lg:ml-1 uppercase">SQFT</span>}
+                    <span className="font-bold text-xs lg:text-lg xl:text-xl">{val}
+                      {sqft && <span className="text-[6px] lg:text-[8px] xl:text-[10px] bg-white text-brand-black px-0.5 lg:px-1 rounded-sm ml-0.5 lg:ml-1 uppercase">SQFT</span>}
                     </span>
                   </div>
-                  <span className="text-[7px] lg:text-xs font-light text-white/70 uppercase">{label}</span>
+                  <span className="text-xs lg:text-xs xl:text-sm font-light text-white/70 uppercase">{label}</span>
                 </div>
               ))}
             </div>
 
             <button onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-1.5 border border-white/30 text-white hover:bg-white hover:text-brand-black transition-colors px-3 lg:px-5 py-1 lg:py-2 text-[8px] lg:text-xs tracking-wide rounded-sm mb-3 lg:mb-6">
+              className="inline-flex items-center gap-1.5 border border-white/30 text-white hover:bg-white hover:text-brand-black transition-colors px-3 lg:px-5 xl:px-6 py-1 lg:py-2 xl:py-2.5 text-xs lg:text-xs xl:text-sm tracking-wide rounded-sm mb-3 lg:mb-6 xl:mb-8">
               Project Details <ArrowRight size={16} />
             </button>
 
-            <div className="flex items-end justify-between border-t border-white/10 pt-2 lg:pt-5 mt-auto">
+            <div className="flex items-end justify-between border-t border-white/10 pt-2 lg:pt-5 xl:pt-6 mt-auto">
               <div className="flex items-center gap-2">
-                <span className="text-xl lg:text-4xl font-bold">2</span>
-                <span className="leading-tight text-[7px] lg:text-[9px] uppercase tracking-widest font-semibold text-white/80">Number<br />of projects</span>
+                <span className="text-xl lg:text-4xl xl:text-5xl font-bold">2</span>
+                <span className="leading-tight text-xs lg:text-sm xl:text-base uppercase tracking-widest font-semibold text-white/80">Number<br />of projects</span>
               </div>
             </div>
           </div>
 
           {/* Right: Video */}
-          <div className="w-full lg:w-1/2 relative h-[180px] lg:h-[380px]">
+          <div className="w-full lg:w-1/2 relative h-[180px] lg:h-[400px] xl:h-[500px]">
             <div className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl bg-brand-black border border-white/5">
               <iframe width="100%" height="100%"
                 src="https://www.youtube.com/embed/vQYPO-BBAZ4?si=vQ0pS_HtBwdjXtCq"

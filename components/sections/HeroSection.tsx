@@ -37,13 +37,13 @@ export default function HeroSection() {
       {/* Content */}
       <div className="container mx-auto px-6 lg:px-12 relative z-20 h-full flex items-center">
         <div className="max-w-4xl w-full">
-          <h1 className="text-3xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
+          <h1 className="text-3xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white mb-6 md:mb-8 xl:mb-10 leading-[1.1] tracking-tight">
             Welcome to <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent/50">
               Your Abode of Peace
             </span>
           </h1>
-          <p className="text-sm md:text-base text-white/80 font-light max-w-md mb-8 md:mb-10 leading-relaxed">
+          <p className="text-sm md:text-base lg:text-lg xl:text-xl text-white/80 font-light max-w-md xl:max-w-xl mb-8 md:mb-10 xl:mb-12 leading-relaxed">
             Explore the Future of Urban Spaces with Kaz Properties
           </p>
         </div>

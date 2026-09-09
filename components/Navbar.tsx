@@ -119,12 +119,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 bg-transparent ${scrolled ? 'py-1.5 shadow-sm border-b border-brand-black/5 bg-brand-black/95 backdrop-blur-md' : 'py-3'}`}>
-        <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+      <nav className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 bg-transparent ${scrolled ? 'py-1.5 shadow-sm border-b border-brand-black/5 bg-brand-black/95 backdrop-blur-md' : 'py-3 xl:py-4'}`}>
+        <div className="container mx-auto px-6 lg:px-12 xl:px-20 flex justify-between items-center">
           {/* Left */}
           <div className="flex-1 flex justify-start">
             <a href="#property" onClick={(e) => handleNavClick(e, '#property')}
-              className={`flex items-center gap-2 font-medium tracking-wide transition-colors uppercase text-sm group ${isLight ? 'text-brand-black hover:text-accent' : 'text-white hover:text-accent sm:drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]'}`}>
+              className={`flex items-center gap-2 font-medium tracking-wide transition-colors uppercase text-sm xl:text-base group ${isLight ? 'text-brand-black hover:text-accent' : 'text-white hover:text-accent sm:drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]'}`}>
               <LayoutGrid size={16} className={isLight ? 'text-brand-black group-hover:text-accent' : 'text-accent group-hover:scale-110 transition-transform'} />
               <span>Projects</span>
             </a>
@@ -136,17 +136,17 @@ export default function Navbar() {
             </a>
           </div>
           {/* Right */}
-          <div className="flex-1 flex justify-end items-center gap-4 lg:gap-6">
+          <div className="flex-1 flex justify-end items-center gap-4 lg:gap-6 xl:gap-8">
             <button
               className={`transition-all p-2 rounded-full ${searchOpen ? 'bg-accent text-white scale-110' : 'hover:text-accent'} ${isLight ? 'text-brand-black' : 'text-white sm:drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]'}`}
               aria-label="Search" onClick={() => { setSearchOpen(!searchOpen); setSearchQuery(''); }}>
-              {searchOpen ? <X size={22} /> : <Search size={22} />}
+              {searchOpen ? <X size={22} className="xl:w-6 xl:h-6" /> : <Search size={22} className="xl:w-6 xl:h-6" />}
             </button>
             <button
-              className={`flex items-center gap-2 transition-all font-semibold text-sm px-5 py-2 rounded-full shadow-lg hover:scale-105 active:scale-95 ${isLight ? 'bg-brand-black text-white hover:bg-accent' : 'bg-accent text-white hover:bg-white hover:text-brand-black'}`}
+              className={`flex items-center gap-2 transition-all font-semibold text-sm xl:text-base px-5 xl:px-6 py-2 xl:py-2.5 rounded-full shadow-lg hover:scale-105 active:scale-95 ${isLight ? 'bg-brand-black text-white hover:bg-accent' : 'bg-accent text-white hover:bg-white hover:text-brand-black'}`}
               onClick={() => setMenuOpen(true)} aria-label="Open menu">
               <span className="hidden sm:block">Menu</span>
-              <Menu size={20} />
+              <Menu size={20} className="xl:w-6 xl:h-6" />
             </button>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
           <X size={28} />
         </button>
         <div className="absolute top-8 left-8 lg:left-16"><Logo /></div>
-        <ul className="flex flex-col items-center gap-6 lg:gap-8 text-2xl lg:text-4xl capitalize font-light tracking-wide text-white">
+        <ul className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10 text-2xl lg:text-4xl xl:text-5xl capitalize font-light tracking-wide text-white">
           {menuLinks.map(({ hash, label }) => (
             <li key={hash} className="overflow-hidden">
               <a href={hash} onClick={(e) => handleNavClick(e, hash)}
@@ -204,7 +204,7 @@ export default function Navbar() {
           ))}
         </ul>
         <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}
-          className="mt-12 px-8 py-3 bg-accent text-white font-medium tracking-wide uppercase text-sm hover:bg-white hover:text-brand-black transition-colors rounded-sm">
+          className="mt-12 xl:mt-16 px-8 xl:px-10 py-3 xl:py-4 bg-accent text-white font-medium tracking-wide uppercase text-sm xl:text-base hover:bg-white hover:text-brand-black transition-colors rounded-sm">
           Get In Touch
         </a>
       </div>

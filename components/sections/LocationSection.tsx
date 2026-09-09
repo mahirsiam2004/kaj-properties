@@ -48,18 +48,18 @@ export default function LocationSection() {
         <div className="flex flex-col sm:flex-row gap-3 fade-up">
           {locations.map((loc, i) => (
             <button key={i} onClick={() => setActiveIdx(i)}
-              className={`text-left flex-1 border backdrop-blur-md px-5 py-4 transition-all duration-300 rounded-sm
+              className={`text-left flex-1 border backdrop-blur-md px-5 py-4 xl:px-6 xl:py-5 transition-all duration-300 rounded-sm
                 ${activeIdx === i
                   ? 'bg-accent/20 border-accent shadow-[0_0_30px_rgba(190,159,152,0.2)]'
                   : 'bg-white/80 border-gray-300 hover:bg-white hover:border-gray-400'}`}>
-              <span className={`block text-[9px] uppercase tracking-[0.2em] font-bold mb-1 ${activeIdx === i ? 'text-accent' : 'text-gray-500'}`}>
+              <span className={`block text-xs uppercase tracking-[0.2em] font-bold mb-1 ${activeIdx === i ? 'text-accent' : 'text-gray-500'}`}>
                 {loc.tag}
               </span>
-              <span className="block text-brand-black font-semibold text-sm">{loc.name}</span>
-              <span className="block text-gray-600 text-xs mt-0.5">{loc.area}</span>
+              <span className="block text-brand-black font-semibold text-sm xl:text-base">{loc.name}</span>
+              <span className="block text-gray-600 text-xs xl:text-sm mt-0.5">{loc.area}</span>
               <a href={loc.mapUrl} target="_blank" rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                className="inline-flex items-center gap-1 mt-3 text-[10px] uppercase tracking-widest font-semibold text-accent hover:text-brand-black transition-colors">
+                className="inline-flex items-center gap-1 mt-3 text-xs uppercase tracking-widest font-semibold text-accent hover:text-brand-black transition-colors">
                 <ExternalLink size={10} /> Open Map
               </a>
             </button>

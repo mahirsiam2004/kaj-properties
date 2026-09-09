@@ -97,18 +97,18 @@ export default function PropertyShowcase() {
         </span>
       </div>
 
-      <div className="absolute inset-0 z-30 flex flex-col justify-end pl-20 lg:pl-28 pr-6 lg:pr-12 pb-12 pointer-events-none fade-up">
+      <div className="absolute inset-0 z-30 flex flex-col justify-end pl-20 lg:pl-28 xl:pl-36 pr-6 lg:pr-12 xl:pr-20 pb-12 xl:pb-16 pointer-events-none fade-up">
         <div>
-          <div className="absolute -top-8 left-0 text-[60px] md:text-[90px] font-bold text-white/5 whitespace-nowrap select-none tracking-widest uppercase">SHOWCASE</div>
+          <div className="absolute -top-8 left-0 text-[60px] md:text-[90px] xl:text-[120px] font-bold text-white/5 whitespace-nowrap select-none tracking-widest uppercase">SHOWCASE</div>
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-4 h-4 grid grid-cols-2 gap-0.5">
+            <div className="w-4 h-4 xl:w-5 xl:h-5 grid grid-cols-2 gap-0.5">
               <div className="bg-accent w-full h-full rounded-sm" /><div className="bg-accent/50 w-full h-full rounded-sm" />
               <div className="bg-accent/50 w-full h-full rounded-sm" /><div className="bg-accent w-full h-full rounded-sm" />
             </div>
-            <span className="text-accent uppercase font-semibold text-xs tracking-widest">Video Tour</span>
+            <span className="text-accent uppercase font-semibold text-xs xl:text-sm tracking-widest">Video Tour</span>
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl text-white font-light tracking-wide">Property Showcase</h2>
-          <p className="text-white/50 text-sm mt-2 font-light max-w-md">Experience our properties through an immersive video tour.</p>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-light tracking-wide">Property Showcase</h2>
+          <p className="text-white/50 text-sm xl:text-base mt-2 font-light max-w-md xl:max-w-lg">Experience our properties through an immersive video tour.</p>
         </div>
       </div>
     </section>
