@@ -11,10 +11,10 @@ import 'swiper/css/effect-creative';
 
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
+import FeaturedProjectsSection from '@/components/sections/FeaturedProjectsSection';
 import LatestNewsSection from '@/components/sections/LatestNewsSection';
 import PropertySection from '@/components/sections/PropertySection';
 import PropertyShowcase from '@/components/sections/PropertyShowcase';
-import FeaturesSection from '@/components/sections/FeaturesSection';
 import LocationSection from '@/components/sections/LocationSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import CTASection from '@/components/sections/CTASection';
@@ -42,15 +42,15 @@ export default function HomeClient() {
 
   const sectionMap: Record<string, number> = {
     '#home': 0,
-    '#about': 1,
-    ...(hasNews ? { '#news': 2 } : {}),
-    '#property': hasNews ? 3 : 2,
-    '#showcase': hasNews ? 4 : 3,
-    '#features': hasNews ? 5 : 4,
-    '#location': hasNews ? 6 : 5,
-    '#testimonials': hasNews ? 7 : 6,
-    '#contact': hasNews ? 8 : 7,
-    '#footer': hasNews ? 9 : 8,
+    ...(hasNews ? { '#news': 1 } : {}),
+    '#about':       hasNews ? 2 : 1,
+    '#featured':    hasNews ? 3 : 2,
+    '#property':    hasNews ? 4 : 3,
+    '#showcase':    hasNews ? 5 : 4,
+    '#location':    hasNews ? 6 : 5,
+    '#testimonials':hasNews ? 7 : 6,
+    '#contact':     hasNews ? 8 : 7,
+    '#footer':      hasNews ? 9 : 8,
   };
 
   useEffect(() => {
@@ -136,22 +136,22 @@ export default function HomeClient() {
         <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col">
           <HeroSection />
         </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
-          <AboutSection />
-        </SwiperSlide>
         {hasNews && (
           <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
             <LatestNewsSection />
           </SwiperSlide>
         )}
         <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
+          <AboutSection />
+        </SwiperSlide>
+        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
+          <FeaturedProjectsSection />
+        </SwiperSlide>
+        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <PropertySection />
         </SwiperSlide>
         <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <PropertyShowcase />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
-          <FeaturesSection />
         </SwiperSlide>
         <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <LocationSection />

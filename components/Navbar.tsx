@@ -6,47 +6,48 @@ import { Search, Menu, X, LayoutGrid } from 'lucide-react';
 
 function buildSectionIndex(hasNews: boolean) {
   return {
-    '#home': 0, '#about': 1,
-    ...(hasNews ? { '#news': 2 } : {}),
-    '#property': hasNews ? 3 : 2,
-    '#showcase': hasNews ? 4 : 3,
-    '#features': hasNews ? 5 : 4,
-    '#location': hasNews ? 6 : 5,
+    '#home': 0,
+    ...(hasNews ? { '#news': 1 } : {}),
+    '#about':        hasNews ? 2 : 1,
+    '#featured':     hasNews ? 3 : 2,
+    '#property':     hasNews ? 4 : 3,
+    '#showcase':     hasNews ? 5 : 4,
+    '#location':     hasNews ? 6 : 5,
     '#testimonials': hasNews ? 7 : 6,
-    '#contact': hasNews ? 8 : 7,
-    '#footer': hasNews ? 9 : 8,
+    '#contact':      hasNews ? 8 : 7,
+    '#footer':       hasNews ? 9 : 8,
   } as Record<string, number>;
 }
 
 function buildMenuLinks(hasNews: boolean) {
   const links = [
-    { hash: '#home', label: 'Home' },
-    { hash: '#about', label: 'About' },
+    { hash: '#home',     label: 'Home' },
+    { hash: '#about',    label: 'About' },
   ];
   if (hasNews) links.push({ hash: '#news', label: 'News' });
   links.push(
-    { hash: '#property', label: 'Projects' },
-    { hash: '#features', label: 'Features' },
-    { hash: '#location', label: 'Location' },
+    { hash: '#featured',     label: 'Featured Projects' },
+    { hash: '#property',     label: 'Projects' },
+    { hash: '#location',     label: 'Location' },
     { hash: '#testimonials', label: 'Testimonials' },
-    { hash: '#contact', label: 'Contact' },
+    { hash: '#contact',      label: 'Contact' },
   );
   return links;
 }
 
 function buildSearchable(hasNews: boolean) {
   const s = [
-    { label: 'Home', hash: '#home', index: 0 },
-    { label: 'About Us', hash: '#about', index: 1 },
+    { label: 'Home',              hash: '#home',         index: 0 },
+    { label: 'About Us',          hash: '#about',        index: 1 },
   ];
   if (hasNews) s.push({ label: 'Latest News', hash: '#news', index: 2 });
   s.push(
-    { label: 'Projects', hash: '#property', index: hasNews ? 3 : 2 },
-    { label: 'Video Tour', hash: '#showcase', index: hasNews ? 4 : 3 },
-    { label: 'Features', hash: '#features', index: hasNews ? 5 : 4 },
-    { label: 'Location', hash: '#location', index: hasNews ? 6 : 5 },
-    { label: 'Testimonials', hash: '#testimonials', index: hasNews ? 7 : 6 },
-    { label: 'Contact', hash: '#contact', index: hasNews ? 8 : 7 },
+    { label: 'Featured Projects', hash: '#featured',     index: hasNews ? 3 : 2 },
+    { label: 'Projects',          hash: '#property',     index: hasNews ? 4 : 3 },
+    { label: 'Video Tour',        hash: '#showcase',     index: hasNews ? 5 : 4 },
+    { label: 'Location',          hash: '#location',     index: hasNews ? 6 : 5 },
+    { label: 'Testimonials',      hash: '#testimonials', index: hasNews ? 7 : 6 },
+    { label: 'Contact',           hash: '#contact',      index: hasNews ? 8 : 7 },
   );
   return s;
 }
@@ -73,7 +74,7 @@ export default function Navbar() {
   const SECTION_INDEX = buildSectionIndex(hasNews);
   const menuLinks = buildMenuLinks(hasNews);
   const searchable = buildSearchable(hasNews);
-  const lightIndices = hasNews ? [6, 7, 8, 9] : [5, 6, 7, 8];
+  const lightIndices = hasNews ? [7, 8, 9] : [6, 7, 8];
   const isLight = lightIndices.includes(activeIndex);
 
   const filtered = searchQuery
@@ -123,7 +124,7 @@ export default function Navbar() {
         <div className="container mx-auto px-6 lg:px-12 xl:px-20 flex justify-between items-center">
           {/* Left */}
           <div className="flex-1 flex justify-start">
-            <a href="#property" onClick={(e) => handleNavClick(e, '#property')}
+            <a href="#featured" onClick={(e) => handleNavClick(e, '#featured')}
               className={`flex items-center gap-2 font-medium tracking-wide transition-colors uppercase text-sm xl:text-base group ${isLight ? 'text-brand-black hover:text-accent' : 'text-white hover:text-accent sm:drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]'}`}>
               <LayoutGrid size={16} className={isLight ? 'text-brand-black group-hover:text-accent' : 'text-accent group-hover:scale-110 transition-transform'} />
               <span>Projects</span>

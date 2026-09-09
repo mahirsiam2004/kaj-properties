@@ -36,6 +36,9 @@ body {
 
 * { box-sizing: border-box; }
 
+/* Allow text selection everywhere by default */
+* { user-select: text; -webkit-user-select: text; }
+
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
