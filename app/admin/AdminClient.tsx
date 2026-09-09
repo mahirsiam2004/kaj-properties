@@ -172,7 +172,9 @@ export default function AdminClient() {
           {/* LIST TAB */}
           {activeTab === 'list' && (
             <div>
-              <div className="ap-page-header"><div><h2>Updates Management</h2><p>View, edit, or delete existing posts</p></div></div>
+              <div className="ap-page-header"><div><h2>Updates Management</h2><p>View, edit, or delete existing posts</p></div>
+                <button className="ap-btn ap-btn-primary" onClick={() => { resetForm(); setActiveTab('add'); }}>+ Publish New Update</button>
+              </div>
               {isLoadingUpdates ? <div className="ap-loading">Loading updates...</div>
                 : updates.length === 0 ? (
                   <div className="ap-empty">

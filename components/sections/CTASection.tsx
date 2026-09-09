@@ -11,8 +11,8 @@ const WhatsAppIcon = () => (
 );
 
 const team = [
-  { img: '/assets/team/Abu Bakar Siddique.jpg', name: 'Abu Bakar Siddique', role: 'Director Operations', phone: 'tel:+8801774873972', phoneLabel: '+880 1774-873972' },
-  { img: '/assets/team/Sharmin Akter.jpeg',      name: 'Sharmin Akter',       role: 'Director Sales',       phone: 'tel:01913715734',    phoneLabel: '01913-715734' },
+  { img: '/assets/management-team/Abu_bakar.jpeg',      name: 'Abu Bakar Siddique', role: 'Director – Operations',    phone: 'tel:+8801774873972', phoneLabel: '+880 1774-873972' },
+  { img: '/assets/management-team/Sharmin Akter.jpeg',  name: 'Sharmin Akter',       role: 'Deputy Managing Director', phone: 'tel:01913715734',    phoneLabel: '01913-715734' },
 ];
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
@@ -96,8 +96,8 @@ export default function CTASection() {
             {/* Contact buttons */}
             <div className="grid grid-cols-2 gap-3 xl:gap-4 mt-auto">
               {[
-                { href: 'tel:+8801774873972',                            icon: <Phone size={15} />,  label: '+880 1774-873972', sub: 'Director Operations' },
-                { href: 'tel:01913715734',                               icon: <Phone size={15} />,  label: '01913-715734',     sub: 'Director Sales' },
+                { href: 'tel:+8801774873972',                            icon: <Phone size={15} />,  label: '+880 1774-873972', sub: 'Director – Operations' },
+                { href: 'tel:01913715734',                               icon: <Phone size={15} />,  label: '01913-715734',     sub: 'Deputy Managing Director' },
                 { href: 'https://wa.me/8801774873972', target: '_blank', icon: <WhatsAppIcon />,     label: 'WhatsApp',         sub: 'Chat with us' },
                 { href: 'mailto:hellokazpnd@gmail.com',            icon: <Mail size={15} />,   label: 'Email Us',         sub: 'Get in touch' },
               ].map(item => (

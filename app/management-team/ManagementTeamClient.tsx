@@ -17,17 +17,6 @@ const team = [
     ],
   },
   {
-    name: 'Abu Bakar Siddique',
-    title: 'Director – Operations',
-    company: 'KAZ Properties & Developers',
-    photo: '/assets/management-team/Abu_bakar.jpeg',
-    bio: [
-      'Abu Bakar Siddique serves as Director – Operations at KAZ Properties and Developers, bringing over a decade of experience in the Ready-Made Garments (RMG) sector along with growing expertise in real estate and business development.',
-      'An Economics graduate from Jahangirnagar University, he has strong experience in quality assurance, production management, operational efficiency, and customer-focused execution. He now applies this expertise to real estate, overseeing operations with a focus on quality, efficiency, transparency, and timely delivery.',
-      'Passionate about business development, Abu Bakar focuses on understanding market needs, building lasting relationships, and creating sustainable value. He believes successful real estate development is about turning people\'s aspirations into thoughtfully planned living spaces.',
-    ],
-  },
-  {
     name: 'Sharmin Akter',
     title: 'Deputy Managing Director',
     company: 'KAZ Properties & Developers',
@@ -37,6 +26,17 @@ const team = [
       'After completing her Master\'s in Arts from Jahangirnagar University, she began her career with MetLife Insurance Company, where she gained valuable expertise in client communication, relationship management, sales, and business development. She later joined Aksirnagar Housing Society, further strengthening her experience in real estate sales, marketing, and client relations.',
       'At KAZ Properties & Developers, she plays an active role in sales and marketing, business development, client relationship management, strategic planning, and business growth. Her leadership is guided by integrity, customer trust, transparency, and long-term value creation.',
       'She remains committed to building lasting relationships and delivering reliable, customer-focused real estate solutions.',
+    ],
+  },
+  {
+    name: 'Abu Bakar Siddique',
+    title: 'Director – Operations',
+    company: 'KAZ Properties & Developers',
+    photo: '/assets/management-team/Abu_bakar.jpeg',
+    bio: [
+      'Abu Bakar Siddique serves as Director – Operations at KAZ Properties and Developers, bringing over a decade of experience in the Ready-Made Garments (RMG) sector along with growing expertise in real estate and business development.',
+      'An Economics graduate from Jahangirnagar University, he has strong experience in quality assurance, production management, operational efficiency, and customer-focused execution. He now applies this expertise to real estate, overseeing operations with a focus on quality, efficiency, transparency, and timely delivery.',
+      'Passionate about business development, Abu Bakar focuses on understanding market needs, building lasting relationships, and creating sustainable value. He believes successful real estate development is about turning people\'s aspirations into thoughtfully planned living spaces.',
     ],
   },
 ];
