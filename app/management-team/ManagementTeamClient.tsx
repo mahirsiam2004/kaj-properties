@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+import ThemeToggleButton from '@/components/ThemeToggleButton';
 
 const team = [
   {
@@ -45,22 +46,23 @@ const team = [
 export default function ManagementTeamClient() {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-brand-black text-white overflow-y-auto h-screen">
+    <div className="min-h-screen bg-white dark:bg-brand-black text-brand-black dark:text-white overflow-y-auto h-screen">
 
       {/* ── Top nav bar ── */}
-      <div className="relative z-10 px-5 md:px-10 lg:px-16 xl:px-24 py-5 md:py-6 flex items-center justify-between border-b border-white/10">
+      <div className="relative z-10 px-5 md:px-10 lg:px-16 xl:px-24 py-5 md:py-6 flex items-center justify-between border-b border-black/10 dark:border-white/10">
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-white/50 hover:text-accent transition-colors text-sm font-medium group"
+          className="flex items-center gap-2 text-black/50 dark:text-white/50 hover:text-accent transition-colors text-sm font-medium group"
         >
           <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
           Back
         </button>
         <img src="/logo1.png" alt="Kaz Properties" className="h-8 md:h-10 xl:h-12 w-auto object-contain" />
+        <ThemeToggleButton variant="light" />
       </div>
 
       {/* ── Hero header — centered ── */}
-      <section className="relative overflow-hidden py-20 md:py-28 xl:py-36 text-center">
+      <section className="relative overflow-hidden py-20 md:py-28 xl:py-36 text-center bg-brand-black text-white">
         {/* Dot grid */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -91,12 +93,12 @@ export default function ManagementTeamClient() {
       </section>
 
       {/* ── Team members ── */}
-      <section className="px-5 md:px-10 lg:px-16 xl:px-24 2xl:px-36 pb-24 md:pb-32 xl:pb-40">
+      <section className="px-5 md:px-10 lg:px-16 xl:px-24 2xl:px-36 pb-24 md:pb-32 xl:pb-40 bg-white dark:bg-brand-black">
         <div className="flex flex-col gap-0">
           {team.map((member, index) => (
             <article
               key={member.name}
-              className={`flex flex-col lg:flex-row gap-0 border-t border-white/8 ${index === team.length - 1 ? 'border-b' : ''}`}
+              className={`flex flex-col lg:flex-row gap-0 border-t border-black/8 dark:border-white/8 ${index === team.length - 1 ? 'border-b' : ''}`}
             >
               {/* ── Photo panel ── */}
               <div
@@ -145,8 +147,8 @@ export default function ManagementTeamClient() {
                 {/* Name heading (visible on mobile since photo covers it) */}
                 <div className="lg:hidden mb-6">
                   <p className="text-accent text-xs uppercase tracking-widest font-semibold mb-1">{member.title}</p>
-                  <h2 className="text-2xl font-light">{member.name}</h2>
-                  <p className="text-white/40 text-xs mt-1">{member.company}</p>
+                  <h2 className="text-2xl font-light text-brand-black dark:text-white">{member.name}</h2>
+                  <p className="text-brand-black/40 dark:text-white/40 text-xs mt-1">{member.company}</p>
                 </div>
 
                 {/* Bio paragraphs */}
@@ -156,8 +158,8 @@ export default function ManagementTeamClient() {
                       key={pi}
                       className={`leading-[1.85] text-sm xl:text-base ${
                         pi === 0
-                          ? 'text-white/85 italic font-light border-l-2 border-accent/50 pl-4 text-base xl:text-lg'
-                          : 'text-white/55 font-light'
+                          ? 'text-brand-black/85 dark:text-white/85 italic font-light border-l-2 border-accent/50 pl-4 text-base xl:text-lg'
+                          : 'text-brand-black/55 dark:text-white/55 font-light'
                       }`}
                     >
                       {para}
@@ -177,22 +179,22 @@ export default function ManagementTeamClient() {
       </section>
 
       {/* ── CTA band ── */}
-      <section className="relative border-t border-white/10 py-16 md:py-20 text-center px-5">
+      <section className="relative border-t border-black/10 dark:border-white/10 py-16 md:py-20 text-center px-5 bg-white dark:bg-brand-black">
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}
+          style={{ backgroundImage: 'radial-gradient(#888 1px, transparent 1px)', backgroundSize: '24px 24px' }}
         />
         <div className="relative z-10">
           <p className="text-accent uppercase tracking-widest text-xs font-bold mb-4">Work With Us</p>
-          <h3 className="text-2xl md:text-4xl xl:text-5xl font-light mb-5 leading-tight">
+          <h3 className="text-2xl md:text-4xl xl:text-5xl font-light mb-5 leading-tight text-brand-black dark:text-white">
             Ready to build your<br className="hidden md:block" /> future with us?
           </h3>
-          <p className="text-white/40 text-sm xl:text-base font-light max-w-md mx-auto mb-8">
+          <p className="text-brand-black/40 dark:text-white/40 text-sm xl:text-base font-light max-w-md mx-auto mb-8">
             Our leadership team is here to guide you through every step of your real estate journey.
           </p>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-sm"
+            className="inline-flex items-center gap-2 bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors px-8 py-3.5 text-xs font-bold uppercase tracking-widest rounded-sm"
           >
             Get In Touch
           </Link>
@@ -200,7 +202,7 @@ export default function ManagementTeamClient() {
       </section>
 
       {/* ── Footer strip ── */}
-      <div className="border-t border-white/10 px-5 md:px-10 lg:px-16 xl:px-24 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/30">
+      <div className="border-t border-black/10 dark:border-white/10 px-5 md:px-10 lg:px-16 xl:px-24 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-black/30 dark:text-white/30 bg-white dark:bg-brand-black">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
         <button onClick={() => router.back()} className="flex items-center gap-2 hover:text-accent transition-colors">
           <ArrowLeft size={12} />

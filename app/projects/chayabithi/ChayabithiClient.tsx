@@ -6,6 +6,7 @@ import {
   ArrowLeft, MapPin, BedDouble, Bath, Maximize2,
   Phone, Mail, CheckCircle2, Download, ChevronLeft, ChevronRight, ChevronDown,
 } from 'lucide-react';
+import ThemeToggleButton from '@/components/ThemeToggleButton';
 
 const WhatsAppIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -76,27 +77,28 @@ export default function ChayabithiClient() {
   const next = () => setActiveImg(i => (i + 1) % gallery.length);
 
   return (
-    <div className="h-screen overflow-y-auto bg-brand-black text-white">
+    <div className="h-screen overflow-y-auto bg-white dark:bg-brand-black text-brand-black dark:text-white">
 
       {/* Top nav */}
-      <div className="sticky top-0 z-30 bg-brand-black/95 backdrop-blur-md border-b border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
-        <button onClick={() => router.back()} className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group">
+      <div className="sticky top-0 z-30 bg-white/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-black/60 dark:text-white/60 hover:text-accent transition-colors text-sm font-medium group">
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
           Back
         </button>
         <img src="/logo1.png" alt="Kaz Properties" className="h-7 md:h-8 w-auto object-contain" />
+        <ThemeToggleButton variant="light" />
       </div>
 
       {/* ── Hero: left text | right gallery ── */}
-      <div className="px-5 md:px-10 lg:px-14 xl:px-20 pt-5 pb-4 border-b border-white/10" style={{ maxHeight: '82vh' }}>
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 pt-5 pb-4 border-b border-black/10 dark:border-white/10" style={{ maxHeight: '82vh' }}>
         <div className="flex flex-col lg:flex-row gap-6 items-start">
 
           {/* Left */}
           <div className="flex-1 min-w-0 flex flex-col justify-between">
             <div>
               <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Kaz Properties — Flagship Project</span>
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-light mt-2 mb-2 leading-tight tracking-tight">Chayabithi</h1>
-              <div className="flex items-start gap-2 text-white/50 mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-light mt-2 mb-2 leading-tight tracking-tight text-brand-black dark:text-white">Chayabithi</h1>
+              <div className="flex items-start gap-2 text-black/50 dark:text-white/50 mb-4">
                 <MapPin size={12} className="text-accent shrink-0 mt-0.5" />
                 <span className="text-xs font-light leading-snug">
                   Dhaka-Aricha Highway, Savar · Adjacent to Jahangirnagar University, Dhaka
@@ -106,9 +108,9 @@ export default function ChayabithiClient() {
               {/* Stats */}
               <div className="grid grid-cols-4 gap-2 mb-4">
                 {stats.map(s => (
-                  <div key={s.label} className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                  <div key={s.label} className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
                     <StatIcon type={s.icon} />
-                    <div className="text-xl font-bold text-white">{s.value}</div>
+                    <div className="text-xl font-bold text-brand-black dark:text-white">{s.value}</div>
                     <div className="text-accent font-semibold text-[9px] uppercase tracking-wider">{s.label}</div>
                   </div>
                 ))}
@@ -116,20 +118,20 @@ export default function ChayabithiClient() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-2">
-                <a href="tel:+8801774873972" className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="tel:+8801774873972" className="flex items-center gap-1.5 bg-accent hover:bg-brand-black dark:hover:bg-white text-white hover:text-white dark:hover:text-brand-black transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Phone size={12} /> Call Us
                 </a>
-                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
-                <a href="/#contact" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="/#contact" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Mail size={12} /> Email
                 </a>
               </div>
             </div>
 
             {/* Scroll hint */}
-            <div className="hidden lg:flex items-center gap-2 mt-4 text-white/25 text-[10px] uppercase tracking-widest">
+            <div className="hidden lg:flex items-center gap-2 mt-4 text-black/25 dark:text-white/25 text-[10px] uppercase tracking-widest">
               <ChevronDown size={13} className="animate-bounce" />
               Scroll for details
             </div>
@@ -137,15 +139,15 @@ export default function ChayabithiClient() {
 
           {/* Right: gallery — capped so content peeks below */}
           <div className="w-full lg:w-[54%] shrink-0">
-            <div className="relative w-full rounded-sm overflow-hidden bg-white/[0.03]" style={{ maxHeight: '55vh', aspectRatio: '4/3' }}>
+            <div className="relative w-full rounded-sm overflow-hidden bg-black/[0.03] dark:bg-white/[0.03]" style={{ maxHeight: '55vh', aspectRatio: '4/3' }}>
               <img src={gallery[activeImg]} alt="Chayabithi" className="w-full h-full object-contain transition-all duration-500" />
-              <button onClick={prev} aria-label="Prev" className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+              <button onClick={prev} aria-label="Prev" className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 dark:bg-brand-black/60 border border-black/20 dark:border-white/20 flex items-center justify-center hover:bg-accent transition-all text-white">
                 <ChevronLeft size={13} />
               </button>
-              <button onClick={next} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+              <button onClick={next} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 dark:bg-brand-black/60 border border-black/20 dark:border-white/20 flex items-center justify-center hover:bg-accent transition-all text-white">
                 <ChevronRight size={13} />
               </button>
-              <div className="absolute bottom-2 right-2 bg-brand-black/60 rounded-full px-2.5 py-0.5 text-white/50 text-[10px] tabular-nums">{activeImg + 1}/{gallery.length}</div>
+              <div className="absolute bottom-2 right-2 bg-black/60 rounded-full px-2.5 py-0.5 text-white/50 text-[10px] tabular-nums">{activeImg + 1}/{gallery.length}</div>
             </div>
             <div className="flex gap-2 mt-2 overflow-x-auto">
               {gallery.map((src, i) => (
@@ -159,9 +161,9 @@ export default function ChayabithiClient() {
       </div>
 
       {/* ── Scroll invite strip ── */}
-      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center gap-3 border-b border-white/8 bg-white/[0.02]">
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center gap-3 border-b border-black/8 dark:border-white/8 bg-black/[0.02] dark:bg-white/[0.02]">
         <ChevronDown size={14} className="text-accent animate-bounce shrink-0" />
-        <span className="text-white/40 text-xs font-light">Overview · How It Works · Features · Location · Floor Plan · Project Details</span>
+        <span className="text-black/40 dark:text-white/40 text-xs font-light">Overview · How It Works · Features · Location · Floor Plan · Project Details</span>
       </div>
 
       {/* ── Main content ── */}
@@ -177,7 +179,7 @@ export default function ChayabithiClient() {
                 <div className="w-px h-5 bg-accent" />
                 <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Overview</span>
               </div>
-              <p className="text-white/55 font-light text-sm leading-relaxed">
+              <p className="text-black/55 dark:text-white/55 font-light text-sm leading-relaxed">
                 Chayabithi proved the land-share model works — delivering premium, south-facing apartments adjacent to Jahangirnagar University. Every unit is designed for natural light, ventilation, and generous living space in one of Savar&apos;s most accessible locations.
               </p>
             </div>
@@ -190,13 +192,13 @@ export default function ChayabithiClient() {
               </div>
               <div className="space-y-2">
                 {steps.map((step, i) => (
-                  <div key={i} className="flex gap-3 bg-white/[0.03] border border-white/8 rounded-sm p-3">
+                  <div key={i} className="flex gap-3 bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8 rounded-sm p-3">
                     <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0 mt-0.5">
                       <span className="text-accent font-bold text-[10px]">{i + 1}</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold text-xs mb-0.5">{step.title}</h4>
-                      <p className="text-white/45 text-xs font-light leading-relaxed">{step.desc}</p>
+                      <h4 className="text-brand-black dark:text-white font-semibold text-xs mb-0.5">{step.title}</h4>
+                      <p className="text-black/45 dark:text-white/45 text-xs font-light leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -212,9 +214,9 @@ export default function ChayabithiClient() {
                 </div>
                 <div className="space-y-0">
                   {features.map(f => (
-                    <div key={f} className="flex items-center gap-2.5 py-1.5 border-b border-white/5">
+                    <div key={f} className="flex items-center gap-2.5 py-1.5 border-b border-black/5 dark:border-white/5">
                       <CheckCircle2 size={11} className="text-accent shrink-0" strokeWidth={2} />
-                      <span className="text-white/60 text-xs font-light">{f}</span>
+                      <span className="text-black/60 dark:text-white/60 text-xs font-light">{f}</span>
                     </div>
                   ))}
                 </div>
@@ -227,11 +229,11 @@ export default function ChayabithiClient() {
                 </div>
                 <div className="space-y-2">
                   {locationAdvantages.map(item => (
-                    <div key={item.direction} className="flex items-start gap-2.5 bg-white/[0.03] border border-white/8 rounded-sm p-3">
+                    <div key={item.direction} className="flex items-start gap-2.5 bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8 rounded-sm p-3">
                       <MapPin size={11} className="text-accent shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-white/30 text-[9px] uppercase tracking-wider">{item.direction}</div>
-                        <div className="text-white text-xs font-medium">{item.place}</div>
+                        <div className="text-black/30 dark:text-white/30 text-[9px] uppercase tracking-wider">{item.direction}</div>
+                        <div className="text-brand-black dark:text-white text-xs font-medium">{item.place}</div>
                       </div>
                     </div>
                   ))}
@@ -247,12 +249,11 @@ export default function ChayabithiClient() {
                   <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Floor Plan</span>
                 </div>
                 <a href="/assets/feature/chayabithi.pdf" download="Chayabithi-Floor-Plan.pdf"
-                  className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-3 py-1.5 rounded-sm text-[10px] font-semibold uppercase tracking-widest">
+                  className="flex items-center gap-1.5 bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors px-3 py-1.5 rounded-sm text-[10px] font-semibold uppercase tracking-widest">
                   <Download size={11} /> Download PDF
                 </a>
               </div>
-              {/* Image shown landscape using a wrapper that rotates without extra space */}
-              <div className="border border-white/10 rounded-sm bg-white/[0.02] overflow-hidden">
+              <div className="border border-black/10 dark:border-white/10 rounded-sm bg-black/[0.02] dark:bg-white/[0.02] overflow-hidden">
                 <div className="w-full" style={{ paddingBottom: '75%', position: 'relative' }}>
                   <img
                     src="/assets/feature/plan.jpg"
@@ -272,11 +273,11 @@ export default function ChayabithiClient() {
 
           {/* Right sidebar */}
           <div className="w-full lg:w-64 xl:w-72 shrink-0">
-            <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 lg:sticky lg:top-4 space-y-4">
+            <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-4 lg:sticky lg:top-4 space-y-4">
 
               {/* Project details */}
               <div>
-                <h3 className="text-white font-semibold text-sm mb-3 pb-3 border-b border-white/10">Project Details</h3>
+                <h3 className="text-brand-black dark:text-white font-semibold text-sm mb-3 pb-3 border-b border-black/10 dark:border-white/10">Project Details</h3>
                 <div className="space-y-0 text-xs">
                   {[
                     { label: 'Project',    value: 'Chayabithi' },
@@ -290,31 +291,31 @@ export default function ChayabithiClient() {
                     { label: 'Facing',     value: 'South-Facing' },
                     { label: 'Status',     value: 'Available' },
                   ].map(row => (
-                    <div key={row.label} className="flex justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
-                      <span className="text-white/35 shrink-0">{row.label}</span>
-                      <span className="text-white font-medium text-right">{row.value}</span>
+                    <div key={row.label} className="flex justify-between gap-2 py-1.5 border-b border-black/5 dark:border-white/5 last:border-0">
+                      <span className="text-black/35 dark:text-white/35 shrink-0">{row.label}</span>
+                      <span className="text-brand-black dark:text-white font-medium text-right">{row.value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Contact */}
-              <div className="space-y-2 pt-1 border-t border-white/10">
-                <a href="tel:+8801774873972" className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-white text-white hover:text-brand-black transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+              <div className="space-y-2 pt-1 border-t border-black/10 dark:border-white/10">
+                <a href="tel:+8801774873972" className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Phone size={12} /> Call Us
                 </a>
-                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
-                <a href="/#contact" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="/#contact" className="flex items-center justify-center gap-2 w-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Mail size={12} /> Email Us
                 </a>
               </div>
 
               {/* Address */}
-              <div className="pt-1 border-t border-white/10">
-                <p className="text-white/30 text-[9px] uppercase tracking-widest mb-1">Office</p>
-                <p className="text-white/55 text-xs font-light leading-relaxed">
+              <div className="pt-1 border-t border-black/10 dark:border-white/10">
+                <p className="text-black/30 dark:text-white/30 text-[9px] uppercase tracking-widest mb-1">Office</p>
+                <p className="text-black/55 dark:text-white/55 text-xs font-light leading-relaxed">
                   Bachelor Gate, Ambagan Road,<br />Jahangirnagar University,<br />Savar, Dhaka
                 </p>
               </div>
@@ -325,7 +326,7 @@ export default function ChayabithiClient() {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
+      <div className="border-t border-black/10 dark:border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-black/25 dark:text-white/25">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
         <button onClick={() => router.back()} className="flex items-center gap-1.5 hover:text-accent transition-colors">
           <ArrowLeft size={11} /> Back

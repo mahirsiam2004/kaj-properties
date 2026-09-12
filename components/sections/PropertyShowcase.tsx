@@ -1,114 +1,94 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { useState } from 'react';
 
-const VIDEO_ID = 'Ou75T-40wuw';
-
-declare global {
-  interface Window {
-    YT: { Player: new (el: HTMLElement, opts: object) => YTPlayer; };
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
-
-interface YTPlayer {
-  mute: () => void; unMute: () => void;
-  playVideo: () => void; destroy: () => void;
-  setVolume: (v: number) => void;
-  getIframe: () => HTMLIFrameElement;
-}
-
-let ytApiLoaded = false;
-const ytCallbacks: (() => void)[] = [];
-
-function loadYTApi() {
-  if (ytApiLoaded) return;
-  ytApiLoaded = true;
-  const tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
-  window.onYouTubeIframeAPIReady = () => { ytCallbacks.forEach(cb => cb()); ytCallbacks.length = 0; };
-}
+const videos = [
+  {
+    id: 'Ou75T-40wuw',
+    title: 'Virtual Tour - Project Walkthrough',
+    thumbnail: 'https://img.youtube.com/vi/Ou75T-40wuw/maxresdefault.jpg',
+  },
+  {
+    id: 'vQYPO-BBAZ4',
+    title: 'About Kaz Properties',
+    thumbnail: 'https://img.youtube.com/vi/vQYPO-BBAZ4/maxresdefault.jpg',
+  },
+];
 
 export default function PropertyShowcase() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const [playerReady, setPlayerReady] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const playerRef = useRef<YTPlayer | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [playing, setPlaying] = useState<{ [key: string]: boolean }>({});
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([e]) => setIsVisible(e.isIntersecting), { threshold: 0.2 });
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    const init = () => {
-      if (!containerRef.current || playerRef.current) return;
-      playerRef.current = new window.YT.Player(containerRef.current, {
-        videoId: VIDEO_ID,
-        playerVars: { autoplay: 1, loop: 1, playlist: VIDEO_ID, controls: 0, rel: 0, mute: 1, modestbranding: 1, iv_load_policy: 3, disablekb: 1, fs: 0, playsinline: 1 },
-        events: {
-          onReady: (e: { target: YTPlayer }) => {
-            e.target.mute(); e.target.playVideo();
-            const iframe = e.target.getIframe();
-            if (iframe) { Object.assign(iframe.style, { position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', pointerEvents: 'none' }); }
-            setPlayerReady(true);
-          },
-        },
-      });
-    };
-    if (window.YT?.Player) init(); else { ytCallbacks.push(init); loadYTApi(); }
-    return () => { try { playerRef.current?.destroy(); } catch (_) {} playerRef.current = null; setPlayerReady(false); setIsMuted(true); };
-  }, [isVisible]);
-
-  const toggleMute = () => {
-    if (!playerRef.current || !playerReady) return;
-    if (isMuted) { playerRef.current.unMute(); playerRef.current.setVolume(80); }
-    else playerRef.current.mute();
-    setIsMuted(p => !p);
+  const handlePlay = (videoId: string) => {
+    setPlaying(prev => ({ ...prev, [videoId]: true }));
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full h-[100dvh] overflow-hidden bg-brand-black" id="showcase">
-      {isVisible && (
-        <div className="absolute inset-0 w-full h-full overflow-hidden" style={{ pointerEvents: 'none' }}>
-          <div ref={containerRef} className="absolute inset-0 w-full h-full" />
-        </div>
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/30 pointer-events-none z-20" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-black/60 via-transparent to-transparent pointer-events-none z-20" />
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 xl:py-32 bg-[#FAF7F5] dark:bg-[#0d0d0d] overflow-hidden" id="showcase">
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#BE9F98] to-transparent" />
 
-      <div className="absolute left-5 lg:left-10 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-4">
-        <button onClick={toggleMute}
-          className="group relative w-11 h-11 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-accent hover:border-accent transition-all duration-300 flex items-center justify-center text-white shadow-lg"
-          aria-label={isMuted ? 'Unmute' : 'Mute'}>
-          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-          {!isMuted && <span className="absolute inset-0 rounded-full border border-accent animate-ping opacity-50" />}
-        </button>
-        <div className="h-20 w-px bg-white/20" />
-        <span className="text-white/40 text-[9px] uppercase tracking-[0.25em] whitespace-nowrap"
-          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
-          {isMuted ? 'Sound Off' : 'Sound On'}
-        </span>
-      </div>
-
-      <div className="absolute inset-0 z-30 flex flex-col justify-end pl-20 lg:pl-28 xl:pl-36 pr-6 lg:pr-12 xl:pr-20 pb-12 xl:pb-16 pointer-events-none fade-up">
-        <div>
-          <div className="absolute -top-8 left-0 text-[60px] md:text-[90px] xl:text-[120px] font-bold text-white/5 whitespace-nowrap select-none tracking-widest uppercase">SHOWCASE</div>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-4 h-4 xl:w-5 xl:h-5 grid grid-cols-2 gap-0.5">
-              <div className="bg-accent w-full h-full rounded-sm" /><div className="bg-accent/50 w-full h-full rounded-sm" />
-              <div className="bg-accent/50 w-full h-full rounded-sm" /><div className="bg-accent w-full h-full rounded-sm" />
-            </div>
-            <span className="text-accent uppercase font-semibold text-xs xl:text-sm tracking-widest">Video Tour</span>
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36">
+        {/* Header */}
+        <div className="mb-8 sm:mb-10 xl:mb-14 fade-up">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-px h-7 xl:h-10 bg-[#BE9F98]" />
+            <span className="text-[#BE9F98] uppercase tracking-widest text-xs xl:text-sm font-bold">Experience It</span>
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-light tracking-wide">Virtual Tour</h2>
-          <p className="text-white/50 text-sm xl:text-base mt-2 font-light max-w-md xl:max-w-lg">Experience our properties through an immersive video tour.</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-light text-[#000000] dark:text-white leading-tight">
+            Virtual <span className="font-bold">Tour</span>
+          </h2>
+          <p className="text-black/50 dark:text-white/50 text-sm xl:text-base mt-2 font-light max-w-md">
+            Experience our properties through immersive video tours.
+          </p>
+        </div>
+
+        {/* Videos grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 xl:gap-6">
+          {videos.map((video) => (
+            <div
+              key={video.id}
+              className="relative rounded-sm overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#1a1a1a] shadow-lg video-card group"
+              style={{ aspectRatio: '16/9' }}
+            >
+              {playing[video.id] ? (
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                  {/* Play button */}
+                  <button
+                    onClick={() => handlePlay(video.id)}
+                    className="play-overlay absolute inset-0 flex items-center justify-center cursor-pointer"
+                    aria-label={`Play ${video.title}`}
+                  >
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-[#BE9F98]/90 backdrop-blur-sm flex items-center justify-center shadow-xl hover:bg-[#BE9F98] transition-all duration-300 hover:scale-110">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-1 sm:w-6 sm:h-6">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Title overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                    <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg">{video.title}</h3>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

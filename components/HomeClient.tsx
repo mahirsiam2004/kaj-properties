@@ -1,14 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination, EffectCreative, Parallax } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-creative';
-
+import { useEffect, useState } from 'react';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import FeaturedProjectsSection from '@/components/sections/FeaturedProjectsSection';
@@ -21,178 +13,65 @@ import SocialSidebar from '@/components/SocialSidebar';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen';
 
-const SWIPE_CLASS = "overflow-y-auto h-full scroll-smooth scrollbar-hide overflow-x-hidden flex flex-col";
-
 export default function HomeClient() {
-  const swiperRef = useRef<SwiperType | null>(null);
-  const [hasNews, setHasNews] = useState(false);
   const [loading, setLoading] = useState(true);
-  // Track whether we've already restored the saved slide index
-  const restoredRef = useRef(false);
 
+  // Restore hash scroll after loading
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const res = await fetch('/api/updates');
-        const data = await res.json();
-        if (data.success && data.data.length > 0) setHasNews(true);
-      } catch (_) { /* silently fail */ }
-    };
-    fetchNews();
-  }, []);
-
-  // Restore saved slide after hasNews settles (so slide count is correct)
-  useEffect(() => {
-    if (restoredRef.current) return;
-    const saved = sessionStorage.getItem('lastSlideIndex');
-    if (!saved) {
-      // First ever visit — seed with 0 so back always has a value
-      sessionStorage.setItem('lastSlideIndex', '0');
-      return;
+    if (loading) return;
+    const hash = window.location.hash;
+    if (hash) {
+      const timer = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
+      return () => clearTimeout(timer);
     }
-    const idx = parseInt(saved, 10);
-    if (isNaN(idx) || idx <= 0) {
-      sessionStorage.removeItem('lastSlideIndex');
-      return;
-    }
-    // Give Swiper a tick to fully initialise with the correct slide count
-    const timer = setTimeout(() => {
-      if (swiperRef.current && !restoredRef.current) {
-        restoredRef.current = true;
-        sessionStorage.removeItem('lastSlideIndex');
-        swiperRef.current.slideTo(idx, 0);
-      }
-    }, 80);
-    return () => clearTimeout(timer);
-  }, [hasNews]); // re-run when hasNews changes so slide count is correct
+  }, [loading]);
 
-  const sectionMap: Record<string, number> = {
-    '#home': 0,
-    ...(hasNews ? { '#news': 1 } : {}),
-    '#about':        hasNews ? 2 : 1,
-    '#featured':     hasNews ? 3 : 2,
-    '#showcase':     hasNews ? 4 : 3,
-    '#location':     hasNews ? 5 : 4,
-    '#testimonials': hasNews ? 6 : 5,
-    '#contact':      hasNews ? 7 : 6,
-    '#footer':       hasNews ? 8 : 7,
-  };
-
+  // IntersectionObserver for fade-up animations
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash && sectionMap[hash] !== undefined && swiperRef.current) {
-        swiperRef.current.slideTo(sectionMap[hash]);
-      }
-    };
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
+    if (loading) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
-    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
-    const onRemoteSlide = (e: Event) => {
-      const ce = e as CustomEvent<{ index: number }>;
-      if (swiperRef.current) swiperRef.current.slideTo(ce.detail.index);
-    };
-    window.addEventListener('remoteSlideTo', onRemoteSlide);
+    // Observe all fade-up elements
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    }, 100);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('remoteSlideTo', onRemoteSlide);
+      clearTimeout(timer);
       observer.disconnect();
     };
-  }, [hasNews]);
-
-  const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (!swiperRef.current) return;
-    const container = e.currentTarget;
-    const isScrollingDown = e.deltaY > 0;
-    const isScrollingUp = e.deltaY < 0;
-    const isAtBottom = Math.ceil(container.scrollTop + container.clientHeight) >= container.scrollHeight - 5;
-    const isAtTop = container.scrollTop <= 5;
-
-    if (isScrollingDown && !isAtBottom) {
-      e.stopPropagation();
-      swiperRef.current.mousewheel.disable();
-      setTimeout(() => swiperRef.current?.mousewheel.enable(), 50);
-    } else if (isScrollingUp && !isAtTop) {
-      e.stopPropagation();
-      swiperRef.current.mousewheel.disable();
-      setTimeout(() => swiperRef.current?.mousewheel.enable(), 50);
-    } else {
-      swiperRef.current.mousewheel.enable();
-    }
-  };
+  }, [loading]);
 
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-      <div className={`bg-brand-light h-[100dvh] overflow-hidden transition-opacity duration-500 ${loading ? 'opacity-0' : 'opacity-100'}`}>
-      {/* pb-14 xl:pb-0 accounts for the mobile bottom social bar */}
-      <div className="xl:hidden h-14 w-full fixed bottom-0 z-[49]" />
-      <SocialSidebar />
-      <Swiper
-        direction="vertical"
-        slidesPerView={1}
-        mousewheel={{
-          forceToAxis: true,
-          releaseOnEdges: true,
-          sensitivity: 1,
-          thresholdDelta: 10,
-          thresholdTime: 300,
-          eventsTarget: 'container',
-        }}
-        speed={1000}
-        parallax={true}
-        onSwiper={(swiper) => { swiperRef.current = swiper; }}
-        onSlideChange={(swiper) => {
-          document.documentElement.setAttribute('data-scrolled', swiper.activeIndex > 0 ? 'true' : 'false');
-          window.dispatchEvent(new CustomEvent('swiperChange', { detail: { index: swiper.activeIndex } }));
-          // Persist so subpages can return to the right slide
-          sessionStorage.setItem('lastSlideIndex', String(swiper.activeIndex));
-        }}
-        modules={[Mousewheel, Pagination, EffectCreative, Parallax]}
-        className="h-[100dvh] w-full"
-      >
-        <SwiperSlide onWheel={handleScroll} className="overflow-y-auto h-full scroll-smooth scrollbar-hide flex flex-col">
+      <div className={`transition-opacity duration-500 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+        <SocialSidebar />
+        <main>
           <HeroSection />
-        </SwiperSlide>
-        {hasNews && (
-          <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
-            <LatestNewsSection />
-          </SwiperSlide>
-        )}
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <AboutSection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <FeaturedProjectsSection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <PropertyShowcase />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <LocationSection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <TestimonialsSection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
+          <LatestNewsSection />
           <CTASection />
-        </SwiperSlide>
-        <SwiperSlide onWheel={handleScroll} className={SWIPE_CLASS}>
           <Footer />
-        </SwiperSlide>
-      </Swiper>
-    </div>
+        </main>
+      </div>
     </>
   );
 }

@@ -17,62 +17,48 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-function slideToContact(e: React.MouseEvent<HTMLAnchorElement>) {
+function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
   e.preventDefault();
-  window.dispatchEvent(new CustomEvent('remoteSlideTo', { detail: { index: 7 } }));
+  const el = document.querySelector('#contact');
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
 const socials = [
-  { label: 'WhatsApp', href: 'https://wa.me/8801856621076',                              icon: <WhatsAppIcon />,                          onClick: undefined as ((e: React.MouseEvent<HTMLAnchorElement>) => void) | undefined },
-  { label: 'Email',    href: '#contact',                                                  icon: <Mail size={18} strokeWidth={1.5} />,       onClick: slideToContact },
-  { label: 'Facebook', href: 'https://www.facebook.com/share/19RCkfoS3k/',               icon: <FacebookIcon />,                          onClick: undefined },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kaz-properties-and-developers/', icon: <LinkedInIcon />,                   onClick: undefined },
+  { label: 'WhatsApp', href: 'https://wa.me/8801856621076', icon: <WhatsAppIcon />, onClick: undefined as ((e: React.MouseEvent<HTMLAnchorElement>) => void) | undefined },
+  { label: 'Email', href: '#contact', icon: <Mail size={18} strokeWidth={1.5} />, onClick: scrollToContact },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/19RCkfoS3k/', icon: <FacebookIcon />, onClick: undefined },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/kaz-properties-and-developers/', icon: <LinkedInIcon />, onClick: undefined },
 ];
 
 export default function SocialSidebar() {
   return (
     <>
-      {/* ── Desktop vertical sidebar (right edge) ── */}
-      <div className="hidden xl:flex fixed right-0 top-1/2 -translate-y-1/2 z-[50] flex-col items-center bg-brand-black/90 backdrop-blur-sm border-l border-white/10 rounded-l-xl px-3 py-7 gap-5 shadow-xl">
+      {/* Desktop vertical sidebar */}
+      <div className="hidden xl:flex fixed right-0 top-1/2 -translate-y-1/2 z-[50] flex-col items-center bg-brand-black/90 dark:bg-white/90 backdrop-blur-sm border-l border-white/10 dark:border-black/10 rounded-l-xl px-3 py-7 gap-5 shadow-xl">
         {socials.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.onClick ? undefined : '_blank'}
-            rel={item.onClick ? undefined : 'noopener noreferrer'}
-            onClick={item.onClick}
-            aria-label={item.label}
-            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-accent transition-all duration-300"
-          >
+          <a key={item.label} href={item.href} target={item.onClick ? undefined : '_blank'}
+            rel={item.onClick ? undefined : 'noopener noreferrer'} onClick={item.onClick} aria-label={item.label}
+            className="w-10 h-10 flex items-center justify-center rounded-full text-white/60 dark:text-brand-black/60 hover:text-white dark:hover:text-brand-black hover:bg-accent transition-all duration-300">
             {item.icon}
           </a>
         ))}
-        {/* Follow label */}
         <div className="flex flex-col items-center gap-2 mt-2">
           <div className="w-px h-10 bg-accent/40" />
-          <span
-            className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-medium"
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-          >
+          <span className="text-white/40 dark:text-brand-black/40 text-[10px] uppercase tracking-[0.2em] font-medium"
+            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
             Follow
           </span>
         </div>
       </div>
 
-      {/* ── Mobile bottom bar ── */}
-      <div className="xl:hidden fixed bottom-0 left-0 w-full z-[50] bg-brand-black/95 backdrop-blur-md border-t border-white/10 flex items-center justify-around px-4 py-3 safe-area-pb">
+      {/* Mobile bottom bar */}
+      <div className="xl:hidden fixed bottom-0 left-0 w-full z-[50] bg-brand-black/95 dark:bg-white/95 backdrop-blur-md border-t border-white/10 dark:border-black/10 flex items-center justify-around px-4 py-2.5 safe-area-pb">
         {socials.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            target={item.onClick ? undefined : '_blank'}
-            rel={item.onClick ? undefined : 'noopener noreferrer'}
-            onClick={item.onClick}
-            aria-label={item.label}
-            className="flex flex-col items-center gap-1 text-white/50 hover:text-accent active:text-accent transition-colors"
-          >
+          <a key={item.label} href={item.href} target={item.onClick ? undefined : '_blank'}
+            rel={item.onClick ? undefined : 'noopener noreferrer'} onClick={item.onClick} aria-label={item.label}
+            className="flex flex-col items-center gap-0.5 text-white/50 dark:text-brand-black/50 hover:text-accent active:text-accent transition-colors">
             {item.icon}
-            <span className="text-[9px] uppercase tracking-wider">{item.label}</span>
+            <span className="text-[8px] uppercase tracking-wider">{item.label}</span>
           </a>
         ))}
       </div>

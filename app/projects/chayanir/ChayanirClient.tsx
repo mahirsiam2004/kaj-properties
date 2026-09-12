@@ -6,6 +6,7 @@ import {
   ArrowLeft, MapPin, BedDouble, Bath, Phone, Mail,
   ChevronLeft, ChevronRight, CheckCircle2, Download, ChevronDown,
 } from 'lucide-react';
+import ThemeToggleButton from '@/components/ThemeToggleButton';
 
 const WhatsAppIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -36,78 +37,79 @@ export default function ChayanirClient() {
   const next = () => setActiveImg(i => (i + 1) % gallery.length);
 
   return (
-    <div className="h-screen overflow-y-auto bg-brand-black text-white scroll-smooth">
+    <div className="h-screen overflow-y-auto bg-white dark:bg-brand-black text-brand-black dark:text-white scroll-smooth">
 
       {/* ── Top nav ── */}
-      <div className="sticky top-0 z-30 bg-brand-black/95 backdrop-blur-md border-b border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
-        <button onClick={() => router.back()} className="flex items-center gap-2 text-white/60 hover:text-accent transition-colors text-sm font-medium group">
+      <div className="sticky top-0 z-30 bg-white/95 dark:bg-brand-black/95 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center justify-between">
+        <button onClick={() => router.back()} className="flex items-center gap-2 text-black/60 dark:text-white/60 hover:text-accent transition-colors text-sm font-medium group">
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
           Back
         </button>
         <img src="/logo1.png" alt="Kaz Properties" className="h-7 md:h-8 w-auto object-contain" />
+        <ThemeToggleButton variant="light" />
       </div>
 
       {/* ══════════════════════════════════════════
           ABOVE THE FOLD — hero capped at ~80vh
           so content below is always visible
       ══════════════════════════════════════════ */}
-      <div className="px-5 md:px-10 lg:px-14 xl:px-20 pt-5 pb-4 border-b border-white/10" style={{ maxHeight: '82vh' }}>
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 pt-5 pb-4 border-b border-black/10 dark:border-white/10" style={{ maxHeight: '82vh' }}>
         <div className="flex flex-col lg:flex-row gap-6 items-start h-full">
 
           {/* Left: title + stats + CTAs */}
           <div className="flex-1 min-w-0 flex flex-col justify-between">
             <div>
               <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Kaz Properties — Residential Project</span>
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-light mt-2 mb-2 leading-tight tracking-tight">Chayanir</h1>
-              <div className="flex items-start gap-2 text-white/50 mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-light mt-2 mb-2 leading-tight tracking-tight text-brand-black dark:text-white">Chayanir</h1>
+              <div className="flex items-start gap-2 text-black/50 dark:text-white/50 mb-4">
                 <MapPin size={12} className="text-accent shrink-0 mt-0.5" />
                 <span className="text-xs font-light leading-snug">Jahangirnagar Society, Savar · Dhaka, Bangladesh</span>
               </div>
 
               {/* Stats row */}
               <div className="grid grid-cols-4 gap-2 mb-4">
-                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
                   <BedDouble size={16} className="text-accent" />
-                  <div className="text-xl font-bold text-white">3</div>
+                  <div className="text-xl font-bold text-brand-black dark:text-white">3</div>
                   <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Beds</div>
                 </div>
-                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
                     <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                   </svg>
-                  <div className="text-xl font-bold text-white">1</div>
+                  <div className="text-xl font-bold text-brand-black dark:text-white">1</div>
                   <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Hall</div>
                 </div>
-                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
                     <path d="M8 6h8M8 12h8M8 18h8M4 6h.01M4 12h.01M4 18h.01"/>
                   </svg>
-                  <div className="text-xl font-bold text-white">1</div>
+                  <div className="text-xl font-bold text-brand-black dark:text-white">1</div>
                   <div className="text-accent text-[9px] uppercase tracking-wider font-semibold">Kitchen</div>
                 </div>
-                <div className="bg-white/[0.04] border border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
+                <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-3 flex flex-col items-center text-center gap-1">
                   <Bath size={16} className="text-accent" />
                   <div className="text-[9px] text-accent uppercase tracking-wider font-semibold mt-1">Baths</div>
-                  <div className="text-white/40 text-[9px]">Avail.</div>
+                  <div className="text-black/40 dark:text-white/40 text-[9px]">Avail.</div>
                 </div>
               </div>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-2">
-                <a href="tel:+8801774873972" className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="tel:+8801774873972" className="flex items-center gap-1.5 bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Phone size={12} /> Call Us
                 </a>
-                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
-                <a href="/#contact" className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="/#contact" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Mail size={12} /> Email
                 </a>
               </div>
             </div>
 
             {/* Scroll hint */}
-            <div className="hidden lg:flex items-center gap-2 mt-4 text-white/25 text-[10px] uppercase tracking-widest">
+            <div className="hidden lg:flex items-center gap-2 mt-4 text-black/25 dark:text-white/25 text-[10px] uppercase tracking-widest">
               <ChevronDown size={13} className="animate-bounce" />
               Scroll for details
             </div>
@@ -115,7 +117,7 @@ export default function ChayanirClient() {
 
           {/* Right: image — capped height so content below peeks */}
           <div className="w-full lg:w-[52%] shrink-0">
-            <div className="relative w-full rounded-sm overflow-hidden bg-white/[0.03]" style={{ maxHeight: '55vh', aspectRatio: '4/3' }}>
+            <div className="relative w-full rounded-sm overflow-hidden bg-black/[0.03] dark:bg-white/[0.03]" style={{ maxHeight: '55vh', aspectRatio: '4/3' }}>
               <img
                 src={gallery[activeImg]}
                 alt="Chayanir"
@@ -123,10 +125,10 @@ export default function ChayanirClient() {
               />
               {gallery.length > 1 && (
                 <>
-                  <button onClick={prev} aria-label="Prev" className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+                  <button onClick={prev} aria-label="Prev" className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 dark:bg-brand-black/60 border border-black/20 dark:border-white/20 flex items-center justify-center hover:bg-accent transition-all text-white">
                     <ChevronLeft size={13} />
                   </button>
-                  <button onClick={next} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-brand-black/60 border border-white/20 flex items-center justify-center hover:bg-accent transition-all">
+                  <button onClick={next} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/60 dark:bg-brand-black/60 border border-black/20 dark:border-white/20 flex items-center justify-center hover:bg-accent transition-all text-white">
                     <ChevronRight size={13} />
                   </button>
                 </>
@@ -137,9 +139,9 @@ export default function ChayanirClient() {
       </div>
 
       {/* ── Scroll invite strip — always visible below hero ── */}
-      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center gap-3 border-b border-white/8 bg-white/[0.02]">
+      <div className="px-5 md:px-10 lg:px-14 xl:px-20 py-3 flex items-center gap-3 border-b border-black/8 dark:border-white/8 bg-black/[0.02] dark:bg-white/[0.02]">
         <ChevronDown size={14} className="text-accent animate-bounce shrink-0" />
-        <span className="text-white/40 text-xs font-light">Overview · Features · Location · Floor Plan · Project Details</span>
+        <span className="text-black/40 dark:text-white/40 text-xs font-light">Overview · Features · Location · Floor Plan · Project Details</span>
       </div>
 
       {/* ══════════════════════════════════════════
@@ -157,7 +159,7 @@ export default function ChayanirClient() {
                 <div className="w-px h-5 bg-accent" />
                 <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Overview</span>
               </div>
-              <p className="text-white/55 font-light text-sm leading-relaxed">
+              <p className="text-black/55 dark:text-white/55 font-light text-sm leading-relaxed">
                 Chayanir is a thoughtfully planned residential project in Jahangirnagar Society, Savar — offering spacious
                 3-bedroom apartments with a dedicated hall, modern kitchen, full bathrooms, and generous balconies, all
                 within a well-connected community setting.
@@ -173,9 +175,9 @@ export default function ChayanirClient() {
                 </div>
                 <div className="space-y-0">
                   {features.map(f => (
-                    <div key={f} className="flex items-center gap-2.5 py-1.5 border-b border-white/5">
+                    <div key={f} className="flex items-center gap-2.5 py-1.5 border-b border-black/5 dark:border-white/5">
                       <CheckCircle2 size={11} className="text-accent shrink-0" strokeWidth={2} />
-                      <span className="text-white/60 text-xs font-light">{f}</span>
+                      <span className="text-black/60 dark:text-white/60 text-xs font-light">{f}</span>
                     </div>
                   ))}
                 </div>
@@ -193,11 +195,11 @@ export default function ChayanirClient() {
                     { direction: 'Nearby',  place: 'Jahangirnagar University' },
                     { direction: 'Access',  place: 'Dhaka-Aricha Highway' },
                   ].map(item => (
-                    <div key={item.direction} className="flex items-start gap-2.5 bg-white/[0.03] border border-white/8 rounded-sm p-3">
+                    <div key={item.direction} className="flex items-start gap-2.5 bg-black/[0.03] dark:bg-white/[0.03] border border-black/8 dark:border-white/8 rounded-sm p-3">
                       <MapPin size={11} className="text-accent shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-white/30 text-[9px] uppercase tracking-wider">{item.direction}</div>
-                        <div className="text-white text-xs font-medium">{item.place}</div>
+                        <div className="text-black/30 dark:text-white/30 text-[9px] uppercase tracking-wider">{item.direction}</div>
+                        <div className="text-brand-black dark:text-white text-xs font-medium">{item.place}</div>
                       </div>
                     </div>
                   ))}
@@ -213,11 +215,11 @@ export default function ChayanirClient() {
                   <span className="text-accent uppercase tracking-widest text-[10px] font-bold">Floor Plan</span>
                 </div>
                 <a href="/assets/feature/chayanir_plan.jpeg" download="Chayanir-Floor-Plan.jpeg"
-                  className="flex items-center gap-1.5 bg-accent hover:bg-white text-white hover:text-brand-black transition-colors px-3 py-1.5 rounded-sm text-[10px] font-semibold uppercase tracking-widest">
+                  className="flex items-center gap-1.5 bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors px-3 py-1.5 rounded-sm text-[10px] font-semibold uppercase tracking-widest">
                   <Download size={11} /> Download
                 </a>
               </div>
-              <div className="border border-white/10 rounded-sm bg-white/[0.02] overflow-hidden">
+              <div className="border border-black/10 dark:border-white/10 rounded-sm bg-black/[0.02] dark:bg-white/[0.02] overflow-hidden">
                 <img
                   src="/assets/feature/chayanir_plan.jpeg"
                   alt="Chayanir Floor Plan"
@@ -230,10 +232,10 @@ export default function ChayanirClient() {
 
           {/* Right sidebar */}
           <div className="w-full lg:w-64 xl:w-72 shrink-0">
-            <div className="bg-white/[0.04] border border-white/10 rounded-sm p-4 lg:sticky lg:top-4 space-y-4">
+            <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-sm p-4 lg:sticky lg:top-4 space-y-4">
 
               <div>
-                <h3 className="text-white font-semibold text-sm mb-3 pb-3 border-b border-white/10">Project Details</h3>
+                <h3 className="text-brand-black dark:text-white font-semibold text-sm mb-3 pb-3 border-b border-black/10 dark:border-white/10">Project Details</h3>
                 <div className="space-y-0 text-xs">
                   {[
                     { label: 'Project',   value: 'Chayanir' },
@@ -247,29 +249,29 @@ export default function ChayanirClient() {
                     { label: 'Balconies', value: 'Available' },
                     { label: 'Status',    value: 'Available' },
                   ].map(row => (
-                    <div key={row.label} className="flex justify-between gap-2 py-1.5 border-b border-white/5 last:border-0">
-                      <span className="text-white/35 shrink-0">{row.label}</span>
-                      <span className="text-white font-medium text-right">{row.value}</span>
+                    <div key={row.label} className="flex justify-between gap-2 py-1.5 border-b border-black/5 dark:border-white/5 last:border-0">
+                      <span className="text-black/35 dark:text-white/35 shrink-0">{row.label}</span>
+                      <span className="text-brand-black dark:text-white font-medium text-right">{row.value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-2 pt-1 border-t border-white/10">
-                <a href="tel:+8801774873972" className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-white text-white hover:text-brand-black transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+              <div className="space-y-2 pt-1 border-t border-black/10 dark:border-white/10">
+                <a href="tel:+8801774873972" className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-brand-black dark:hover:bg-white text-white dark:hover:text-brand-black transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Phone size={12} /> Call Us
                 </a>
-                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
-                <a href="/#contact" className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                <a href="/#contact" className="flex items-center justify-center gap-2 w-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Mail size={12} /> Email Us
                 </a>
               </div>
 
-              <div className="pt-1 border-t border-white/10">
-                <p className="text-white/30 text-[9px] uppercase tracking-widest mb-1">Office</p>
-                <p className="text-white/55 text-xs font-light leading-relaxed">
+              <div className="pt-1 border-t border-black/10 dark:border-white/10">
+                <p className="text-black/30 dark:text-white/30 text-[9px] uppercase tracking-widest mb-1">Office</p>
+                <p className="text-black/55 dark:text-white/55 text-xs font-light leading-relaxed">
                   Bachelor Gate, Ambagan Road,<br />Jahangirnagar University,<br />Savar, Dhaka
                 </p>
               </div>
@@ -280,7 +282,7 @@ export default function ChayanirClient() {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
+      <div className="border-t border-black/10 dark:border-white/10 px-5 md:px-10 lg:px-14 xl:px-20 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-black/25 dark:text-white/25">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
         <button onClick={() => router.back()} className="flex items-center gap-1.5 hover:text-accent transition-colors">
           <ArrowLeft size={11} /> Back

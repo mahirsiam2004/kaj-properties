@@ -1,9 +1,12 @@
-interface Props { light?: boolean; }
+interface Props {
+  light?: boolean;
+  className?: string;
+}
 
-export function Logo({ light = false }: Props) {
+export function Logo({ light = false, className = '' }: Props) {
   return (
     <img
-      className={`w-28 lg:w-32 xl:w-36 opacity-100 block transition-all duration-300 ${light ? 'brightness-0 invert' : 'brightness-0'}`}
+      className={`w-24 sm:w-28 lg:w-32 xl:w-36 block transition-all duration-300 ${className}`}
       src="/logo1.png"
       alt="Kaz Properties"
     />
