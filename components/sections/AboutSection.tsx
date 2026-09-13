@@ -25,14 +25,14 @@ export default function AboutSection() {
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-36">
         {/* Section label */}
         <div ref={labelRef} className="flex items-center gap-2 mb-4 sm:mb-5">
-          <div className="w-px h-6 sm:h-8 bg-[#BE9F98]" />
-          <span className="text-[#BE9F98] uppercase tracking-widest text-xs sm:text-sm font-bold">About Us</span>
+          <div className="w-px h-7 sm:h-10 bg-[#BE9F98]" />
+          <span className="text-[#BE9F98] uppercase tracking-widest text-sm sm:text-base font-bold">About Us</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 xl:gap-20 items-center">
           {/* Left: text */}
           <div className="flex flex-col justify-center">
-            <h2 ref={headingRef} className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-light leading-tight mb-4 sm:mb-5 text-[#000000] dark:text-white">
+            <h2 ref={headingRef} className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-light leading-tight mb-4 sm:mb-5 text-[#000000] dark:text-white">
               Building Tomorrow&apos;s<br className="hidden sm:block" /> Legacy, Today
             </h2>
             <p ref={textRef} className="text-sm sm:text-base xl:text-lg leading-relaxed font-light text-black/60 dark:text-white/60 mb-4 sm:mb-5">

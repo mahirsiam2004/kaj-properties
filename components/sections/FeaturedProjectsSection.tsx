@@ -137,9 +137,9 @@ export default function FeaturedProjectsSection() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-px h-7 xl:h-10 bg-[#BE9F98]" />
-              <span className="text-[#BE9F98] uppercase tracking-widest text-xs xl:text-sm font-bold">Our Portfolio</span>
+              <span className="text-[#BE9F98] uppercase tracking-widest text-sm sm:text-base font-bold">Our Portfolio</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-light leading-tight text-[#000000] dark:text-white">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-light leading-tight text-[#000000] dark:text-white">
               Explore Our Featured Projects
             </h2>
           </div>

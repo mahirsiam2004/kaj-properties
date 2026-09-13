@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const slides = [
   { url: '/assets/banner/1.jpeg', label: 'Premium Living Spaces' },
   { url: '/assets/banner/2.jpeg', label: 'Modern Architecture' },
-  { url: '/assets/banner/3.png', label: 'Luxury Interiors' },
+  { url: '/assets/banner/3.png',  label: 'Luxury Interiors' },
 ];
 
 export default function HeroSection() {
@@ -18,6 +18,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-brand-black text-white" id="home">
+      {/* Slides */}
       {slides.map((slide, i) => (
         <div
           key={i}
@@ -28,20 +29,30 @@ export default function HeroSection() {
             alt={slide.label}
             className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10000ms] ease-out ${i === current ? 'scale-105' : 'scale-100'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-black/40 via-brand-black/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-black/50 via-transparent to-transparent" />
+
+          {/* Strong left-to-centre gradient so heading always pops */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
+          {/* Bottom fade for subtitle legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
         </div>
       ))}
 
+      {/* Text content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-20 h-full flex items-center">
         <div className="max-w-4xl w-full">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 lg:mb-8 leading-[1.1] tracking-tight">
+          <h1
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 lg:mb-8 leading-[1.1] tracking-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.6)' }}
+          >
             Welcome to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-accent/50">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-accent to-white/70">
               Your Abode of Peace
             </span>
           </h1>
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/80 font-light max-w-md xl:max-w-xl mb-6 sm:mb-8 lg:mb-10 leading-relaxed">
+          <p
+            className="text-sm sm:text-base lg:text-lg xl:text-xl text-white/90 font-light max-w-md xl:max-w-xl mb-6 sm:mb-8 lg:mb-10 leading-relaxed"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
+          >
             Explore the Future of Urban Spaces with Kaz Properties
           </p>
         </div>

@@ -78,11 +78,11 @@ export default function LocationSection() {
                 <div className="bg-[#BE9F98]/50 w-full h-full rounded-sm" />
                 <div className="bg-[#BE9F98] w-full h-full rounded-sm" />
               </div>
-              <span className="text-[#BE9F98] uppercase font-semibold text-xs tracking-widest">
+              <span className="text-[#BE9F98] uppercase font-semibold text-sm sm:text-base tracking-widest">
                 Where We Build
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#000000] dark:text-white leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-[#000000] dark:text-white leading-tight">
               Project <span className="font-bold">Locations</span>
             </h2>
           </div>

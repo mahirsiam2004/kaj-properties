@@ -1,22 +1,32 @@
 const FacebookIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
 );
+
 const LinkedinIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
 );
+
+/* Proper YouTube play-button logo */
 const YoutubeIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+  </svg>
 );
 
 const socials = [
-  { Icon: FacebookIcon, href: 'https://www.facebook.com/share/19RCkfoS3k/', label: 'Facebook' },
-  { Icon: LinkedinIcon, href: 'https://www.linkedin.com/company/kaz-properties-and-developers/', label: 'LinkedIn' },
-  { Icon: YoutubeIcon, href: 'https://youtube.com/@abimperio1?si=UdZtXcD4qGanNTkN', label: 'YouTube' },
+  { Icon: FacebookIcon, href: 'https://www.facebook.com/share/19RCkfoS3k/',                         label: 'Facebook' },
+  { Icon: LinkedinIcon, href: 'https://www.linkedin.com/company/kaz-properties-and-developers/',    label: 'LinkedIn' },
+  { Icon: YoutubeIcon,  href: 'https://youtube.com/@abimperio1?si=UdZtXcD4qGanNTkN',               label: 'YouTube'  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#FAF7F5] dark:bg-[#0d0d0d] text-[#000000] dark:text-white pt-8 pb-5 md:pt-10 md:pb-6 overflow-hidden">
+    <footer className="relative bg-[#FAF7F5] dark:bg-[#0d0d0d] text-[#000000] dark:text-white overflow-hidden">
       {/* Dot grid background */}
       <div
         className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06] pointer-events-none"
@@ -26,11 +36,12 @@ export default function Footer() {
       {/* Accent line top */}
       <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#BE9F98] to-transparent" />
 
-      {/* Main content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-36">
+      {/* Main content — generous top/bottom padding */}
+      <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 2xl:px-36 pt-12 md:pt-16 pb-8 md:pb-10">
 
         {/* Top row */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12 mb-6 md:mb-8 pb-6 md:pb-8 border-b border-black/10 dark:border-white/10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12 pb-10 md:pb-12 border-b border-black/10 dark:border-white/10">
+
           {/* Logo + brand */}
           <div className="flex flex-col items-start gap-3 lg:max-w-xs xl:max-w-sm">
             <img src="/logo1.png" alt="Kaz Properties" className="h-10 md:h-12 lg:h-14 xl:h-16 w-auto object-contain" />
@@ -48,10 +59,10 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 lg:gap-8 xl:gap-12 flex-1 lg:justify-end">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10 xl:gap-14 flex-1 lg:justify-end">
             <div>
-              <h6 className="text-[10px] font-semibold uppercase tracking-widest text-black dark:text-white mb-2">Contact</h6>
-              <div className="space-y-1 text-[11px] font-light text-black/50 dark:text-white/50 leading-relaxed">
+              <h6 className="text-[11px] font-semibold uppercase tracking-widest text-black dark:text-white mb-3">Contact</h6>
+              <div className="space-y-1.5 text-[11px] font-light text-black/50 dark:text-white/50 leading-relaxed">
                 <p className="font-medium text-black/70 dark:text-white/70">Corporate Office:</p>
                 <p>Bachelor Gate, Ambagan Road,<br />Jahangirnagar University,<br />Savar, Dhaka, Bangladesh</p>
                 <div className="pt-1 space-y-0.5">
@@ -62,8 +73,8 @@ export default function Footer() {
             </div>
 
             <div>
-              <h6 className="text-[10px] font-semibold uppercase tracking-widest text-black dark:text-white mb-2">Support</h6>
-              <div className="flex flex-col space-y-1 text-[11px] font-light text-black/50 dark:text-white/50">
+              <h6 className="text-[11px] font-semibold uppercase tracking-widest text-black dark:text-white mb-3">Support</h6>
+              <div className="flex flex-col space-y-1.5 text-[11px] font-light text-black/50 dark:text-white/50">
                 {['Privacy Policy', 'Terms & Condition', 'Support Center', 'FAQ'].map(link => (
                   <a key={link} href="#" className="hover:text-[#BE9F98] transition-colors w-fit">{link}</a>
                 ))}
@@ -71,8 +82,8 @@ export default function Footer() {
             </div>
 
             <div className="col-span-2 md:col-span-1">
-              <h6 className="text-[10px] font-semibold uppercase tracking-widest text-black dark:text-white mb-2">Projects</h6>
-              <div className="flex flex-col space-y-1 text-[11px] font-light text-black/50 dark:text-white/50">
+              <h6 className="text-[11px] font-semibold uppercase tracking-widest text-black dark:text-white mb-3">Projects</h6>
+              <div className="flex flex-col space-y-1.5 text-[11px] font-light text-black/50 dark:text-white/50">
                 {['Chayabithi', 'Upcoming Projects', 'Land Development', 'Commercial'].map(p => (
                   <a key={p} href="#featured" className="hover:text-[#BE9F98] transition-colors w-fit">{p}</a>
                 ))}
@@ -81,8 +92,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-[10px] md:text-[11px] font-light text-black/40 dark:text-white/40">
+        {/* Bottom row — good breathing room above copyright */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 pt-6 md:pt-8 text-[10px] md:text-[11px] font-light text-black/40 dark:text-white/40">
           <p>&copy; {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
           <p>
             Developed by{' '}

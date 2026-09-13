@@ -66,8 +66,8 @@ export default function CTASection() {
       <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36">
         {/* Section header */}
         <div ref={headerRef} className="mb-8 sm:mb-10 xl:mb-12">
-          <span className="text-[#BE9F98] uppercase tracking-widest text-xs xl:text-sm font-bold">Contact Us</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-[#000000] dark:text-white mt-2 leading-tight">
+          <span className="text-[#BE9F98] uppercase tracking-widest text-sm sm:text-base font-bold">Contact Us</span>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light text-[#000000] dark:text-white mt-2 leading-tight">
             How Can We Help You?
           </h2>
         </div>
@@ -163,7 +163,7 @@ export default function CTASection() {
 
                 <div className="flex flex-col gap-1.5 flex-1">
                   <label className="text-xs font-medium tracking-wide uppercase text-white/40">Message <span className="text-[#BE9F98]">*</span></label>
-                  <textarea rows={4} value={form.message} onChange={set('message')} placeholder="Tell us about your land..." required
+                  <textarea rows={4} value={form.message} onChange={set('message')} placeholder="Text us..." required
                     className="bg-white/5 border border-white/15 focus:border-[#BE9F98] outline-none text-white placeholder-white/30 px-3 py-2.5 rounded-sm transition-colors resize-none text-sm flex-1" />
                 </div>
 

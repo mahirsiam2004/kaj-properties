@@ -45,9 +45,9 @@ export default function LatestNewsSection() {
         <div ref={headerRef} className="mb-8 sm:mb-10 xl:mb-14">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-px h-7 xl:h-10 bg-[#BE9F98]" />
-            <span className="text-[#BE9F98] uppercase tracking-widest text-xs xl:text-sm font-bold">Stay Updated</span>
+            <span className="text-[#BE9F98] uppercase tracking-widest text-sm sm:text-base font-bold">Stay Updated</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-light text-[#000000] dark:text-white leading-tight">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-light text-[#000000] dark:text-white leading-tight">
             Latest <span className="font-bold">News</span>
           </h2>
         </div>
