@@ -124,6 +124,9 @@ export default function ChayabithiClient() {
                 <a href="https://wa.me/8801856621076" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <WhatsAppIcon /> WhatsApp
                 </a>
+                <a href="https://maps.app.goo.gl/VXHvUFQnZ8kAookGA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
+                  <MapPin size={12} /> Open Map
+                </a>
                 <a href="/#contact" className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 text-brand-black dark:text-white transition-colors px-4 py-2 rounded-sm font-semibold text-xs uppercase tracking-widest">
                   <Mail size={12} /> Email
                 </a>

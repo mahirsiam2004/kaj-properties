@@ -6,13 +6,14 @@ const slides = [
   { url: '/assets/banner/1.jpeg', label: 'Premium Living Spaces' },
   { url: '/assets/banner/2.jpeg', label: 'Modern Architecture' },
   { url: '/assets/banner/3.png',  label: 'Luxury Interiors' },
+  { url: '/assets/banner/4.png',  label: 'Elegant Design' },
 ];
 
 export default function HeroSection() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrent(p => (p + 1) % slides.length), 6000);
+    const timer = setInterval(() => setCurrent(p => (p + 1) % slides.length), 4000);
     return () => clearInterval(timer);
   }, []);
 

@@ -24,7 +24,16 @@ export default function MissionVisionPage() {
       {/* ══════════════════════════════════════════
           SECTION 1 — ABOUT US
       ══════════════════════════════════════════ */}
-      <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-white dark:bg-brand-black overflow-hidden">
+      <section className="relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/assets/bg1.png"
+            alt="Background"
+            className="w-full h-full object-cover blur-sm"
+          />
+          <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+        </div>
         {/* dot grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(#888 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
@@ -41,28 +50,28 @@ export default function MissionVisionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24 items-start">
             {/* Left */}
             <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-light leading-tight mb-6 text-brand-black dark:text-white">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-light leading-tight mb-6 text-white">
                 Building Tomorrow&apos;s <span className="font-bold">Legacy, Today</span>
               </h1>
-              <p className="text-sm sm:text-base leading-relaxed font-light text-black/65 dark:text-white/65 mb-4">
+              <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-4">
                 Kaz Properties & Developers was founded with a singular belief — that real estate is more than
                 buying and selling land. It is about creating enduring communities where families feel safe,
                 proud, and connected. Every project we undertake begins with that conviction.
               </p>
-              <p className="text-sm sm:text-base leading-relaxed font-light text-black/65 dark:text-white/65 mb-4">
+              <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-4">
                 Our journey began by partnering with established projects in the Dhaka-Savar corridor, building
                 the expertise, trust, and relationships that now define who we are. From residential land-share
                 models to multi-storey developments, we have demonstrated that transparency and quality can
                 coexist with affordability.
               </p>
-              <p className="text-sm sm:text-base leading-relaxed font-light text-black/65 dark:text-white/65 mb-8">
+              <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-8">
                 Led by a team of civil engineers, structural architects, and real estate professionals — many
                 trained internationally — Kaz Properties brings global standards to the Bangladeshi market.
                 We do not simply build structures. We deliver spaces where lives are lived.
               </p>
 
               {/* Key stats row */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-black/8 dark:border-white/8">
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/20">
                 {[
                   { value: '20+', label: 'Years Combined Experience' },
                   { value: '27',  label: 'Units Delivered' },
@@ -70,7 +79,7 @@ export default function MissionVisionPage() {
                 ].map(s => (
                   <div key={s.label}>
                     <div className="text-2xl sm:text-3xl font-bold text-accent leading-none mb-1">{s.value}</div>
-                    <div className="text-[10px] sm:text-xs uppercase tracking-wide text-black/45 dark:text-white/45 font-medium leading-snug">{s.label}</div>
+                    <div className="text-[10px] sm:text-xs uppercase tracking-wide text-white/70 font-medium leading-snug">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -79,10 +88,10 @@ export default function MissionVisionPage() {
             {/* Right — decorative accent block */}
             <div className="flex flex-col gap-5">
               {/* Pull-quote */}
-              <div className="relative bg-brand-black dark:bg-white/5 border border-accent/20 p-7 sm:p-8 rounded-sm overflow-hidden">
+              <div className="relative bg-white/10 backdrop-blur-sm border border-accent/20 p-7 sm:p-8 rounded-sm overflow-hidden">
                 <div className="absolute top-0 left-0 w-1 h-full bg-accent" />
                 <div className="text-accent text-5xl font-serif leading-none mb-3 ml-2">&ldquo;</div>
-                <p className="text-white/85 text-sm sm:text-base leading-relaxed font-light italic ml-2">
+                <p className="text-white/90 text-sm sm:text-base leading-relaxed font-light italic ml-2">
                   We are not selling a property — we are offering a home, a future, and a community that stands
                   the test of time. That is the Kaz Properties promise.
                 </p>
@@ -99,10 +108,10 @@ export default function MissionVisionPage() {
                   { title: 'Partnership',  desc: 'We grow alongside our landowners, clients, and communities.' },
                   { title: 'Excellence',   desc: 'From foundation to finish, quality is never compromised.' },
                 ].map(v => (
-                  <div key={v.title} className="bg-[#FAF7F5] dark:bg-white/5 border border-black/5 dark:border-white/10 p-4 rounded-sm">
+                  <div key={v.title} className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-accent mb-2" />
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-brand-black dark:text-white mb-1">{v.title}</h4>
-                    <p className="text-[11px] text-black/55 dark:text-white/55 leading-relaxed font-light">{v.desc}</p>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-1">{v.title}</h4>
+                    <p className="text-[11px] text-white/70 leading-relaxed font-light">{v.desc}</p>
                   </div>
                 ))}
               </div>
@@ -229,22 +238,22 @@ export default function MissionVisionPage() {
 
             {/* Right — photo */}
             <div className="order-1 lg:order-2">
-              <div className="relative">
+              <div className="relative max-w-md mx-auto">
                 {/* Accent frame offset */}
-                <div className="absolute -top-3 -right-3 w-full h-full border-2 border-accent/30 rounded-sm pointer-events-none" />
-                <div className="relative overflow-hidden rounded-sm shadow-2xl" style={{ aspectRatio: '3/4' }}>
+                <div className="absolute -top-2 -right-2 w-full h-full border-2 border-accent/30 rounded-sm pointer-events-none" />
+                <div className="relative overflow-hidden rounded-sm shadow-2xl" style={{ aspectRatio: '4/5' }}>
                   <img
                     src="/assets/management-team/Abdul Quader.png"
                     alt="Abdul Quader Zilon — Managing Director & CEO, Kaz Properties"
                     className="w-full h-full object-cover object-top"
                   />
                   {/* Bottom gradient name badge */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-16 pb-5 px-6">
-                    <p className="text-white font-bold text-lg leading-tight">Abdul Quader Zilon</p>
-                    <p className="text-accent text-xs uppercase tracking-widest font-semibold mt-1">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-12 pb-4 px-5">
+                    <p className="text-white font-bold text-base leading-tight">Abdul Quader Zilon</p>
+                    <p className="text-accent text-[10px] uppercase tracking-widest font-semibold mt-0.5">
                       Managing Director &amp; CEO
                     </p>
-                    <p className="text-white/50 text-[11px] mt-0.5">Kaz Properties &amp; Developers</p>
+                    <p className="text-white/50 text-[10px] mt-0.5">Kaz Properties &amp; Developers</p>
                   </div>
                 </div>
               </div>

@@ -106,9 +106,7 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 ${
         scrolled
           ? 'py-0.5 shadow-md bg-white/95 dark:bg-brand-black/95 backdrop-blur-lg border-b border-black/5 dark:border-white/5'
-          : isHome
-            ? 'py-1 bg-transparent'
-            : 'py-1 bg-white/90 dark:bg-brand-black/90 backdrop-blur-md border-b border-black/5 dark:border-white/5'
+          : 'py-1 bg-black/30 dark:bg-black/50 backdrop-blur-md'
       }`}>
         {/* ── wider container: no max-width cap, full viewport with px ── */}
         <div className="w-full px-4 sm:px-8 lg:px-14 xl:px-20 2xl:px-28 flex justify-between items-center">

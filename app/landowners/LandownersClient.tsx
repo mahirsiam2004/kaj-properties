@@ -140,8 +140,17 @@ export default function LandownersPage() {
       </section>
 
       {/* ── Land Information Form ── */}
-      <section className="py-10 sm:py-14 bg-[#FAF7F5] dark:bg-[#0d0d0d] border-t border-black/5 dark:border-white/5">
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36">
+      <section className="relative py-10 sm:py-14 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/assets/bg.png"
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
+        </div>
+        <div className="relative z-10 w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36">
           <div className="max-w-[660px] mx-auto">
 
             {/* Card */}

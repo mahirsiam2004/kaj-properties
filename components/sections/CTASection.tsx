@@ -91,7 +91,7 @@ export default function CTASection() {
                   <div>
                     <div className="text-sm font-bold text-[#000000] dark:text-white leading-tight">{p.name}</div>
                     <div className="text-[10px] uppercase tracking-wider text-[#BE9F98] font-medium mt-0.5">{p.role}</div>
-                    <a href={p.phone} className="text-xs text-black/50 hover:text-[#BE9F98] transition-colors mt-0.5 block">{p.phoneLabel}</a>
+                    <a href={p.phone} className="text-xs text-black/50 dark:text-white/70 hover:text-[#BE9F98] dark:hover:text-[#BE9F98] transition-colors mt-0.5 block">{p.phoneLabel}</a>
                   </div>
                 </div>
               ))}
