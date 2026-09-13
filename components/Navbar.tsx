@@ -97,21 +97,18 @@ export default function Navbar() {
   if (hideNavbar) return null;
 
   /* ─── colour tokens ───────────────────────────────────────
-     Not scrolled  → floating over the dark hero image  → always white text + drop-shadow
-     Scrolled      → solid white (light) or dark (dark) bg
-                     light mode: brand-black text
-                     dark  mode: white text
+     Always theme-aware: dark text in light mode, white text in dark mode
   ─────────────────────────────────────────────────────────── */
-  const itemCls = scrolled
-    ? 'text-brand-black dark:text-white hover:text-accent transition-colors'
-    : 'text-white hover:text-accent transition-colors drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]';
+  const itemCls = 'text-brand-black dark:text-white hover:text-accent transition-colors';
 
   return (
     <>
       <nav className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 ${
         scrolled
-          ? 'py-1 shadow-md bg-white/95 dark:bg-brand-black/95 backdrop-blur-lg border-b border-black/5 dark:border-white/5'
-          : 'py-1.5 bg-transparent'
+          ? 'py-0.5 shadow-md bg-white/95 dark:bg-brand-black/95 backdrop-blur-lg border-b border-black/5 dark:border-white/5'
+          : isHome
+            ? 'py-1 bg-transparent'
+            : 'py-1 bg-white/90 dark:bg-brand-black/90 backdrop-blur-md border-b border-black/5 dark:border-white/5'
       }`}>
         {/* ── wider container: no max-width cap, full viewport with px ── */}
         <div className="w-full px-4 sm:px-8 lg:px-14 xl:px-20 2xl:px-28 flex justify-between items-center">
@@ -171,10 +168,11 @@ export default function Navbar() {
               className={`flex items-center gap-1.5 transition-all font-semibold text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-full shadow-lg hover:scale-105 active:scale-95 ${
                 scrolled
                   ? 'bg-brand-black dark:bg-accent text-white hover:bg-accent dark:hover:bg-white dark:hover:text-brand-black'
-                  : 'bg-accent text-white hover:bg-white hover:text-brand-black'
+                  : 'bg-brand-black/90 text-white hover:bg-accent'
               }`}
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
             >
               <span className="hidden sm:block">Menu</span>
               <Menu size={15} />
