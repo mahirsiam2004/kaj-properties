@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const RECIPIENT = 'hellokazpnd@gmail.com';
+const RECIPIENT = 'siddiqueab13@gmail.com';
 const FROM = 'Kaz Properties <onboarding@resend.dev>';
 
 interface LandownerBody {

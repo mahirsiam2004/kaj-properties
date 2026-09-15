@@ -12,10 +12,10 @@ const team = [
     company: 'KAZ Properties & Developers',
     photo: '/assets/management-team/Abdul Quader.png',
     bio: [
-      '"Building Tomorrow\'s Legacy" is more than a slogan — it\'s the philosophy that shapes our purpose, our decisions, and our vision for the future.',
-      'At KAZ Properties, we see real estate not merely as the construction of buildings, but as the creation of enduring communities, meaningful relationships, and long-term value for generations to come.',
-      'With over 20 years of professional experience, Mr. Abdul Quader Zilon has built a career defined by strategic leadership, innovation, integrity, and a commitment to excellence.',
-      'His journey includes leadership roles in the United Arab Emirates and across international real estate markets in the Middle East, where he gained invaluable exposure to advanced development practices, strategic planning, customer-centric business models, and sustainable growth.',
+      '"We Build Abodes of Peace" — is not just a sentence for us. It\'s the deep core belief that drives our work, our choices, and our dream for tomorrow.',
+      'At KAZ Properties, we believe real estate isn\'t just about brick, cement, or high buildings. It\'s about building a peaceful home where a family feels safe, creating strong neighborhood bonds, and leaving behind a place of comfort for your children.',
+      'Guided by over 20 years of real industry experience, Mr. Abdul Quader Zilon has built his career on honesty, modern ideas, and a promise to always do what\'s right for people.',
+      'His long journey includes leading key projects in the United Arab Emirates and international real estate markets across the Middle East. Through this, he brought back world-class planning, modern designs, and a strong commitment to putting people\'s peace of mind first.',
     ],
   },
   {

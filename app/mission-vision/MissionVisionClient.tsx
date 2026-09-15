@@ -51,23 +51,23 @@ export default function MissionVisionPage() {
             {/* Left */}
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-light leading-tight mb-6 text-white">
-                Building Tomorrow&apos;s <span className="font-bold">Legacy, Today</span>
+                &ldquo;We Build Abodes of <span className="font-bold">Peace</span>&rdquo;
               </h1>
               <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-4">
-                Kaz Properties & Developers was founded with a singular belief — that real estate is more than
-                buying and selling land. It is about creating enduring communities where families feel safe,
-                proud, and connected. Every project we undertake begins with that conviction.
+                The vision comes from a simple belief: real estate is far more than buying and selling land. It&apos;s
+                about creating safe, peaceful communities where families can truly belong, grow, and build their
+                future. Every project we touch starts with this heart.
               </p>
               <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-4">
-                Our journey began by partnering with established projects in the Dhaka-Savar corridor, building
-                the expertise, trust, and relationships that now define who we are. From residential land-share
-                models to multi-storey developments, we have demonstrated that transparency and quality can
-                coexist with affordability.
+                Our journey began right here in the Dhaka-Savar corridor, partnering on foundational projects to
+                earn the trust and goodwill that define us today. From shared residential plots to modern
+                multi-storey buildings, we prove every day that honesty, quality, and fair prices can go hand in hand.
               </p>
               <p className="text-sm sm:text-base leading-relaxed font-light text-white/90 mb-8">
-                Led by a team of civil engineers, structural architects, and real estate professionals — many
-                trained internationally — Kaz Properties brings global standards to the Bangladeshi market.
-                We do not simply build structures. We deliver spaces where lives are lived.
+                Guided by experienced civil engineers, architects, and industry professionals — including global
+                leadership experience brought home to Bangladesh — KAZ Properties &amp; Developers bridges
+                world-class building standards with a deep understanding of what a home truly means. We don&apos;t
+                just build structures. We create peaceful spaces where life happens.
               </p>
 
               {/* Key stats row */}
@@ -142,14 +142,8 @@ export default function MissionVisionPage() {
               <div className="relative z-10">
                 <span className="text-accent uppercase tracking-[0.25em] text-xs font-bold mb-4 block">Our Mission</span>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-light leading-snug mb-5 text-white">
-                  To design and deliver exceptional living spaces — built on superior quality, transparency,
-                  and an absolute commitment to exceeding expectations.
+                  We develop thoughtfully planned homes and communities that combine quality, modern living, trusted commitment, and lasting value — making the dream of a better home achievable.
                 </h2>
-                <p className="text-white/50 text-sm leading-relaxed font-light">
-                  Every project at Kaz Properties is driven by a mission to make premium real estate accessible
-                  and honest. We believe that the families who trust us with their most important investment
-                  deserve nothing less than the best — on time, on budget, and beyond specification.
-                </p>
               </div>
             </div>
 
@@ -159,14 +153,8 @@ export default function MissionVisionPage() {
               <div className="relative z-10">
                 <span className="text-accent uppercase tracking-[0.25em] text-xs font-bold mb-4 block">Our Vision</span>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-light leading-snug mb-5 text-white">
-                  To be Bangladesh&apos;s most trusted real estate brand — recognised for creating enduring
-                  communities that build tomorrow&apos;s legacy today.
+                  To create better places to live, where every home becomes a source of comfort, pride, and lasting value.
                 </h2>
-                <p className="text-white/50 text-sm leading-relaxed font-light">
-                  We envision a Bangladesh where every citizen has access to a home that reflects their
-                  aspirations. Through innovative land-share models, thoughtful urban planning, and a deeply
-                  human approach to development, Kaz Properties aims to set a new standard for the industry.
-                </p>
               </div>
             </div>
           </div>
@@ -200,23 +188,22 @@ export default function MissionVisionPage() {
 
               <div className="space-y-4 text-sm sm:text-base leading-relaxed font-light text-black/65 dark:text-white/65">
                 <p>
-                  &ldquo;Building Tomorrow&apos;s Legacy&rdquo; is more than a tagline — it is the philosophy that
-                  shapes our purpose, our decisions, and our vision for the years ahead.
+                  &ldquo;We Build Abodes of Peace&rdquo; — is not just a sentence for us. It&apos;s the deep core
+                  belief that drives our work, our choices, and our dream for tomorrow.
                 </p>
                 <p>
-                  At Kaz Properties, we understand that real estate is not merely the construction of buildings.
-                  It is the creation of enduring communities, meaningful relationships, and long-term value for
-                  generations to come. Every project we take on carries the weight of that responsibility.
+                  At KAZ Properties, we believe real estate isn&apos;t just about brick, cement, or high buildings.
+                  It&apos;s about building a peaceful home where a family feels safe, creating strong neighborhood
+                  bonds, and leaving behind a place of comfort for your children.
                 </p>
                 <p>
-                  With over two decades of professional experience across the United Arab Emirates and international
-                  real estate markets in the Middle East, I have witnessed firsthand what separates good development
-                  from great development: integrity, attention to detail, and a genuine commitment to the people
-                  you serve.
+                  Guided by over 20 years of real industry experience, Mr. Abdul Quader Zilon has built his career
+                  on honesty, modern ideas, and a promise to always do what&apos;s right for people.
                 </p>
                 <p>
-                  We invite you to be part of our story — as a homeowner, a land partner, or simply someone who
-                  believes that where you live defines how you live.
+                  His long journey includes leading key projects in the United Arab Emirates and international
+                  real estate markets across the Middle East. Through this, he brought back world-class planning,
+                  modern designs, and a strong commitment to putting people&apos;s peace of mind first.
                 </p>
               </div>
 

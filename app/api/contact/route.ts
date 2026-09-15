@@ -6,9 +6,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // ─── Change these two when your domain is verified ───────────────────────────
 // RECIPIENT: where form submissions are delivered
 // NOTE: Until you verify kazdevelopers.com at resend.com/domains, this must be
-// the email address you used to sign up for Resend (mahirsiam2004@gmail.com).
+// the email address you used to sign up for Resend (siddiqueab13@gmail.com).
 // Once the domain is verified, change both lines below.
-const RECIPIENT = 'hellokazpnd@gmail.com';
+const RECIPIENT = 'siddiqueab13@gmail.com';
 const FROM = 'Kaz Properties <onboarding@resend.dev>';
 // ─────────────────────────────────────────────────────────────────────────────
 

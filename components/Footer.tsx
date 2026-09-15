@@ -67,7 +67,7 @@ export default function Footer() {
                 <p>Bachelor Gate, Ambagan Road,<br />Jahangirnagar University,<br />Savar, Dhaka, Bangladesh</p>
                 <div className="pt-1 space-y-0.5">
                   <p className="font-semibold text-black dark:text-white">+880 1774-873972</p>
-                  <p className="text-black/60 dark:text-white/60">hellokazpnd@gmail.com</p>
+                  <p className="text-black/60 dark:text-white/60">siddiqueab13@gmail.com</p>
                 </div>
               </div>
             </div>
