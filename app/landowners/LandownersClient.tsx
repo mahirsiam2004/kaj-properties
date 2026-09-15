@@ -95,7 +95,7 @@ export default function LandownersPage() {
           className="inline-flex items-center gap-2 text-black/50 dark:text-white/50 hover:text-accent transition-colors text-sm font-medium group"
         >
           <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
-          Back to Contact
+          Back
         </Link>
         <img src="/logo1.png" alt="Kaz Properties" className="h-8 md:h-10 w-auto object-contain" />
         <ThemeToggleButton variant="light" />
@@ -294,7 +294,7 @@ export default function LandownersPage() {
       <div className="border-t border-black/8 dark:border-white/10 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-36 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-black/35 dark:text-white/35 bg-white dark:bg-brand-black">
         <p>© {new Date().getFullYear()} Kaz Properties &amp; Developers. All Rights Reserved.</p>
         <Link href="/#contact" className="flex items-center gap-1.5 hover:text-accent transition-colors">
-          <ArrowLeft size={11} /> Back to Contact
+          <ArrowLeft size={11} /> Back
         </Link>
       </div>
 
